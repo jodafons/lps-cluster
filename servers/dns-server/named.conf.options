@@ -1,5 +1,5 @@
 acl "trusted" {
-        100.1.1.0/24
+        192.168.0.0/24;
 };
 
 options {
@@ -8,7 +8,7 @@ options {
         allow-query { any; };
         recursion yes;
         // allow-recursion { trusted; };
-        listen-on { 100.1.1.2; };
+        listen-on { 192.168.0.200; };
         allow-transfer { none; };
 
         forwarders {

@@ -14,22 +14,7 @@ $TTL    7200
         IN      NS      ns.sandbox.ufrj.br.
 
 ; Network related addresses
-net           IN      A       100.1.1.0
-ns            IN      A       100.1.1.2
-; auth service
-auth          IN      A       100.1.1.8
-; SLURM frontend
-slurm         IN      A       100.1.1.9
-; Login machines
-login         IN      A       100.1.1.10
+ns            IN      A       192.168.0.200
 
 
-;
-; GPU machines (31-60)
-;
-node01          IN      A       100.1.1.11
 
-;
-; Storages (201-210)
-;
-storage01       IN      A       100.1.1.20
