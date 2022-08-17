@@ -1,0 +1,37 @@
+;
+; Zone for LPS
+;
+$TTL    7200
+@       IN      SOA     ns.sandbox.ufrj.br. netadmin.sandbox.ufrj.br. (
+                     2022073000         ; Serial
+                     7200               ; Refresh (2h)
+                     3600               ; Retry (1h)
+                     31536000           ; Expire (1y)
+                     10800 )    ; Negative Cache TTL
+;
+; Basic NS configuration
+;
+        IN      NS      ns.sandbox.ufrj.br.
+
+; Network related addresses
+net           IN      A       100.1.1.0
+gw            IN      A       100.1.1.1
+ns            IN      A       100.1.1.2
+; auth service
+auth          IN      A       100.1.1.8
+; SLURM frontend
+slurm         IN      A       100.1.1.9
+; Login machines
+login         IN      A       100.1.1.10
+
+
+;
+; GPU machines (31-60)
+;
+node01          IN      A       100.1.1.11
+
+
+;
+; Storages (201-210)
+;
+storage01       IN      A       100.1.1.20
