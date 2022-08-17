@@ -14,7 +14,8 @@ $TTL    7200
         IN      NS      ns.sandbox.ufrj.br.
 
 ; Network related addresses
-ns            IN      A       192.168.0.200
-
+ns              IN      A       192.168.0.200
+ldapserver      IN      A       192.168.0.201
+ldap            IN      CNAME   ldapserver.sandbox.ufrj.br. 
 
 
