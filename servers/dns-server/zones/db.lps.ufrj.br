@@ -69,8 +69,8 @@ ns                          IN    A     146.164.147.2 ; dns service
 
 ; migration stuff
 auth-server                 IN    A     146.164.147.3 ; ldap and kerberos
-slurm-server                IN    A     146.165.147.4 ; slurm frontend
-
+slurm-server                IN    A     146.164.147.4 ; slurm frontend
+sandbox-node                IN    A     146.164.147.5 ; Sandbox node to test
 
 
 ;
@@ -276,7 +276,6 @@ caloba100     IN    A     10.1.1.110
 ;
 ; Sandbox machines (111-120)
 ;
-caloba101     IN    A     10.1.1.111
 caloba102     IN    A     10.1.1.112
 caloba103     IN    A     10.1.1.113
 caloba104     IN    A     10.1.1.114

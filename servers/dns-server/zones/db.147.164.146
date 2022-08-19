@@ -18,7 +18,8 @@ $TTL  7200
 1   IN  PTR gw.lps.ufrj.br.
 2   IN  PTR ns.lps.ufrj.br.
 3   IN  PTR auth-server.lps.ufrj.br.
-10  IN  PTR slurm-server.lps.ufrj.br.
+4   IN  PTR slurm-server.lps.ufrj.br.
+5   IN  PTR sandbox-node.lps.ufrj.br.
 
 
 ;
