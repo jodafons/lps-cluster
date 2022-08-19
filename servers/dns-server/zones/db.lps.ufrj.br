@@ -2,10 +2,10 @@
 ; Zone for LPS
 ;
 $TTL      7200
-@     IN    SOA     ns.lps.ufrj.br. netadmin.lps.ufrj.br. (
-           2022073000     ; Serial
-           7200     ; Refresh (2h)
-           3600     ; Retry (1h)
+@     IN   SOA       ns.lps.ufrj.br. netadmin.lps.ufrj.br. (
+           2022073000   ; Serial
+           7200         ; Refresh (2h)
+           3600         ; Retry (1h)
            31536000     ; Expire (1y)
            10800 )      ; Negative Cache TTL
 ;
@@ -53,6 +53,12 @@ calendar    4w     IN    CNAME     ghs.googlehosted.com.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;
+; Networking and private hardware
+;
+lps1-wlan                   IN    A     146.164.147.65
+hp4200dtn                   IN    A     146.164.147.66
+
+;
 ; Network related addresses
 ;
 
@@ -60,24 +66,13 @@ localhost                   IN    A     127.0.0.1
 net                         IN    A     146.164.147.0
 gw                          IN    A     146.164.147.1 ; microtick
 ns                          IN    A     146.164.147.2 ; dns service
-
-;
-; Networking and private hardware
-;
-lps1-wlan                   IN    A     146.164.147.65
-hp4200dtn                   IN    A     146.164.147.66
-
-
-;
-; New Cluster staff (4->8)
-;
 auth-server                 IN    A     146.164.147.3 ; ldap and kerberos
 
 
 
 
 ;
-; Basic services (offset by 10 for legacy stuff)
+; Basic services (legacy stuff)
 ;
 xenserver         IN    A         146.164.147.9
 service           IN    A         146.164.147.10
