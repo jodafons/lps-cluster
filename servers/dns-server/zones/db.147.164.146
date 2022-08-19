@@ -17,7 +17,7 @@ $TTL  7200
 0 IN  PTR net.lps.ufrj.br.
 1 IN  PTR gw.lps.ufrj.br.
 2 IN  PTR ns.lps.ufrj.br.
-
+3 IN  PTR auth-server.lps.ufrj.br
 
 
 ;

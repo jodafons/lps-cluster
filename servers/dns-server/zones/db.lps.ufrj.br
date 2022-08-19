@@ -71,7 +71,7 @@ hp4200dtn                   IN    A     146.164.147.66
 ;
 ; New Cluster staff (4->8)
 ;
-auth-server                 IN  A 146.164.147.3 ; ldap and kerberos
+auth-server                 IN    A     146.164.147.3 ; ldap and kerberos
 
 
 
