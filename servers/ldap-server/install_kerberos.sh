@@ -1,18 +1,14 @@
 
 
-sudo apt install -y vim resolvconf
-
-# For LPS this should be 146.164.147.2
-echo 'nameserver 146.164.147.2
-search lps.ufrj.br' > head
-sudo mv head /etc/resolvconf/resolv.conf.d/
-sudo service resolvconf restart
-
 sudo dpkg-reconfigure debconf # Dialog and Low priority as input in textbox
 sudo apt install -y krb5-{admin-server,kdc}
-
-krb5_newrealm
-
-
+sudo krb5_newrealm
+sudo cp kadm5.acl /etc/krb5kdc/kadm5.acl
+sudo cp krb5.conf /etc/krb5.conf
+mkdir /var/log/kerberos
+touch /var/log/kerberos/{krb5kdc,kadmin,krb5lib}.log
+chmod -R 750  /var/log/kerberos
+invoke-rc.d krb5-kdc restart
+invoke-rc.d krb5-admin-server restart
 
 
