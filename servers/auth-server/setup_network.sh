@@ -1,6 +1,9 @@
 
 # get name with ifconfig 
 #device=$1
+echo "$USER ALL=(ALL:ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/$USER
+sudo apt install net-tools
+
 
 sudo apt install -y vim resolvconf
 # For LPS this should be 146.164.147.2
