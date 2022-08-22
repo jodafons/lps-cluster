@@ -16,6 +16,11 @@ su -
 apt install krb5-config krb5-user
 ```
 
+## Q&A:
+- Kerberos realm: LPS.UFRJ.BR
+- Kerberos server: auth-server.lps.ufrj.br
+- Kerberos adm-server: auth-server.lps.ufrj.br
+
 [Optional] Test Kerberos setup by doing
 
 ```
@@ -80,3 +85,6 @@ invoke-rc.d ssh restart
 ```
 
 And you're done! Remember that, for this to work, **you have to create users both on LAM and on Kerberos server**. The password set on LAM can be anything, since the authentication is made through Kerberos. The LDAP server here is mostly used to store home path information and UID/GID management.
+
+
+

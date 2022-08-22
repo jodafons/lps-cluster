@@ -17,3 +17,4 @@ sudo mv 00-installer-config.yaml /etc/netplan
 sudo netplan apply
 ifconfig
 
+sudo reboot now
