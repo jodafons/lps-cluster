@@ -16,6 +16,13 @@ Than lets reconfigure by hand the LDAP conf. Where domain will be `lps.ufrj.br` 
 dpkg-reconfigure slapd
 ```
 
+- Omit OpenLDAP server configuration? No
+- DNS domain name: `dc=lps,dc=ufrj,dc=br`
+- Organization name: `dc=lps,dc=ufrj,dc=br`
+- Enter with the password;
+- Do you want the database to be removed when slapd is purged? No
+- Move old database? Yes
+
 You can show your server's details by running
 
 ```
