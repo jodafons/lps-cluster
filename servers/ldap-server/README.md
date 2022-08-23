@@ -43,3 +43,5 @@ Do few further modifications on the `Account types` tab changing from `dc=exampl
 Next we'll save the configurations, returning to the homepage, and will login with the admin password. If LAM asks to create anything that's missing, you can safely allow that.
 
 [Optional] Add a group (the first one will be the default group for every new user) and add new user(s). It's really simple to use the interface.
+
+Note: username admin is: `cn=admin,dc=lps,dc=ufrj,dc=br`
