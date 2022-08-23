@@ -18,7 +18,7 @@ echo "network:
   ethernets:
      ens18:
         dhcp4: false
-        addresses: [146.164.147.4/24]
+        addresses: [146.164.147.5/24]
         gateway4: 146.164.147.1
         nameservers:
           addresses: [8.8.8.8, 8.8.4.4]" > 00-installer-config.yaml
