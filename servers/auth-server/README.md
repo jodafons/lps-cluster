@@ -15,13 +15,14 @@ Than lets reconfigure by hand the LDAP conf. Where domain will be `lps.ufrj.br` 
 ```
 dpkg-reconfigure slapd
 ```
+### Q&A:
 
-- Omit OpenLDAP server configuration? No
-- DNS domain name: `dc=lps,dc=ufrj,dc=br`
-- Organization name: `dc=lps,dc=ufrj,dc=br`
-- Enter with the password;
-- Do you want the database to be removed when slapd is purged? No
-- Move old database? Yes
+* Omit OpenLDAP server configuration? No
+* DNS domain name: `lps.ufrj.br`
+* Organization name: `dc=lps,dc=ufrj,dc=br`
+* Enter with the password;
+* Do you want the database to be removed when slapd is purged? No
+* Move old database? Yes
 
 You can show your server's details by running
 
@@ -63,7 +64,6 @@ I've based this configuration on three tutorial: [this for Kerberos](http://tech
 Start by configuring debconf to low priority, so we can have more control of what's happening.
 
 ```
-su -
 dpkg-reconfigure debconf
 ```
 
@@ -77,18 +77,12 @@ apt install krb5-{admin-server,kdc}
 
 ### Q&A
 
-* Default Kerberos version 5 realm
-	* LPS.UFRJ.BR
-* Add locations of default Kerberos servers to /etc/krb5.conf?
-	* Yes
-* Kerberos servers for your realm
-	* auth-server.lps.ufrj.br
-* Administrative server for your Kerberos realm
-	* auth-server.lps.ufrj.br
-* Create the Kerberos KDC configuration automatically?
-	* Yes
-* Run the Kerberos V5 administration daemon (kadmind)?
-	* Yes
+* Default Kerberos version 5 realm: `LPS.UFRJ.BR`
+* Add locations of default Kerberos servers to /etc/krb5.conf? Yes
+* Kerberos servers for your realm: `auth-server.lps.ufrj.br`
+* Administrative server for your Kerberos realm: `auth-server.lps.ufrj.br`
+* Create the Kerberos KDC configuration automatically? Yes
+* Run the Kerberos V5 administration daemon (kadmind)? Yes
 
 Don't worry if it fails to start, since your server  isn't set yet. So let's set this!
 
