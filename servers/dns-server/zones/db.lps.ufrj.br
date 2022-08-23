@@ -68,10 +68,9 @@ gw                          IN    A     146.164.147.1 ; microtick
 ns                          IN    A     146.164.147.2 ; dns service
 
 ; migration stuff
-auth-server                 IN    A     146.164.147.3 ; kerberos
-ldap-server                 IN    A     146.164.147.4 ; ldap 
-slurm-server                IN    A     146.164.147.5 ; slurm frontend
-vpn-server                  IN    A     146.164.147.6 ; vpn
+auth-server                 IN    A     146.164.147.3 ; kerberos and ldap
+slurm-server                IN    A     146.164.147.4 ; slurm frontend
+docker-server               IN    A     146.164.147.5 ; minor services
 
 
 ;
