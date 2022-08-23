@@ -1,7 +1,0 @@
-dn: ou=people,dc=lps,dc=ufrj,dc=br
-objectClass: organizationalUnit
-ou: people
-
-dn: ou=groups,dc=lps,dc=ufrj,dc=br
-objectClass: organizationalUnit
-ou: groups
