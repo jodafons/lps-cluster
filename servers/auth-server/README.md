@@ -89,5 +89,8 @@ add_policy -minlength 8 -minclasses 4 service
 add_policy -minlength 8 -minclasses 2 user
 addprinc -policy admin root/admin
 addprinc -policy user unprivileged_user
+ank -policy admin root/admin
+ank -policy admin cluster/admin
+
 quit
 ```

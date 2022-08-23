@@ -62,11 +62,12 @@ Next, we'll setup PAM for creating home directories for users that don't have it
 session    required    pam_mkhomedir.so skel=/etc/skel/ umask=022
 ```
 
+
 Finally, we'll setup passwordless SSH using Kerberos tickets. For that, inside the `kadmin` shell, run (replacing `<hostname.hostdomain>`):
 
 ```
-addprinc -policy service -randkey host/<hostname.hostdomain>
-ktadd -k /etc/krb5.keytab host/<hostname.hostdomain>
+addprinc -policy service -randkey host/slurm-server.lps.ufrj.br
+ktadd -k /etc/krb5.keytab host/slurm-server.lps.ufrj.br
 ```
 
 Then edit the `/etc/ssh/sshd_config` file to match the following:
