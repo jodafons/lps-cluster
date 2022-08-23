@@ -22,13 +22,13 @@ apt install krb5-{admin-server,kdc}
 ### Q&A
 
 * Default Kerberos version 5 realm
-	* CLUSTER
+	* LPS.UFRJ.BR
 * Add locations of default Kerberos servers to /etc/krb5.conf?
 	* Yes
 * Kerberos servers for your realm
-	* auth.cluster
+	* auth-server.lps.ufrj.br
 * Administrative server for your Kerberos realm
-	* auth.cluster
+	* auth-server.lps.ufrj.br
 * Create the Kerberos KDC configuration automatically?
 	* Yes
 * Run the Kerberos V5 administration daemon (kadmind)?
@@ -43,8 +43,8 @@ krb5_newrealm
 When asked for password, choose yours (recommended a really strong password as this is the master one). On the `/etc/krb5.conf` section, look for `[domain_realm]` not `[realms]` and append your definitions:
 
 ```
-.cluster = CLUSTER
-cluster = CLUSTER
+.lps.ufrj.br = LPS.UFRJ.BR
+lps.ufrj.br = LPS.UFRJ.BR
 ```
 
 [Optional] Add the logging section at the bottom of the file
