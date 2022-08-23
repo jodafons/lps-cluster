@@ -2,12 +2,7 @@
 # SLURM Server Configuration:
 
 
-## LDAP/Kerberos integration
-
-**This step should be done on each one of the following machines:**
-
-* Host machine (where slurmctld will run)
-* Computing nodes (where slurmd will run)
+## Kerberos Client Configuration:
 
 Install few packages (the setup is pretty straightforward, just fill things to match your own)
 
@@ -16,10 +11,11 @@ su -
 apt install krb5-config krb5-user
 ```
 
-## Q&A:
-- Kerberos realm: LPS.UFRJ.BR
-- Kerberos server: auth-server.lps.ufrj.br
-- Kerberos adm-server: auth-server.lps.ufrj.br
+### Q&A:
+
+* Kerberos realm: `LPS.UFRJ.BR`
+* Kerberos server: `auth-server.lps.ufrj.br`
+& Kerberos adm-server: `auth-server.lps.ufrj.br`
 
 [Optional] Test Kerberos setup by doing
 
@@ -36,6 +32,8 @@ Next, we'll need to use PAM for Kerberos authentication. For that, install
 ```
 apt install libpam-krb5
 ```
+
+## LDAP Client Configuration:
 
 The default configurations after installation should work fine. Next, we'll set LDAP with NSS
 
