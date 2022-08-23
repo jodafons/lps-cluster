@@ -7,11 +7,18 @@ First you have to install some packages (note that you can skip everything asked
 apt install -y slapd ldap-utils
 ```
 
+Than lets reconfigure by hand the LDAP conf. Where domain will be `lps.ufrj.br` and dc base `dc=lps,dc=ufrj,dc=br`:
+
+```
+dpkg-reconfigure slapd
+```
+
 You can show your server's details by running
 
 ```
 slapcat
 ```
+
 
 Next we're going to install LAM, the LDAP Account Manager. It's a web app and it eases our life SO MUCH
 
