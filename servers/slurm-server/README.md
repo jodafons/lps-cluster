@@ -44,7 +44,7 @@ apt install libnss-ldap
 ```
 
 ## Q&A:
-- server: ldap://ldap-server.lps.ufrj.br
+- server: `ldap://ldap-server.lps.ufrj.br`
 - dc=lps,dc=ufrj,dc=br
 - LDAP version: 3
 - Select yes to create the local root database;
