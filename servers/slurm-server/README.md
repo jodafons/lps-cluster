@@ -123,7 +123,7 @@ apt install -y gcc make ruby ruby-dev libmariadb-dev-compat libmariadb-dev maria
 Then install MUNGE for authentication
 
 ```
-apt install libmunge-dev libmunge2 munge
+apt install libmunge-dev libmunge2 libmunge
 systemctl enable munge
 systemctl start munge
 ```
@@ -146,15 +146,18 @@ set password for 'slurm'@'localhost' = password('slurmdbpass');
 grant usage on *.* to 'slurm'@'localhost';
 grant all privileges on slurm_acct_db.* to 'slurm'@'localhost';
 flush privileges;
-exit
+exit;
 ```
 
 Then we'll download SLURM itself
 
+
+
+
 ```
 cd /mnt/slurm_build
 wget https://download.schedmd.com/slurm/slurm-22.05.3.tar.bz2
-wget http://134.100.28.207/files/src/slurm/
+#wget http://134.100.28.207/files/src/slurm/
 apt install bzip2
 bunzip2 slurm-22.05.3.tar.bz2
 tar xfv slurm-22.05.3.tar
@@ -164,7 +167,7 @@ cd slurm-22.05.3
 After that, lets compile it!
 
 ```
-./configure --prefix=/tmp/slurm_build --sysconfdir=/etc/slurm --enable-pam --with-pam_dir=/lib/x86_64-linux-gnu/security/ --without-shared-libslurm --with-mysql_config=/usr/bin/mysql_config
+./configure --prefix=/mnt/slurm_build --sysconfdir=/etc/slurm --enable-pam --with-pam_dir=/lib/x86_64-linux-gnu/security/ --without-shared-libslurm --with-mysql_config=/usr/bin/mysql_config
 ```
 
 Then we build SLURM
@@ -179,22 +182,33 @@ After that, we need to make a package out of slurm and install it
 
 ```
 gem install fpm
-fpm -s dir -t deb -v 1.0 -n slurm-20.02.3 --prefix=/usr -C /mnt/slurm_build .
+fpm -s dir -t deb -v 1.0 -n slurm-22.05.3 --prefix=/usr -C /mnt/slurm_build .
 dpkg -i slurm-20.02.3_1.0_amd64.deb
 ```
 
-cd /mnt/slurm_build/
-cp -r lib/* /usr/lib
-cp -r sbin/* /usr/sbin
-cp -r include/* /usr/include
-cp -r bin/* /usr/bin
+#cd /mnt/slurm_build/
+#cp -r lib/* /usr/lib
+#cp -r sbin/* /usr/sbin
+#cp -r include/* /usr/include
+#cp -r bin/* /usr/bin
 
 Finally, we need to add `slurm` user and make some dirs
 
 ```
 useradd slurm
-mkdir -p /etc/slurm /etc/slurm/prolog.d /etc/slurm/epilog.d /var/spool/slurm/ctld /var/spool/slurm/d /var/log/slurm
-chown slurm /var/spool/slurm/ctld /var/spool/slurm/d /var/log/slurm
+mkdir -p /etc/slurm 
+mkdir -p /etc/slurm/prolog.d 
+mkdir -p /etc/slurm/epilog.d 
+chown -R slurm:slurm /etc/slurm
+
+mkdir -p /var/spool/slurm/ctld 
+mkdir -p /var/spool/slurm/d 
+chown -R slurm:slurm /var/spool/slurm/
+
+#mkdir -p /var/log/slurm
+chown -R slurm:slurm /var/log/slurm/
+
+
 ```
 
 Okay. So, by now, SLURM should be fully installed. Before we proceed, we need a `slurm.conf` file, in order to configure our cluster. You can generate your own conf file by using [this amazing tool](https://slurm.schedmd.com/configurator.html) from SchedMD, which is the SLURM official development and support team. The Caloba cluster 
@@ -203,7 +217,7 @@ configuration file is `slurm.conf`. This file shall be placed in `/etc/slurm/slu
 ```
 cp slurm.conf /etc/slurm/
 cp slurmdbd.conf /etc/slurm
-
+chmod 644 /etc/slurm/slurmdbd.conf
 ```
 
 
