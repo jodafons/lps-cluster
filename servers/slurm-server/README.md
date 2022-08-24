@@ -42,12 +42,13 @@ apt install libnss-ldap
 ```
 
 ## Q&A:
+
 - server: `ldap://ldap-server.lps.ufrj.br`
-- dc=lps,dc=ufrj,dc=br
+- Distinguished name of the search base: `dc=lps,dc=ufrj,dc=br`
 - LDAP version: 3
 - Select yes to create the local root database;
 - Answer No for Does the LDAP database requires login?
-- Set LDAP account for root, like cn=admin,dc=lps,dc=ufrj,dc=br
+- Set LDAP account for root, like `cn=admin,dc=lps,dc=ufrj,dc=br`
 - Provide LDAP root account Password
 
 
@@ -94,6 +95,60 @@ invoke-rc.d ssh restart
 ```
 
 And you're done! Remember that, for this to work, **you have to create users both on LAM and on Kerberos server**. The password set on LAM can be anything, since the authentication is made through Kerberos. The LDAP server here is mostly used to store home path information and UID/GID management.
+
+
+
+
+
+
+
+
+
+
+## LDAP Client Configuration:
+
+The default configurations after installation should work fine. Next, we'll set LDAP with NSS
+
+```
+apt install libnss-ldap
+```
+
+## Q&A:
+
+- server: `ldap://ldap-server.lps.ufrj.br`
+- Distinguished name of the search base: `dc=lps,dc=ufrj,dc=br`
+- LDAP version: 3
+- Select yes to create the local root database;
+- Answer No for Does the LDAP database requires login?
+- Set LDAP account for root, like `cn=admin,dc=lps,dc=ufrj,dc=br`
+- Provide LDAP root account Password
+
+
+Again, fill things to match your own. In order to ease configuration, I'll install another package where we can choose which services we'll enable. In my case, I just checked `passwd`, `group` and `shadow`
+
+```
+apt install libnss-ldapd
+```
+
+Once that's done, do
+
+```
+/etc/init.d/nscd restart
+/etc/init.d/ssh restart
+```
+
+Next, we'll setup PAM for creating home directories for users that don't have it yet. For that, edit the `/etc/pam.d/common-session` file by adding this line to the end of it
+
+```
+session    required    pam_mkhomedir.so skel=/etc/skel/ umask=022
+```
+
+To test LDAP, use this command and you shoul see some accounts inside of the LDAP server:
+
+```
+getent passwd
+```
+
 
 
 
