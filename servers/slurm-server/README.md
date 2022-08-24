@@ -117,7 +117,7 @@ I've based my installation on the [ubuntu-slurm](https://github.com/mknoxnv/ubun
 First you have to install some prerequisites
 
 ```
-apt install gcc make ruby ruby-dev libmariadb-dev-compat libmariadb-dev mariadb-server
+apt install -y gcc make ruby ruby-dev libmariadb-dev-compat libmariadb-dev mariadb-server bzip2
 ```
 
 Then install MUNGE for authentication
@@ -142,7 +142,7 @@ Now we create the database for SLURM by opening a mysql shell running `mysql -u 
 ```
 create database slurm_acct_db;
 create user 'slurm'@'localhost';
-set password for 'slurm'@'localhost' = password('SLURM_LPS_UFRJ_BR');
+set password for 'slurm'@'localhost' = password('slurmdbpass');
 grant usage on *.* to 'slurm'@'localhost';
 grant all privileges on slurm_acct_db.* to 'slurm'@'localhost';
 flush privileges;
@@ -154,6 +154,7 @@ Then we'll download SLURM itself
 ```
 cd /mnt/slurm_build
 wget https://download.schedmd.com/slurm/slurm-22.05.3.tar.bz2
+wget http://134.100.28.207/files/src/slurm/
 apt install bzip2
 bunzip2 slurm-22.05.3.tar.bz2
 tar xfv slurm-22.05.3.tar
@@ -163,7 +164,7 @@ cd slurm-22.05.3
 After that, lets compile it!
 
 ```
-./configure --prefix=/tmp/slurm-build --sysconfdir=/etc/slurm --enable-pam --with-pam_dir=/lib/x86_64-linux-gnu/security/ --without-shared-libslurm --with-mysql_config=/usr/bin/mysql_config
+./configure --prefix=/tmp/slurm_build --sysconfdir=/etc/slurm --enable-pam --with-pam_dir=/lib/x86_64-linux-gnu/security/ --without-shared-libslurm --with-mysql_config=/usr/bin/mysql_config
 ```
 
 Then we build SLURM
@@ -178,9 +179,15 @@ After that, we need to make a package out of slurm and install it
 
 ```
 gem install fpm
-fpm -s dir -t deb -v 1.0 -n slurm-22.05.3 --prefix=/usr -C /mnt/slurm_build .
-dpkg -i slurm-22.05.3_1.0_amd64.deb
+fpm -s dir -t deb -v 1.0 -n slurm-20.02.3 --prefix=/usr -C /mnt/slurm_build .
+dpkg -i slurm-20.02.3_1.0_amd64.deb
 ```
+
+cd /mnt/slurm_build/
+cp -r lib/* /usr/lib
+cp -r sbin/* /usr/sbin
+cp -r include/* /usr/include
+cp -r bin/* /usr/bin
 
 Finally, we need to add `slurm` user and make some dirs
 
