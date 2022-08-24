@@ -194,13 +194,12 @@ useradd slurm
 mkdir -p /etc/slurm 
 mkdir -p /etc/slurm/prolog.d 
 mkdir -p /etc/slurm/epilog.d 
-chown -R slurm:slurm /etc/slurm
+chown -R slurm /etc/slurm
 
 mkdir -p /var/spool/slurm/ctld 
 mkdir -p /var/spool/slurm/d 
 mkdir -p /var/log/slurm
-
-chown -R slurm:slurm /var/spool/slurm/
+chown -R slurm /var/spool/slurm/
 ```
 
 Okay. So, by now, SLURM should be fully installed. Before we proceed, we need a `slurm.conf` file, in order to configure our cluster. You can generate your own conf file by using [this amazing tool](https://slurm.schedmd.com/configurator.html) from SchedMD, which is the SLURM official development and support team. The Caloba cluster 
@@ -210,7 +209,7 @@ configuration file is `slurm.conf`. This file shall be placed in `/etc/slurm/slu
 cp slurm.conf /etc/slurm/
 cp slurmdbd.conf /etc/slurm
 chmod 600 /etc/slurm/slurmdbd.conf
-chown -R slurm:slurm /etc/slurm
+chown -R slurm /etc/slurm
 ```
 
 
@@ -238,9 +237,9 @@ systemctl status slurmctld
 If everything is working fine, you can proceed. Now, create the SLURM cluster, account and some users (I recommend creating those users before on LDAP and Kerberos. That way, you'll be able to SSH into any machine and run commands without worrying with authentication and stuff)
 
 ```
-sacctmgr add cluster compute-cluster
-sacctmgr add account compute-account description="Compute accounts" Organization=OurOrg
-sacctmgr create user <your-user> account=compute-account adminlevel=None
+sacctmgr add cluster caloba
+sacctmgr add account compute-account description="Compute accounts" Organization=lps
+sacctmgr create user joao.pinto account=compute-account adminlevel=None
 ```
 
 Finally, if everything went well, you can check system health by typing `sinfo`. Don't worry if your nodes show no state, we haven't configured them yet. So let's do this now!
