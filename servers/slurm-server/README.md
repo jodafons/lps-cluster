@@ -114,16 +114,15 @@ I've based my installation on the [ubuntu-slurm](https://github.com/mknoxnv/ubun
 
 **This step should be done ONLY on the host(slurmctld/login) machine**
 
-First you have to install some prerequisites
+First you have to install some prerequisites and MURGE for authentication
 
 ```
-apt install -y gcc make ruby ruby-dev libmariadb-dev-compat libmariadb-dev mariadb-server bzip2
+apt install -y gcc make ruby ruby-dev libmariadb-dev-compat libmariadb-dev mariadb-server bzip2 libmunge-dev libmunge2 munge
 ```
 
-Then install MUNGE for authentication
+Then start murge service:
 
 ```
-apt install libmunge-dev libmunge2 libmunge
 systemctl enable munge
 systemctl start munge
 ```
@@ -183,14 +182,10 @@ After that, we need to make a package out of slurm and install it
 ```
 gem install fpm
 fpm -s dir -t deb -v 1.0 -n slurm-22.05.3 --prefix=/usr -C /mnt/slurm_build .
-dpkg -i slurm-20.02.3_1.0_amd64.deb
+dpkg -i slurm-22.05.3_1.0_amd64.deb
 ```
 
-#cd /mnt/slurm_build/
-#cp -r lib/* /usr/lib
-#cp -r sbin/* /usr/sbin
-#cp -r include/* /usr/include
-#cp -r bin/* /usr/bin
+
 
 Finally, we need to add `slurm` user and make some dirs
 
@@ -203,12 +198,9 @@ chown -R slurm:slurm /etc/slurm
 
 mkdir -p /var/spool/slurm/ctld 
 mkdir -p /var/spool/slurm/d 
+mkdir -p /var/log/slurm
+
 chown -R slurm:slurm /var/spool/slurm/
-
-#mkdir -p /var/log/slurm
-chown -R slurm:slurm /var/log/slurm/
-
-
 ```
 
 Okay. So, by now, SLURM should be fully installed. Before we proceed, we need a `slurm.conf` file, in order to configure our cluster. You can generate your own conf file by using [this amazing tool](https://slurm.schedmd.com/configurator.html) from SchedMD, which is the SLURM official development and support team. The Caloba cluster 
@@ -217,7 +209,8 @@ configuration file is `slurm.conf`. This file shall be placed in `/etc/slurm/slu
 ```
 cp slurm.conf /etc/slurm/
 cp slurmdbd.conf /etc/slurm
-chmod 644 /etc/slurm/slurmdbd.conf
+chmod 600 /etc/slurm/slurmdbd.conf
+chown -R slurm:slurm /etc/slurm
 ```
 
 
