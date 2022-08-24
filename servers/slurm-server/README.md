@@ -97,11 +97,6 @@ And you're done again! After this step, you're ready to install slurm and config
 ## SLURM Configuration:
 
 As this is a SLURM cluster, we have to install SLURM, right? I know it's been too much before this could happen, but setting everything I've shown before was really important for my setup. Let's do it then!
-
-I've based my installation on the [ubuntu-slurm](https://github.com/mknoxnv/ubuntu-slurm) tutorial but, since I'm in Debian and it's kinda outdated, I made few changes
-
-**This step should be done ONLY on the host(slurmctld/login) machine**
-
 First you have to install some prerequisites and MURGE for authentication
 
 ```
