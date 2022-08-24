@@ -202,11 +202,9 @@ cp slurm.conf /etc/slurm/
 Now we'll deploy SLURM. For it to work, I'll provide some scripts that I got from the original tutorial in order to add'em to systemd (cloning this repository is optional but, in order to ease the tutorial, I chose to do it)
 
 ```
-apt install git
-git clone https://github.com/gabriel-milan/slurm-cluster
 
-cp slurm-cluster/slurmdbd.service /etc/systemd/system/
-cp slurm-cluster/slurmctld.service /etc/systemd/system/
+cp slurmdbd.service /etc/systemd/system/
+cp slurmctld.service /etc/systemd/system/
 
 systemctl daemon-reload
 systemctl enable slurmdbd
