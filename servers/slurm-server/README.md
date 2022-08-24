@@ -117,8 +117,7 @@ I've based my installation on the [ubuntu-slurm](https://github.com/mknoxnv/ubun
 First you have to install some prerequisites
 
 ```
-apt install gcc make ruby ruby-dev 
-apt install libmariadb-dev-compat libmariadb-dev mariadb-server
+apt install gcc make ruby ruby-dev libmariadb-dev-compat libmariadb-dev mariadb-server
 ```
 
 Then install MUNGE for authentication
@@ -143,7 +142,7 @@ Now we create the database for SLURM by opening a mysql shell running `mysql -u 
 ```
 create database slurm_acct_db;
 create user 'slurm'@'localhost';
-set password for 'slurm'@'localhost' = password('slurmdbpass');
+set password for 'slurm'@'localhost' = password('SLURM_LPS_UFRJ_BR');
 grant usage on *.* to 'slurm'@'localhost';
 grant all privileges on slurm_acct_db.* to 'slurm'@'localhost';
 flush privileges;
@@ -164,13 +163,13 @@ cd slurm-22.05.3
 After that, lets compile it!
 
 ```
-./configure --prefix=/mnt/slurm-build --sysconfdir=/etc/slurm --enable-pam --with-pam_dir=/lib/x86_64-linux-gnu/security/ --without-shared-libslurm --with-mysql_config=/usr/bin/mysql_config
+./configure --prefix=/tmp/slurm-build --sysconfdir=/etc/slurm --enable-pam --with-pam_dir=/lib/x86_64-linux-gnu/security/ --without-shared-libslurm --with-mysql_config=/usr/bin/mysql_config
 ```
 
 Then we build SLURM
 
 ```
-make
+make -j4
 make contrib
 make install
 ```
@@ -179,7 +178,7 @@ After that, we need to make a package out of slurm and install it
 
 ```
 gem install fpm
-fpm -s dir -t deb -v 1.0 -n slurm-22.05.3 --prefix=/usr -C /mnt/slurm-build .
+fpm -s dir -t deb -v 1.0 -n slurm-22.05.3 --prefix=/usr -C /mnt/slurm_build .
 dpkg -i slurm-22.05.3_1.0_amd64.deb
 ```
 
@@ -196,6 +195,8 @@ configuration file is `slurm.conf`. This file shall be placed in `/etc/slurm/slu
 
 ```
 cp slurm.conf /etc/slurm/
+cp slurmdbd.conf /etc/slurm
+
 ```
 
 
