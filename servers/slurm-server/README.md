@@ -96,18 +96,6 @@ And you're done again! After this step, you're ready to install slurm and config
 
 ## SLURM Configuration:
 
-
-
-
-
-
-
-
-
-
-
-## Installing SLURM
-
 As this is a SLURM cluster, we have to install SLURM, right? I know it's been too much before this could happen, but setting everything I've shown before was really important for my setup. Let's do it then!
 
 I've based my installation on the [ubuntu-slurm](https://github.com/mknoxnv/ubuntu-slurm) tutorial but, since I'm in Debian and it's kinda outdated, I made few changes
@@ -150,9 +138,6 @@ exit;
 
 Then we'll download SLURM itself
 
-
-
-
 ```
 cd /mnt/slurm_build
 wget https://download.schedmd.com/slurm/slurm-22.05.3.tar.bz2
@@ -185,8 +170,6 @@ fpm -s dir -t deb -v 1.0 -n slurm-22.05.3 --prefix=/usr -C /mnt/slurm_build .
 dpkg -i slurm-22.05.3_1.0_amd64.deb
 ```
 
-
-
 Finally, we need to add `slurm` user and make some dirs
 
 ```
@@ -195,7 +178,6 @@ mkdir -p /etc/slurm
 mkdir -p /etc/slurm/prolog.d 
 mkdir -p /etc/slurm/epilog.d 
 chown -R slurm /etc/slurm
-
 mkdir -p /var/spool/slurm/ctld 
 mkdir -p /var/spool/slurm/d 
 mkdir -p /var/log/slurm
@@ -212,14 +194,11 @@ chmod 600 /etc/slurm/slurmdbd.conf
 chown -R slurm /etc/slurm
 ```
 
-
 Now we'll deploy SLURM. For it to work, I'll provide some scripts that I got from the original tutorial in order to add'em to systemd (cloning this repository is optional but, in order to ease the tutorial, I chose to do it)
 
 ```
-
 cp slurmdbd.service /etc/systemd/system/
 cp slurmctld.service /etc/systemd/system/
-
 systemctl daemon-reload
 systemctl enable slurmdbd
 systemctl start slurmdbd
