@@ -174,62 +174,7 @@ You can now mount everything
 mount -a
 ```
 
-Now we'll set PAM to create users' storage dir (if needed) at login and a logger script
-
-```
-mkdir /etc/pam_scripts
-chmod -R 700 /etc/pam_scripts
-chown -R root:root /etc/pam_scripts
-```
-
-Create SSH Logger script (`/etc/pam_scripts/login-logger.sh`):
-
-```
-#!/bin/sh
-
-LOG_FILE="/var/log/ssh-auth"
-
-DATE_ISO=`date --iso-8601="seconds"`
-LOG_ENTRY="[${DATE_ISO}] ${PAM_TYPE}: ${PAM_USER} from ${PAM_RHOST}"
-
-if [ ! -f ${LOG_FILE} ]; then
-	touch ${LOG_FILE}
-	chown root:adm ${LOG_FILE}
-	chmod 0640 ${LOG_FILE}
-fi
-
-echo ${LOG_ENTRY} >> ${LOG_FILE}
-
-exit 0
-```
-
-Create storage creation script  (`/etc/pam_scripts/storage.sh`):
-
-```
-#!/bin/sh
-
-if [ ! -d "/storage/${PAM_USER}" ]; then
-	mkdir -p /storage/${PAM_USER}
-	chown -R ${PAM_USER}:storage /storage/${PAM_USER}
-	chmod -R 0700 /storage/${PAM_USER}
-fi
-
-exit 0
-```
-
-Append this to /etc/pam.d/sshd:
-
-```
-# Post Login Scripts
-session required pam_exec.so /etc/pam_scripts/login-logger.sh
-session required pam_exec.so /etc/pam_scripts/storage.sh
-```
-
-And you're done!
-
-### Syncing clocks with NTP
-
-**This step should be done on EVERY machine, except NAS**, because we've already set this on the web interface.
+## Syncing clocks with NTP
 
 Edit the following file: `/etc/systemd/timesyncd.conf` by making it look like this (match your own setup)
 
