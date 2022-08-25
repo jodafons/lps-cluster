@@ -52,16 +52,15 @@ getent passwd
 Start by installing `nfs-common` and making directories
 
 ```
-su -
 apt install nfs-common
-mkdir -p /storage
+mkdir /mnt/slurm_build
 ```
 
 After that, edit your `/etc/fstab` file for auto mount, appeding something like this on the bottom (always match your setup)
 
 ```
-nas.cluster:/mnt/share/shared_home /home nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0
-nas.cluster:/mnt/share/shared_storage /storage nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0
+10.1.1.202:/homes /home nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0
+10.1.1.202:/slurm_build /mnt/slurm_build nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0
 ```
 
 You can now mount everything
