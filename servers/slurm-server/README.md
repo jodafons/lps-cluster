@@ -59,8 +59,8 @@ mkdir /mnt/slurm_build
 After that, edit your `/etc/fstab` file for auto mount, appeding something like this on the bottom (always match your setup)
 
 ```
-10.1.1.202:/homes /home nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0
-10.1.1.202:/slurm_build /mnt/slurm_build nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0
+10.1.1.202:/volume1/homes /home nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0
+10.1.1.202:/volume1/slurm_build /mnt/slurm_build nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0
 ```
 
 You can now mount everything
