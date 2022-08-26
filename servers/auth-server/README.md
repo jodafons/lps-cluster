@@ -19,7 +19,7 @@ dpkg-reconfigure slapd
 
 * Omit OpenLDAP server configuration? No
 * DNS domain name: `lps.ufrj.br`
-* Organization name: `dc=lps,dc=ufrj,dc=br`
+* Organization name: `lps.ufrj.br`
 * Enter with the password;
 * Do you want the database to be removed when slapd is purged? No
 * Move old database? Yes
