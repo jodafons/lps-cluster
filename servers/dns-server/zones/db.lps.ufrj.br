@@ -3,7 +3,7 @@
 ;
 $TTL      7200
 @     IN   SOA       ns.lps.ufrj.br. netadmin.lps.ufrj.br. (
-           2022081903   ; Serial (YOU NEED TO CHANGE THIS EVERY UPDATE)
+           2022082600   ; Serial (YOU NEED TO CHANGE THIS EVERY UPDATE)
            7200         ; Refresh (2h)
            3600         ; Retry (1h)
            31536000     ; Expire (1y)
@@ -64,13 +64,16 @@ hp4200dtn                   IN    A     146.164.147.66
 
 localhost                   IN    A     127.0.0.1
 net                         IN    A     146.164.147.0
-gw                          IN    A     146.164.147.1 ; microtick
+gw                          IN    A     146.164.147.1 ; microtick, gateway
 ns                          IN    A     146.164.147.2 ; dns service
 
 ; migration stuff
-auth-server                 IN    A     146.164.147.3 ; kerberos and ldap
-slurm-server                IN    A     146.164.147.4 ; slurm frontend
-docker-server               IN    A     146.164.147.5 ; minor services
+auth-server                 IN    A     146.164.147.3   ; kerberos and ldap
+slurm-server                IN    A     146.164.147.4   ; slurm frontend
+
+; proxmox servers
+service01                   IN    A     146.164.147.101 ; service virtualization (LPS base services)
+service02                   IN    A     146.164.147.102 ; service virtualization (external services)
 
 
 ;
@@ -113,8 +116,7 @@ prefect           IN    CNAME     service.lps.ufrj.br.
 ;
 ; Stations with Fixed IP (100-234)
 ;
-bancada-01      IN      A     146.164.147.100
-bancada-02      IN      A     146.164.147.101
+
 bancada-03      IN      A     146.164.147.102
 bancada-04      IN      A     146.164.147.103
 bancada-05      IN      A     146.164.147.104
@@ -173,17 +175,6 @@ caloba6       IN      A     10.1.1.16
 caloba7       IN      A     10.1.1.17
 caloba8       IN      A     10.1.1.18
 caloba9       IN      A     10.1.1.19
-caloba10      IN      A     10.1.1.20
-caloba11      IN      A     10.1.1.21
-caloba12      IN      A     10.1.1.22
-caloba13      IN      A     10.1.1.23
-caloba14      IN      A     10.1.1.24
-caloba15      IN      A     10.1.1.25
-caloba16      IN      A     10.1.1.26
-caloba17      IN      A     10.1.1.27
-caloba18      IN      A     10.1.1.28
-caloba19      IN      A     10.1.1.29
-caloba20      IN      A     10.1.1.30
 
 ;
 ; GPU machines (31-60)
@@ -198,26 +189,6 @@ caloba27      IN      A     10.1.1.37
 caloba28      IN      A     10.1.1.38
 caloba29      IN      A     10.1.1.39
 caloba30      IN      A     10.1.1.40
-caloba31      IN      A     10.1.1.41
-caloba32      IN      A     10.1.1.42
-caloba33      IN      A     10.1.1.43
-caloba34      IN      A     10.1.1.44
-caloba35      IN      A     10.1.1.45
-caloba36      IN      A     10.1.1.46
-caloba37      IN      A     10.1.1.47
-caloba38      IN      A     10.1.1.48
-caloba39      IN      A     10.1.1.49
-caloba40      IN      A     10.1.1.50
-caloba41      IN      A     10.1.1.51
-caloba42      IN      A     10.1.1.52
-caloba43      IN      A     10.1.1.53
-caloba44      IN      A     10.1.1.54
-caloba45      IN      A     10.1.1.55
-caloba46      IN      A     10.1.1.56
-caloba47      IN      A     10.1.1.57
-caloba48      IN      A     10.1.1.58
-caloba49      IN      A     10.1.1.59
-caloba50      IN      A     10.1.1.60
 
 ;
 ; CPU machines (61-110)
@@ -225,69 +196,35 @@ caloba50      IN      A     10.1.1.60
 caloba51      IN      A     10.1.1.61
 caloba52      IN      A     10.1.1.62
 caloba53      IN      A     10.1.1.63
-caloba54      IN      A     10.1.1.64
-caloba55      IN      A     10.1.1.65
-caloba56      IN      A     10.1.1.66
-caloba57      IN      A     10.1.1.67
-caloba58      IN      A     10.1.1.68
-caloba59      IN      A     10.1.1.69
-caloba60      IN      A     10.1.1.70
-caloba61      IN      A     10.1.1.71
-caloba62      IN      A     10.1.1.72
-caloba63      IN      A     10.1.1.73
-caloba64      IN      A     10.1.1.74
-caloba65      IN      A     10.1.1.75
-caloba66      IN      A     10.1.1.76
-caloba67      IN      A     10.1.1.77
-caloba68      IN      A     10.1.1.78
-caloba69      IN      A     10.1.1.79
-caloba70      IN      A     10.1.1.80
-caloba71      IN      A     10.1.1.81
-caloba72      IN      A     10.1.1.82
-caloba73      IN      A     10.1.1.83
-caloba74      IN      A     10.1.1.84
-caloba75      IN      A     10.1.1.85
-caloba76      IN      A     10.1.1.86
-caloba77      IN      A     10.1.1.87
-caloba78      IN      A     10.1.1.88
-caloba79      IN      A     10.1.1.89
-caloba80      IN      A     10.1.1.90
-caloba81      IN      A     10.1.1.91
-caloba82      IN      A     10.1.1.92
-caloba83      IN      A     10.1.1.93
-caloba84      IN      A     10.1.1.94
-caloba85      IN      A     10.1.1.95
-caloba86      IN      A     10.1.1.96
-caloba87      IN      A     10.1.1.97
-caloba88      IN      A     10.1.1.98
-caloba89      IN      A     10.1.1.99
-caloba90      IN      A     10.1.1.100
-caloba91      IN      A     10.1.1.101
-caloba92      IN      A     10.1.1.102
-caloba93      IN      A     10.1.1.103
-caloba94      IN      A     10.1.1.104
-caloba95      IN      A     10.1.1.105
-caloba96      IN      A     10.1.1.106
-caloba97      IN      A     10.1.1.107
-caloba98      IN      A     10.1.1.108
-caloba99      IN      A     10.1.1.109
-caloba100     IN    A     10.1.1.110
+
+
 
 ;
-; Sandbox machines (111-120)
+; Proxmox server (101-119)
 ;
-caloba102     IN    A     10.1.1.112
-caloba103     IN    A     10.1.1.113
-caloba104     IN    A     10.1.1.114
-caloba105     IN    A     10.1.1.115
-caloba106     IN    A     10.1.1.116
-caloba107     IN    A     10.1.1.117
-caloba108     IN    A     10.1.1.118
-caloba109     IN    A     10.1.1.119
-caloba110     IN    A     10.1.1.120
+caloba-v01      IN      A     10.1.1.101
+caloba-v02      IN      A     10.1.1.102
+caloba-v03      IN      A     10.1.1.103
+caloba-v04      IN      A     10.1.1.104
+caloba-v05      IN      A     10.1.1.105
+caloba-v06      IN      A     10.1.1.106
+caloba-v07      IN      A     10.1.1.107
+caloba-v08      IN      A     10.1.1.108
+caloba-v09      IN      A     10.1.1.109
+caloba-v10      IN      A     10.1.1.110
+caloba-v11      IN      A     10.1.1.111
+caloba-v12      IN      A     10.1.1.112
+caloba-v13      IN      A     10.1.1.113
+caloba-v14      IN      A     10.1.1.114
+caloba-v14      IN      A     10.1.1.115
+
+
 
 ;
 ; Storages (201-210)
 ;
 seixas1       IN    A     10.1.1.201
 storage01     IN    A     10.1.1.202
+storage02     IN    A     10.1.1.203
+storage03     IN    A     10.1.1.204
+storage01     IN    A     10.1.1.205

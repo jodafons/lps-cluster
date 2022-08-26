@@ -3,7 +3,7 @@
 ;
 $TTL  7200
 @ IN  SOA ns.lps.ufrj.br. netadmin.lps.ufrj.br. (
-          2022081903  ; Serial
+          2022082600  ; Serial
           7200        ; Refresh (2h)
           3600        ; Retry (1h)
           31536000    ; Expire (1y)
@@ -20,7 +20,11 @@ $TTL  7200
 
 3   IN  PTR auth-server.lps.ufrj.br.
 4   IN  PTR slurm-server.lps.ufrj.br.
-5   IN  PTR vpn-server.lps.ufrj.br.
+
+
+; proxmox server
+101   IN  PTR service01.lps.ufrj.br.
+102   IN  PTR service02.lps.ufrj.br.
 
 
 ;
@@ -41,12 +45,9 @@ $TTL  7200
 ;
 ; Stations with fixed IP (100-234)
 ;
-100 IN  PTR bancada-01.lps.ufrj.br.
-101 IN  PTR bancada-02.lps.ufrj.br.
 102 IN  PTR bancada-03.lps.ufrj.br.
 103 IN  PTR bancada-04.lps.ufrj.br.
 104 IN  PTR bancada-05.lps.ufrj.br.
-105 IN  PTR carouge.lps.ufrj.br.
 228 IN  PTR porto.lps.ufrj.br.
 
 ;
