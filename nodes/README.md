@@ -1,6 +1,6 @@
 
 
-# SLURM Server Configuration:
+# Node Configuration:
 
 
 ## Kerberos Client Configuration:
@@ -100,6 +100,52 @@ And you're done! Remember that, for this to work, **you have to create users bot
 
 
 
+## Setting up mounts
+
+Start by installing `nfs-common` and making directories
+
+```
+apt install nfs-common
+mkdir /mnt/slurm_build
+```
+
+After that, edit your `/etc/fstab` file for auto mount, appeding something like this on the bottom (always match your setup)
+
+```
+10.1.1.202:/volume1/homes /home nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0
+10.1.1.202:/volume1/slurm_build /mnt/slurm_build nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0
+```
+
+You can now mount everything
+
+```
+mount -a
+```
+
+## Syncing clocks with NTP:
+
+Edit the following file: `/etc/systemd/timesyncd.conf` by making it look like this (match your own setup)
+
+```
+[Time]
+NTP=1.br.pool.ntp.org 0.br.pool.ntp.org
+```
+
+Uncomment `FallbackNTP` line, but leave it as is.
+
+Then enable NTP and check its status
+
+```
+timedatectl set-ntp true
+timedatectl status
+```
+
+And you're done again! After this step, you're ready to install slurm and configure it.
+
+
+**At this point, you shoud reboot to access the storage home folder** 
+
+
 
 
 
@@ -195,3 +241,7 @@ timedatectl status
 And you're done again! After this step, you're ready to install slurm and configure it.
 
 
+## SLURM Configuration:
+
+
+## Singularity Configuration:
