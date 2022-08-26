@@ -3,8 +3,8 @@
 NUMBER=$1
 
 
-usermod -aG sudo $USER
-echo "$USER ALL=(ALL:ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/$USER
+#usermod -aG sudo $USER
+echo "cluster ALL=(ALL:ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/$USER
 apt install net-tools
 
 apt install -y vim resolvconf
@@ -26,8 +26,8 @@ iface lo inet loopback
 auto ens18
 iface ens18 inet static
   address 10.1.1.$NUMBER
-  netmask 255.255.255.0
   gateway 10.1.1.1
+  netmask 255.255.255.0
   dns-nameservers 146.164.147.2 8.8.8.8 8.8.8.4
 " > /etc/network/interfaces
 
@@ -36,4 +36,4 @@ iface ens18 inet static
 systemctl restart networking
 ifconfig
 #sudo reboot now
-reboot now
+#reboot now
