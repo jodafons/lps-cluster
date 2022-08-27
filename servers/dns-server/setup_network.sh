@@ -2,7 +2,7 @@
 # get name with ifconfig 
 #device=$1
 usermod -aG sudo $USER
-echo "$USER ALL=(ALL:ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/$USER
+echo "cluster ALL=(ALL:ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/cluster
 apt install net-tools
 
 apt install -y vim resolvconf

@@ -3,13 +3,14 @@
 ;
 $TTL  7200
 @ IN  SOA ns.lps.ufrj.br. netadmin.lps.ufrj.br. (
-      2022082600  ; Serial
+      2022082601  ; Serial
       7200        ; Refresh (2h)
       3600        ; Retry (1h)
       31536000    ; Expire (1y)
       10800 )     ; Negative Cache TTL
 
   IN  NS  ns.lps.ufrj.br.
+
 
 ;
 ; SLURM frontend (10)
@@ -20,15 +21,6 @@ $TTL  7200
 ; Login machines (11-30)
 ;
 11  IN  PTR caloba1.lps.ufrj.br.
-12  IN  PTR caloba2.lps.ufrj.br.
-13  IN  PTR caloba3.lps.ufrj.br.
-14  IN  PTR caloba4.lps.ufrj.br.
-15  IN  PTR caloba5.lps.ufrj.br.
-16  IN  PTR caloba6.lps.ufrj.br.
-17  IN  PTR caloba7.lps.ufrj.br.
-18  IN  PTR caloba8.lps.ufrj.br.
-19  IN  PTR caloba9.lps.ufrj.br.
-
 
 ;
 ; GPU machines (31-60)
@@ -38,12 +30,6 @@ $TTL  7200
 33  IN  PTR caloba23.lps.ufrj.br.
 34  IN  PTR caloba24.lps.ufrj.br.
 35  IN  PTR caloba25.lps.ufrj.br.
-36  IN  PTR caloba26.lps.ufrj.br.
-37  IN  PTR caloba27.lps.ufrj.br.
-38  IN  PTR caloba28.lps.ufrj.br.
-39  IN  PTR caloba29.lps.ufrj.br.
-40  IN  PTR caloba30.lps.ufrj.br.
-
 
 ;
 ; CPU machines (61-110)
@@ -51,6 +37,13 @@ $TTL  7200
 61  IN  PTR caloba51.lps.ufrj.br.
 62  IN  PTR caloba52.lps.ufrj.br.
 63  IN  PTR caloba53.lps.ufrj.br.
+
+
+; SLURM new stuff
+
+; CPU small
+12  IN  PTR caloba12.lps.ufrj.br.
+
 
 
 ;

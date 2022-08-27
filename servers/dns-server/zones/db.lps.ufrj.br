@@ -3,7 +3,7 @@
 ;
 $TTL      7200
 @     IN   SOA       ns.lps.ufrj.br. netadmin.lps.ufrj.br. (
-           2022082600   ; Serial (YOU NEED TO CHANGE THIS EVERY UPDATE)
+           2022082601   ; Serial (YOU NEED TO CHANGE THIS EVERY UPDATE)
            7200         ; Refresh (2h)
            3600         ; Retry (1h)
            31536000     ; Expire (1y)
@@ -159,7 +159,7 @@ dyn-20      IN      A     146.164.147.254
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;
-; SLURM frontend (10)
+; SLURM frontend
 ;
 caloba      IN      A     10.1.1.10
 
@@ -167,14 +167,6 @@ caloba      IN      A     10.1.1.10
 ; Login machines (11-30)
 ;
 caloba1       IN      A     10.1.1.11
-caloba2       IN      A     10.1.1.12
-caloba3       IN      A     10.1.1.13
-caloba4       IN      A     10.1.1.14
-caloba5       IN      A     10.1.1.15
-caloba6       IN      A     10.1.1.16
-caloba7       IN      A     10.1.1.17
-caloba8       IN      A     10.1.1.18
-caloba9       IN      A     10.1.1.19
 
 ;
 ; GPU machines (31-60)
@@ -184,11 +176,6 @@ caloba22      IN      A     10.1.1.32
 caloba23      IN      A     10.1.1.33
 caloba24      IN      A     10.1.1.34
 caloba25      IN      A     10.1.1.35
-caloba26      IN      A     10.1.1.36
-caloba27      IN      A     10.1.1.37
-caloba28      IN      A     10.1.1.38
-caloba29      IN      A     10.1.1.39
-caloba30      IN      A     10.1.1.40
 
 ;
 ; CPU machines (61-110)
@@ -196,6 +183,14 @@ caloba30      IN      A     10.1.1.40
 caloba51      IN      A     10.1.1.61
 caloba52      IN      A     10.1.1.62
 caloba53      IN      A     10.1.1.63
+
+
+;
+; SLURM new stuff
+;
+
+; CPU small
+caloba12        IN      A     10.1.1.12
 
 
 
