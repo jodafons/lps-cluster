@@ -43,8 +43,7 @@ session    required    pam_mkhomedir.so skel=/etc/skel/ umask=022
 To test LDAP, use this command and you shoul see some accounts inside of the LDAP server:
 
 ```
-getent passwd
-```
+q```
 
 
 ## Setting up mounts
@@ -54,6 +53,7 @@ Start by installing `nfs-common` and making directories
 ```
 apt install nfs-common
 mkdir /mnt/slurm_build
+mkdir /mnt/market_place
 ```
 
 After that, edit your `/etc/fstab` file for auto mount, appeding something like this on the bottom (always match your setup)
@@ -135,7 +135,7 @@ exit;
 Then we'll download SLURM itself
 
 ```
-cd /mnt/slurm_build
+cd /mnt/market_place/slurm_build
 wget https://download.schedmd.com/slurm/slurm-22.05.3.tar.bz2
 bunzip2 slurm-22.05.3.tar.bz2
 tar xfv slurm-22.05.3.tar
@@ -216,3 +216,6 @@ sacctmgr create user joao.pinto account=compute-account adminlevel=None
 ```
 
 Finally, if everything went well, you can check system health by typing `sinfo`. Don't worry if your nodes show no state, we haven't configured them yet. So let's do this now!
+
+
+
