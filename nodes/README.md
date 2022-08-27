@@ -150,9 +150,164 @@ And you're done again! After this step, you're ready to install slurm and config
 **At this point, you shoud reboot to access the storage home folder** 
 
 
-
-
 ## SLURM Configuration:
 
 
+First we're gonna install MUNGE, for authentication
+
+```
+apt update
+apt install libmunge-dev libmunge2 munge
+```
+
+We need to have the same copy of `munge.key` (located at `/etc/munge/munge.key`) for every node. In order to do that, copy it from `host.cluster` to every other machine. One way to do that is over SCP
+
+```
+scp host.cluster:/etc/munge/munge.key /etc/munge/.
+```
+
+Then fix permissions
+
+```
+chown munge:munge /etc/munge/munge.key
+chmod 400 /etc/munge/munge.key
+```
+
+And restart MUNGE
+
+```
+systemctl enable munge
+systemctl restart munge
+```
+
+After setting MUNGE, we're going to install the same copy of SLURM we've built on the host machine by doing
+
+```
+dpkg -i /storage/slurm-20.02.3_1.0_amd64.deb
+```
+
+Next, we need to create the `/etc/slurm` directory and have the same copy of `/etc/slurm/slurm.conf` on every machine. Similarly to the MUNGE key, do
+
+```
+scp host.cluster:/etc/slurm/slurm.conf /etc/slurm/.
+```
+
+Then you need to create the `/etc/slurm/gres.conf` file, which takes care of listing resources other than CPUs (like GPUs, for example). **In my case, this will be just an empty file** but, if you need an example, a configuration for the DGX-1 server is below
+
+```
+NodeName=linux1 Name=gpu File=/dev/nvidia0 CPUs=0-19,40-59
+NodeName=linux1 Name=gpu File=/dev/nvidia1 CPUs=0-19,40-59
+NodeName=linux1 Name=gpu File=/dev/nvidia2 CPUs=0-19,40-59
+NodeName=linux1 Name=gpu File=/dev/nvidia3 CPUs=0-19,40-59
+NodeName=linux1 Name=gpu File=/dev/nvidia4 CPUs=20-39,60-79
+NodeName=linux1 Name=gpu File=/dev/nvidia5 CPUs=20-39,60-79
+NodeName=linux1 Name=gpu File=/dev/nvidia6 CPUs=20-39,60-79
+NodeName=linux1 Name=gpu File=/dev/nvidia7 CPUs=20-39,60-79
+```
+
+After that, as we'll use `cgroup`, you need to create both of these files:
+
+* `/etc/slurm/cgroup.conf`
+
+```
+CgroupAutomount=yes 
+CgroupReleaseAgentDir="/etc/slurm/cgroup" 
+
+ConstrainCores=yes 
+ConstrainDevices=yes
+ConstrainRAMSpace=yes
+#TaskAffinity=yes
+```
+
+* `/etc/slurm/cgroup_allowed_devices_file.conf`
+
+```
+/dev/null
+/dev/urandom
+/dev/zero
+/dev/sda*
+/dev/cpu/*/*
+/dev/pts/*
+/dev/nvidia*
+```
+
+This will be useful later for forbiding users from SSH into machines they have no jobs allocated
+
+Then, create missing SLURM user and make some directories
+
+```
+useradd slurm
+mkdir -p /var/spool/slurm/d
+```
+
+Assuming you've cloned this repository, copy the `slurmd.service` file and then enable it
+
+```
+cp /storage/slurm-cluster/slurmd.service /etc/systemd/system/
+systemctl enable slurmd
+systemctl start slurmd
+```
+
+At this point, if you've done everything right, you should be able to do `sinfo` and see your node state `idle`. But now, we'll configure `cgroup` in order to be able to manage memory quotas. For that, open `/etc/default/grub` for edition and match the following line
+
+```
+GRUB_CMDLINE_LINUX="cgroup_enable=memory swapaccount=1"
+```
+	
+If your system uses cgroup v2 (as Debian bullseye):
+	
+```
+GRUB_CMDLINE_LINUX="cgroup_enable=memory swapaccount=1 systemd.unified_cgroup_hierarchy=false systemd.legacy_systemd_cgroup_controller=false"
+```
+
+After that, update GRUB and reboot the machine
+
+```
+update-grub
+reboot now
+```
+
+To finish the configuration of the nodes, we'll forbid users from ssh-ing into a compute node on which they do not have a job allocation AND we'll add sjstat, which is a very nice command. In order to do that, do
+
+```
+cp /storage/slurm-20.02.3/contribs/sjstat /usr/bin/.
+cp /storage/slurm-20.02.3/contribs/pam/.libs/pam_slurm.so /lib/x86_64-linux-gnu/security/
+```
+
+and then edit the file `/etc/pam.d/sshd` by adding the following lines just **before** the first `required` statement:
+
+```
+account    sufficient   pam_localuser.so
+account    required     /lib/x86_64-linux-gnu/security/pam_slurm.so
+```
+
+This way, we forbid SLURM users from doing any bypass on deploying workload into nodes and still allow non-SLURM users to SSH normally. And we're done with the nodes!
+
+
+
+
+
 ## Singularity Configuration:
+
+Install singularity:
+```
+apt-get install -y \
+    build-essential \
+    libssl-dev \
+    uuid-dev \
+    libgpgme11-dev \
+    squashfs-tools \
+    libseccomp-dev \
+    pkg-config
+```
+
+### Install Go:
+
+```
+wget https://go.dev/dl/go1.19.linux-amd64.tar.gz
+```
+
+Then extract the archive to `/usr/local`
+```
+
+```

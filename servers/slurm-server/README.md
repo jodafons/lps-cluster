@@ -61,6 +61,8 @@ After that, edit your `/etc/fstab` file for auto mount, appeding something like 
 ```
 10.1.1.202:/volume1/homes /home nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0
 10.1.1.202:/volume1/slurm_build /mnt/slurm_build nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0
+10.1.1.202:/volume1/market_place /mnt/market_place nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0
+
 ```
 
 You can now mount everything
@@ -135,8 +137,6 @@ Then we'll download SLURM itself
 ```
 cd /mnt/slurm_build
 wget https://download.schedmd.com/slurm/slurm-22.05.3.tar.bz2
-#wget http://134.100.28.207/files/src/slurm/
-apt install bzip2
 bunzip2 slurm-22.05.3.tar.bz2
 tar xfv slurm-22.05.3.tar
 cd slurm-22.05.3
@@ -145,7 +145,7 @@ cd slurm-22.05.3
 After that, lets compile it!
 
 ```
-./configure --prefix=/mnt/slurm_build --sysconfdir=/etc/slurm --enable-pam --with-pam_dir=/lib/x86_64-linux-gnu/security/ --without-shared-libslurm --with-mysql_config=/usr/bin/mysql_config
+./configure --prefix=/mnt/market_place/slurm_build --sysconfdir=/etc/slurm --enable-pam --with-pam_dir=/lib/x86_64-linux-gnu/security/ --without-shared-libslurm --with-mysql_config=/usr/bin/mysql_config
 ```
 
 Then we build SLURM
@@ -160,7 +160,7 @@ After that, we need to make a package out of slurm and install it
 
 ```
 gem install fpm
-fpm -s dir -t deb -v 1.0 -n slurm-22.05.3 --prefix=/usr -C /mnt/slurm_build .
+fpm -s dir -t deb -v 1.0 -n slurm-22.05.3 --prefix=/usr -C /mnt/market_place/slurm_build .
 dpkg -i slurm-22.05.3_1.0_amd64.deb
 ```
 
