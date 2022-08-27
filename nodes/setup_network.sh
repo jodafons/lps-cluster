@@ -4,7 +4,7 @@ NUMBER=$1
 
 
 #usermod -aG sudo $USER
-echo "cluster ALL=(ALL:ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/$USER
+echo "cluster ALL=(ALL:ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/cluster
 apt install net-tools
 
 apt install -y vim resolvconf
