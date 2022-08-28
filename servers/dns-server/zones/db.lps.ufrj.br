@@ -3,7 +3,7 @@
 ;
 $TTL      7200
 @     IN   SOA       ns.lps.ufrj.br. netadmin.lps.ufrj.br. (
-           2022082601   ; Serial (YOU NEED TO CHANGE THIS EVERY UPDATE)
+           2022082800   ; Serial (YOU NEED TO CHANGE THIS EVERY UPDATE)
            7200         ; Refresh (2h)
            3600         ; Retry (1h)
            31536000     ; Expire (1y)
@@ -70,6 +70,7 @@ ns                          IN    A     146.164.147.2 ; dns service
 ; migration stuff
 auth-server                 IN    A     146.164.147.3   ; kerberos and ldap
 slurm-server                IN    A     146.164.147.4   ; slurm frontend
+login-server                IN    A     146.164.147.5   ; login
 
 ; proxmox servers
 service01                   IN    A     146.164.147.101 ; service virtualization (LPS base services)
@@ -191,7 +192,7 @@ caloba53      IN      A     10.1.1.63
 
 ; CPU small
 caloba12        IN      A     10.1.1.12
-
+caloba13        IN      A     10.1.1.13
 
 
 ;
