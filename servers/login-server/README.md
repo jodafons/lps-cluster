@@ -8,7 +8,6 @@
 Install few packages (the setup is pretty straightforward, just fill things to match your own)
 
 ```
-su -
 apt install -y krb5-config krb5-user
 ```
 
@@ -44,7 +43,7 @@ apt install -y libnss-ldap
 
 ## Q&A:
 
-- server: `ldap://auth-server.lps.ufrj.br`
+- server: `ldap://auth-server.lps.ufrj.br` or `ldap://146.164.147.3`
 - Distinguished name of the search base: `dc=lps,dc=ufrj,dc=br`
 - LDAP version: 3
 - Select yes to create the local root database;
