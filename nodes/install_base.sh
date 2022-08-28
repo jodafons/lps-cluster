@@ -33,7 +33,7 @@ echo "10.1.1.202:/volume1/homes /mnt/home nfs rsize=32768,wsize=32768,bg,sync,no
 mkdir /etc/pam_scripts
 chmod -R 700 /etc/pam_scripts
 chown -R root:root /etc/pam_scripts
-cp login-logger.sh /etc/pam_scripts
+cp conf_files/login-logger.sh /etc/pam_scripts
 chmod +x /etc/pam_scripts/login-logger.sh
 echo "session required pam_exec.so /etc/pam_scripts/login-logger.sh" >> /etc/pam.d/sshd
 
