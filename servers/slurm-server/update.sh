@@ -9,3 +9,5 @@ systemctl enable slurmdbd
 systemctl start slurmdbd
 systemctl enable slurmctld
 systemctl start slurmctld
+
+cp slurm.conf /mnt/market_place/slurm_build

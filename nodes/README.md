@@ -117,7 +117,8 @@ After that, edit your `/etc/fstab` file for auto mount, appeding something like 
 
 ```
 10.1.1.202:/volume1/homes /home nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0
-10.1.1.202:/volume1/slurm_build /mnt/slurm_build nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0
+10.1.1.202:/volume1/market_place /mnt/market_place nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0
+
 ```
 
 You can now mount everything
@@ -163,7 +164,7 @@ apt install libmunge-dev libmunge2 munge
 We need to have the same copy of `munge.key` (located at `/etc/munge/munge.key`) for every node. In order to do that, copy it from `host.cluster` to every other machine. One way to do that is over SCP
 
 ```
-scp host.cluster:/etc/munge/munge.key /etc/munge/.
+cp /mnt/market_place/slurm_build/munge.key /etc/munge/
 ```
 
 Then fix permissions
@@ -183,26 +184,20 @@ systemctl restart munge
 After setting MUNGE, we're going to install the same copy of SLURM we've built on the host machine by doing
 
 ```
-dpkg -i /storage/slurm-20.02.3_1.0_amd64.deb
+dpkg -i /mnt/market_place/slurm_build/slurm-22.05.3/slurm-22.05.3_1.0_amd64.deb 
 ```
 
 Next, we need to create the `/etc/slurm` directory and have the same copy of `/etc/slurm/slurm.conf` on every machine. Similarly to the MUNGE key, do
 
 ```
-scp host.cluster:/etc/slurm/slurm.conf /etc/slurm/.
+mkdir /etc/slurm
+cp /mnt/market_place/slurm_build/slurm.conf /etc/slurm/.
 ```
 
-Then you need to create the `/etc/slurm/gres.conf` file, which takes care of listing resources other than CPUs (like GPUs, for example). **In my case, this will be just an empty file** but, if you need an example, a configuration for the DGX-1 server is below
+Then you need to create the `/etc/slurm/gres.conf` file, which takes care of listing resources other than CPUs (like GPUs, for example). **In my case, this will be just an empty file** but, if you need an example, a configuration for the GPU server is below
 
 ```
-NodeName=linux1 Name=gpu File=/dev/nvidia0 CPUs=0-19,40-59
-NodeName=linux1 Name=gpu File=/dev/nvidia1 CPUs=0-19,40-59
-NodeName=linux1 Name=gpu File=/dev/nvidia2 CPUs=0-19,40-59
-NodeName=linux1 Name=gpu File=/dev/nvidia3 CPUs=0-19,40-59
-NodeName=linux1 Name=gpu File=/dev/nvidia4 CPUs=20-39,60-79
-NodeName=linux1 Name=gpu File=/dev/nvidia5 CPUs=20-39,60-79
-NodeName=linux1 Name=gpu File=/dev/nvidia6 CPUs=20-39,60-79
-NodeName=linux1 Name=gpu File=/dev/nvidia7 CPUs=20-39,60-79
+NodeName=caloba22 Name=gpu File=/dev/nvidia[0-1] CPUs=0-15
 ```
 
 After that, as we'll use `cgroup`, you need to create both of these files:
@@ -240,14 +235,6 @@ useradd slurm
 mkdir -p /var/spool/slurm/d
 ```
 
-Assuming you've cloned this repository, copy the `slurmd.service` file and then enable it
-
-```
-cp /storage/slurm-cluster/slurmd.service /etc/systemd/system/
-systemctl enable slurmd
-systemctl start slurmd
-```
-
 At this point, if you've done everything right, you should be able to do `sinfo` and see your node state `idle`. But now, we'll configure `cgroup` in order to be able to manage memory quotas. For that, open `/etc/default/grub` for edition and match the following line
 
 ```
@@ -260,6 +247,14 @@ If your system uses cgroup v2 (as Debian bullseye):
 GRUB_CMDLINE_LINUX="cgroup_enable=memory swapaccount=1 systemd.unified_cgroup_hierarchy=false systemd.legacy_systemd_cgroup_controller=false"
 ```
 
+and add service:
+
+```
+cp slurmd.service /etc/systemd/system/
+systemctl enable slurmd
+systemctl start slurmd
+```
+
 After that, update GRUB and reboot the machine
 
 ```
@@ -267,11 +262,13 @@ update-grub
 reboot now
 ```
 
+
+
 To finish the configuration of the nodes, we'll forbid users from ssh-ing into a compute node on which they do not have a job allocation AND we'll add sjstat, which is a very nice command. In order to do that, do
 
 ```
-cp /storage/slurm-20.02.3/contribs/sjstat /usr/bin/.
-cp /storage/slurm-20.02.3/contribs/pam/.libs/pam_slurm.so /lib/x86_64-linux-gnu/security/
+cp /mnt/market_place/slurm_build/slurm-22.05.3/contribs/sjstat /usr/bin/.
+cp /mnt/market_place/slurm_build/slurm-22.05.3/contribs/pam/.libs/pam_slurm.so /lib/x86_64-linux-gnu/security/
 ```
 
 and then edit the file `/etc/pam.d/sshd` by adding the following lines just **before** the first `required` statement:

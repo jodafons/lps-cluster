@@ -101,7 +101,7 @@ As this is a SLURM cluster, we have to install SLURM, right? I know it's been to
 First you have to install some prerequisites and MURGE for authentication
 
 ```
-apt install -y gcc make ruby ruby-dev libmariadb-dev-compat libmariadb-dev mariadb-server bzip2 libmunge-dev libmunge2 munge
+apt install -y gcc make libpam0g-dev ruby ruby-dev libmariadb-dev-compat libmariadb-dev mariadb-server bzip2 libmunge-dev libmunge2 munge
 ```
 
 Then start murge service:
@@ -148,7 +148,7 @@ After that, lets compile it!
 ./configure --prefix=/mnt/market_place/slurm_build --sysconfdir=/etc/slurm --enable-pam --with-pam_dir=/lib/x86_64-linux-gnu/security/ --without-shared-libslurm --with-mysql_config=/usr/bin/mysql_config
 ```
 
-Then we build SLURM
+Then we build SLURM:
 
 ```
 make -j4
