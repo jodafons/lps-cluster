@@ -9,7 +9,7 @@ Install few packages (the setup is pretty straightforward, just fill things to m
 
 ```
 su -
-apt install krb5-config krb5-user
+apt install -y krb5-config krb5-user
 ```
 
 ### Q&A:
@@ -31,7 +31,7 @@ For this optional step, you need to have at least one principal added on the ser
 Next, we'll need to use PAM for Kerberos authentication. For that, install
 
 ```
-apt install libpam-krb5
+apt install -y libpam-krb5
 ```
 
 ## LDAP Client Configuration:
@@ -39,7 +39,7 @@ apt install libpam-krb5
 The default configurations after installation should work fine. Next, we'll set LDAP with NSS
 
 ```
-apt install libnss-ldap
+apt install -y libnss-ldap
 ```
 
 ## Q&A:
@@ -56,7 +56,7 @@ apt install libnss-ldap
 Again, fill things to match your own. In order to ease configuration, I'll install another package where we can choose which services we'll enable. In my case, I just checked `passwd`, `group` and `shadow`
 
 ```
-apt install libnss-ldapd
+apt install -y libnss-ldapd
 ```
 
 Once that's done, do
@@ -126,6 +126,8 @@ You can now mount everything
 ```
 mount -a
 ```
+
+
 
 ## Syncing clocks with NTP:
 
