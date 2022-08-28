@@ -171,12 +171,17 @@ fi
 exit 0
 ```
 
-Append this to /etc/pam.d/sshd:
+and:
+
+```
+chmod +x /etc/pam_scripts/login-logger.sh
+```
+
+Append this to `/etc/pam.d/sshd`:
 
 ```
 # Post Login Scripts
 session required pam_exec.so /etc/pam_scripts/login-logger.sh
-session required pam_exec.so /etc/pam_scripts/storage.sh
 ```
 
 And you're done!
