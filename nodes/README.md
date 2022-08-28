@@ -250,7 +250,7 @@ Next, we need to create the `/etc/slurm` directory and have the same copy of `/e
 
 ```
 mkdir /etc/slurm
-cp /mnt/market_place/slurm_build/slurm.conf /etc/slurm/.
+cp /mnt/market_place/slurm_build/slurm.conf /etc/slurm/
 ```
 
 Then you need to create the `/etc/slurm/gres.conf` file, which takes care of listing resources other than CPUs (like GPUs, for example). **In my case, this will be just an empty file** but, if you need an example, a configuration for the GPU server is below
@@ -299,9 +299,9 @@ At this point, if you've done everything right, you should be able to do `sinfo`
 ```
 GRUB_CMDLINE_LINUX="cgroup_enable=memory swapaccount=1"
 ```
-	
+
 If your system uses cgroup v2 (as Debian bullseye):
-	
+
 ```
 GRUB_CMDLINE_LINUX="cgroup_enable=memory swapaccount=1 systemd.unified_cgroup_hierarchy=false systemd.legacy_systemd_cgroup_controller=false"
 ```
