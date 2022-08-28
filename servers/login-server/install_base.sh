@@ -18,9 +18,8 @@ echo "session required pam_mkhomedir.so skel=/etc/skel/ umask=022" >> /etc/pam.d
 getent passwd
 
 # configure SSH
-cp sshd_config /etc/ssh
+cp conf_files/sshd_config /etc/ssh
 invoke-rc.d ssh restart
-
 
 
 # configure NTP
