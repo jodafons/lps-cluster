@@ -40,3 +40,8 @@ echo "session required pam_exec.so /etc/pam_scripts/login-logger.sh" >> /etc/pam
 
 # install others
 apt install -y htop
+
+
+# add main message
+cp conf_files/00-main-message /etc/update-motd.d
+chmod +x /etc/update-motd.d/00-main-message
