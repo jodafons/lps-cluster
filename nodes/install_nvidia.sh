@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# set binary path inside of the clusterdd
+NVIDIA_DIR=/mnt/market_place/nvidia
+
+
+
+apt install -y gnupg2
 sudo apt-key adv --fetch-keys  http://developer.download.nvidia.com/compute/cuda/repos/debian10/x86_64/3bf863cc.pub
 sudo bash -c 'echo "deb http://developer.download.nvidia.com/compute/cuda/repos/debian10/x86_64 /" > /etc/apt/sources.list.d/cuda.list'
 sudo apt update
@@ -8,14 +14,10 @@ echo ""
 echo "Starting by installing NVIDIA drivers..."
 echo ""
 
-NVIDIA_DIR=/mnt/market_place/nvidia
 
 #sudo $NVIDIA_DIR/deps/NVIDIA-Linux-x86_64-470.74.run || RC=$?
 
-if [ "${RC}" -ne 0 ]; then
-  echo "Error code was $RC, which differs from 0, exiting...";
-  exit $RC;
-fi
+
 
 sudo apt update -y && sudo apt upgrade -y
 
@@ -58,10 +60,7 @@ sudo cp $NVIDIA_DIR/deps/cudnn-8.2.2/cuda/include/cudnn* /usr/local/cuda-11.4/in
 sudo cp $NVIDIA_DIR/deps/cudnn-8.2.2/cuda/lib64/libcudnn* /usr/local/cuda-11.4/lib64
 sudo chmod a+r /usr/local/cuda-11.4/include/cudnn* /usr/local/cuda-11.4/lib64/libcudnn*
 
-if [ "${RC}" -ne 0 ]; then
-  echo "Error code was $RC, which differs from 0, exiting...";
-  exit $RC;
-fi
+
 
 echo ""
 echo "If there were no errors until here, you're probably done! :)"
