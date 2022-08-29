@@ -29,7 +29,7 @@ timedatectl status
 
 
 # Configure home folder
-echo "10.1.1.202:/volume1/homes /mnt/home nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0" >> /etc/fstab
+echo "10.1.1.202:/volume1/homes /home nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0" >> /etc/fstab
 mkdir /etc/pam_scripts
 chmod -R 700 /etc/pam_scripts
 chown -R root:root /etc/pam_scripts
