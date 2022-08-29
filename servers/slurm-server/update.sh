@@ -1,13 +1,23 @@
-cp slurm.conf /etc/slurm/
-cp slurmdbd.conf /etc/slurm
+
+# update SLURM
+cp slurm/slurm.conf /etc/slurm/
+cp slurm/slurmdbd.conf /etc/slurm
 chmod 600 /etc/slurm/slurmdbd.conf
 chown -R slurm /etc/slurm
-cp slurmdbd.service /etc/systemd/system/
-cp slurmctld.service /etc/systemd/system/
+cp slurm/slurmdbd.service /etc/systemd/system/
+cp slurm/slurmctld.service /etc/systemd/system/
+ln -s slurm/slurm.conf /mnt/market_place/slurm_build
+
+
 systemctl daemon-reload
 systemctl enable slurmdbd
 systemctl start slurmdbd
 systemctl enable slurmctld
 systemctl start slurmctld
 
-cp slurm.conf /mnt/market_place/slurm_build
+# update ansible
+cp ansible/host /etc/ansible
+cp ansible/ansible.cfg /etc/ansible
+ansible-inventory --list -y
+
+

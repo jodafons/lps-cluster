@@ -52,7 +52,6 @@ Start by installing `nfs-common` and making directories
 
 ```
 apt install nfs-common
-mkdir /mnt/slurm_build
 mkdir /mnt/market_place
 ```
 
@@ -60,7 +59,6 @@ After that, edit your `/etc/fstab` file for auto mount, appeding something like 
 
 ```
 10.1.1.202:/volume1/homes /home nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0
-10.1.1.202:/volume1/slurm_build /mnt/slurm_build nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0
 10.1.1.202:/volume1/market_place /mnt/market_place nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0
 
 ```
