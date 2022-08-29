@@ -38,4 +38,5 @@ chmod +x /etc/pam_scripts/login-logger.sh
 echo "session required pam_exec.so /etc/pam_scripts/login-logger.sh" >> /etc/pam.d/sshd
 
 
-
+# others
+apt install -y htop
