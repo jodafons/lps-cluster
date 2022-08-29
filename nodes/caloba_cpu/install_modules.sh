@@ -17,5 +17,5 @@ cd $basedir
 
 
 # setup modules
-mkdir /etc/modulefiles/cuda
-cp modules/cuda/11.4 /etc/modulefiles/cuda
+#mkdir /etc/modulefiles/cuda
+#cp modules/cuda/11.4 /etc/modulefiles/cuda

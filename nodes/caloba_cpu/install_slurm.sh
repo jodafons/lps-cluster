@@ -12,7 +12,7 @@ systemctl restart munge
 # install SLURM
 dpkg -i /mnt/market_place/slurm_build/slurm-22.05.3/slurm-22.05.3_1.0_amd64.deb 
 mkdir /etc/slurm
-ln -s /mnt/market_place/slurm_build/slurm.conf /etc/slurm/slurm.conf
+ln -sf /mnt/market_place/slurm_build/slurm.conf /etc/slurm/slurm.conf
 cp slurm/cgroup_allowed_devices_file.conf /etc/slurm
 cp slurm/cgroup.conf /etc/slurm
 touch /etc/slurm/gres.conf
@@ -33,5 +33,5 @@ cp common/sshd /etc/pam.d
 
 systemctl enable slurmd
 systemctl start slurmd
-#reboot now
+reboot now
 
