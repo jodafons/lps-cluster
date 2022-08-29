@@ -27,16 +27,16 @@ echo ""
 #sudo apt install -y cuda-toolkit-10-1
 #sudo apt install -y cuda-toolkit-10-2
 #sudo apt install -y cuda-toolkit-11-0
-sudo apt install -y cuda-toolkit-11-1
-sudo apt install -y cuda-toolkit-11-2
-sudo apt install -y cuda-toolkit-11-3
+#sudo apt install -y cuda-toolkit-11-1
+#sudo apt install -y cuda-toolkit-11-2
+#sudo apt install -y cuda-toolkit-11-3
 sudo apt install -y cuda-toolkit-11-4
 
 echo ""
 echo "Copying cudnn to expected path"
 echo ""
 
-sudo cp -r $NVIDIA_DIR/deps/cudnn* /usr/local/ || RC=$?
+#sudo cp -r $NVIDIA_DIR/deps/cudnn* /usr/local/ || RC=$?
 
 #sudo cp $NVIDIA_DIR/deps/cudnn-7.4.2/cuda/include/cudnn* /usr/local/cuda-10.0/include
 #sudo cp $NVIDIA_DIR/deps/cudnn-7.4.2/cuda/lib64/libcudnn* /usr/local/cuda-10.0/lib64
@@ -50,9 +50,9 @@ sudo cp -r $NVIDIA_DIR/deps/cudnn* /usr/local/ || RC=$?
 #sudo cp $NVIDIA_DIR/deps/cudnn-8.0.5/cuda/lib64/libcudnn* /usr/local/cuda-11.0/lib64
 #sudo chmod a+r /usr/local/cuda-11.0/include/cudnn* /usr/local/cuda-11.0/lib64/libcudnn*
 
-sudo cp $NVIDIA_DIR/deps/cudnn-8.1.1/cuda/include/cudnn* /usr/local/cuda-11.2/include
-sudo cp $NVIDIA_DIR/deps/cudnn-8.1.1/cuda/lib64/libcudnn* /usr/local/cuda-11.2/lib64
-sudo chmod a+r /usr/local/cuda-11.2/include/cudnn* /usr/local/cuda-11.2/lib64/libcudnn*
+#sudo cp $NVIDIA_DIR/deps/cudnn-8.1.1/cuda/include/cudnn* /usr/local/cuda-11.2/include
+#sudo cp $NVIDIA_DIR/deps/cudnn-8.1.1/cuda/lib64/libcudnn* /usr/local/cuda-11.2/lib64
+#sudo chmod a+r /usr/local/cuda-11.2/include/cudnn* /usr/local/cuda-11.2/lib64/libcudnn*
 
 sudo cp $NVIDIA_DIR/deps/cudnn-8.2.2/cuda/include/cudnn* /usr/local/cuda-11.4/include
 sudo cp $NVIDIA_DIR/deps/cudnn-8.2.2/cuda/lib64/libcudnn* /usr/local/cuda-11.4/lib64

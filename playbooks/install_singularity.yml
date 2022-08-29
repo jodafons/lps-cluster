@@ -1,0 +1,3 @@
+- hosts: slurm_nodes
+  roles:
+    - singularity
