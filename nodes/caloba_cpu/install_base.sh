@@ -52,4 +52,4 @@ echo "session required pam_exec.so /etc/pam_scripts/login-logger.sh" >> /etc/pam
 apt install -y htop
 
 # virtual env
-pip install virtualenv
+apt install -y python3-virtualenv
