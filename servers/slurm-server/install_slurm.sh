@@ -33,7 +33,7 @@ chmod 600 /etc/slurm/slurmdbd.conf
 chown -R slurm /etc/slurm
 cp slurm/slurmdbd.service /etc/systemd/system/
 cp slurm/slurmctld.service /etc/systemd/system/
-ln -s slurm/slurm.conf /mnt/market_place/slurm_build
+cp slurm/slurm.conf /mnt/market_place/slurm_build
 
 systemctl daemon-reload
 systemctl enable slurmdbd
