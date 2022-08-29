@@ -250,7 +250,7 @@ Next, we need to create the `/etc/slurm` directory and have the same copy of `/e
 
 ```
 mkdir /etc/slurm
-cp /mnt/market_place/slurm_build/slurm.conf /etc/slurm/
+ln -s /mnt/market_place/slurm_build/slurm.conf /etc/slurm/slurm.conf
 ```
 
 Then you need to create the `/etc/slurm/gres.conf` file, which takes care of listing resources other than CPUs (like GPUs, for example). **In my case, this will be just an empty file** but, if you need an example, a configuration for the GPU server is below
@@ -341,29 +341,3 @@ This way, we forbid SLURM users from doing any bypass on deploying workload into
 
 
 
-
-
-## Singularity Configuration:
-
-Install singularity:
-```
-apt-get install -y \
-    build-essential \
-    libssl-dev \
-    uuid-dev \
-    libgpgme11-dev \
-    squashfs-tools \
-    libseccomp-dev \
-    pkg-config
-```
-
-### Install Go:
-
-```
-wget https://go.dev/dl/go1.19.linux-amd64.tar.gz
-```
-
-Then extract the archive to `/usr/local`
-```
-
-```
