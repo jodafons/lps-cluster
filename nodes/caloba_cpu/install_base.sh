@@ -8,8 +8,6 @@ mkdir /mnt/market_place
 echo "10.1.1.202:/volume1/market_place /mnt/market_place nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0" >> /etc/fstab
 
 
-
-
 # install kerberos
 apt install -y krb5-config krb5-user
 apt install -y libpam-krb5
@@ -48,7 +46,7 @@ chmod +x /etc/pam_scripts/login-logger.sh
 echo "session required pam_exec.so /etc/pam_scripts/login-logger.sh" >> /etc/pam.d/sshd
 
 
-# others
+# htop
 apt install -y htop
 
 # virtual env
