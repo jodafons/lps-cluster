@@ -21,3 +21,5 @@ cp ansible/ansible.cfg /etc/ansible
 ansible-inventory --list -y
 
 
+# check slurm
+systemctl status slurmctld
