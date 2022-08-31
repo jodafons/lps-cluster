@@ -54,7 +54,6 @@ auto ens18
 iface ens18 inet static
   address 10.1.1.$node_number
   gateway 10.1.1.1
-  netmask 255.255.255.0
   dns-nameservers 146.164.147.2 8.8.8.8 8.8.8.4
 " > /etc/network/interfaces
 
