@@ -29,3 +29,9 @@ timedatectl status
 
 # install others
 apt install -y htop vim sshpass
+
+
+
+
+
+reboot now
