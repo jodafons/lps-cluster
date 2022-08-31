@@ -41,8 +41,8 @@ auto lo
 iface lo inet loopback
 
 # The primary network interface
-auto eno1
-iface eno1 inet static
+auto ens18
+iface ens18 inet static
         address 10.1.1.$nodenumber/24
         gateway 10.1.1.1
 "> /etc/network/interfaces

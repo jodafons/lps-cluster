@@ -25,3 +25,7 @@ cp ntp/timesynd.conf /etc/systemd/
 timedatectl set-ntp true
 timedatectl status
 
+
+
+# install others
+apt install -y htop vim sshpass
