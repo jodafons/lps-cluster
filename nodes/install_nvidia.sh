@@ -1,5 +1,11 @@
 #!/bin/bash
 
+#
+# Fix kernel
+#
+apt install linux-headers-$(uname -r)
+
+
 # set binary path inside of the clusterdd
 NVIDIA_DIR=/mnt/market_place/nvidia
 
