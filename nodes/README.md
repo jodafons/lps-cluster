@@ -2,6 +2,33 @@
 
 # Node Configuration:
 
+This initial configuration is used to `build` the main node and this `image`
+should be `cloned` to others machines using `proxmox` services.
+In `sudo` mode, setup the network. Here where are using `caloba12` as localhost
+and 10.1.1.`12`:
+
+```
+source setup_network.sh caloba12 12
+```
+
+Than, `reboot` the node. When back, install the base:
+
+```
+source install_base.sh
+```
+
+WHen back, install `slurm`, `singularity` and `modules enviroment`:
+
+```
+source install_slurm.sh
+source install_singularity.sh
+source install_modules.sh
+```
+
+# Node Configuration From Scratch:
+
+Here, we have a tutorial to `build` everything by hand. Of course, we
+have all `scripts` here for easy configuration.
 
 ## Kerberos Client Configuration:
 
@@ -153,20 +180,6 @@ if [ ! -f ${LOG_FILE} ]; then
 fi
 
 echo ${LOG_ENTRY} >> ${LOG_FILE}
-
-exit 0
-```
-
-Create storage creation script  (`/etc/pam_scripts/storage.sh`):
-
-```
-#!/bin/sh
-
-if [ ! -d "/storage/${PAM_USER}" ]; then
-	mkdir -p /storage/${PAM_USER}
-	chown -R ${PAM_USER}:storage /storage/${PAM_USER}
-	chmod -R 0700 /storage/${PAM_USER}
-fi
 
 exit 0
 ```

@@ -63,3 +63,4 @@ service resolvconf restart
 
 
 
+reboot now
