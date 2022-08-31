@@ -1,6 +1,6 @@
 
 
-cp files/bind/* /etc/bind
+cp -r files/bind/* /etc/bind
 systemctl restart bind9
 named-checkconf
 named-checkzone lps.ufrj.br /etc/bind/zones/db.lps.ufrj.br
