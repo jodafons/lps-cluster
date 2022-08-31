@@ -3,6 +3,12 @@ hostname=$1
 node_number=$2
 
 #
+# Add the new machine into the kerberos
+#
+kadmin -q "addprinc -policy service -randkey host/$hostname.lps.ufrj.br"
+kadmin -q "ktadd -k /etc/krb5.keytab host/$hostname.lps.ufrj.br"
+
+#
 # change hostname
 #
 
@@ -44,11 +50,6 @@ ifconfig
 dpkg-reconfigure openssh-server
 
 
-#
-# Add the new machine into the kerberos
-#
-kadmin -q "addprinc -policy service -randkey host/$hostname.lps.ufrj.br"
-kadmin -q "ktadd -k /etc/krb5.keytab host/$hostname.lps.ufrj.br"
 
 
 #sudo reboot now
