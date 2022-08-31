@@ -22,8 +22,8 @@ source /etc/network/interfaces.d/*
 auto lo
 iface lo inet loopback
 
-auto ens18
-iface ens18 inet static
+auto enp6s18
+iface enp6s18 inet static
   address 146.164.147.5
   netmask 255.255.255.0
   gateway 146.164.147.1

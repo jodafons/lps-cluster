@@ -1,4 +1,9 @@
 
+#
+# Add some panic contraints in case of fail
+#
+echo "vm.panic_on_oom=1   ;enables panic on OOM">>/etc/sysctl.conf
+echo "kernel.panic=10     ;tells the kernel to reboot ten seconds after panicking">>/etc/sysctl.conf
 
 
 # install kerberos

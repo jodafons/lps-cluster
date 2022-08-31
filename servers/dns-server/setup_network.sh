@@ -31,17 +31,24 @@ source /etc/network/interfaces.d/*
 auto lo
 iface lo inet loopback
 
-auto ens18
-iface ens18 inet static
+auto enp6s18
+iface enp6s18 inet static
   address 146.164.147.2
   netmask 255.255.255.0
   gateway 146.164.147.1
   dns-nameservers 146.164.147.2 8.8.8.8 8.8.8.4
 " > /etc/network/interfaces
 
-#sudo mv 00-installer-config.yaml /etc/netplan 
-#netplan apply
+
 systemctl restart networking
 ifconfig
-#sudo reboot now
+
+
+#
+# Add some panic contraints in case of fail
+#
+echo "vm.panic_on_oom=1   ;enables panic on OOM">>/etc/sysctl.conf
+echo "kernel.panic=10     ;tells the kernel to reboot ten seconds after panicking">>/etc/sysctl.conf
+
+
 reboot now

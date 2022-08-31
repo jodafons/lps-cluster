@@ -11,16 +11,6 @@ echo 'nameserver 146.164.147.2
 search lps.ufrj.br' > /etc/resolvconf/resolv.conf.d/head
 sudo service resolvconf restart
 
-# for ubuntu
-#echo "network:
-#  version: 2
-#  ethernets:
-#     ens18:
-#        dhcp4: false
-#        addresses: [146.164.147.4/24]
-#        gateway4: 146.164.147.1
-#        nameservers:
-#          addresses: [8.8.8.8, 8.8.4.4]" > 00-installer-config.yaml
 
 echo "
 # and how to activate them. For more information, see interfaces(5).
@@ -31,17 +21,23 @@ source /etc/network/interfaces.d/*
 auto lo
 iface lo inet loopback
 
-auto ens18
-iface ens18 inet static
+auto enp6s18
+iface enp6s18 inet static
   address 146.164.147.3
   netmask 255.255.255.0
   gateway 146.164.147.1
   dns-nameservers 146.164.147.2 8.8.8.8 8.8.8.4
 " > /etc/network/interfaces
 
-#sudo mv 00-installer-config.yaml /etc/netplan 
-#netplan apply
+
 systemctl restart networking
 ifconfig
-#sudo reboot now
+
+#
+# Add some panic contraints in case of fail
+#
+echo "vm.panic_on_oom=1   ;enables panic on OOM">>/etc/sysctl.conf
+echo "kernel.panic=10     ;tells the kernel to reboot ten seconds after panicking">>/etc/sysctl.conf
+
+
 reboot now
