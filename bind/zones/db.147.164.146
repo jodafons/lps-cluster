@@ -1,0 +1,82 @@
+;
+; Reverse DNS for LPS
+;
+$TTL	7200
+@	IN	SOA	ns.lps.ufrj.br. netadmin.lps.ufrj.br. (
+		     	2022073000 	; Serial
+			7200		; Refresh (2h)
+			3600		; Retry (1h)
+			31536000	; Expire (1y)
+			10800 )		; Negative Cache TTL
+
+	IN	NS	ns.lps.ufrj.br.
+
+;
+; Network related
+;
+0	IN	PTR	net.lps.ufrj.br.
+1	IN	PTR	gw.lps.ufrj.br.
+2	IN	PTR	ns.lps.ufrj.br.
+
+;
+; LEGACY STUFF, REMOVE THIS LATER
+;
+3	IN	PTR	ldapserver.lps.ufrj.br.
+4	IN	PTR	storage1.lps.ufrj.br.
+5	IN	PTR	backup.lps.ufrj.br.
+165	IN	PTR	verdun.lps.ufrj.br.
+166	IN	PTR	cessy.lps.ufrj.br.
+
+;
+; Basic services (offset by 10 for legacy stuff)
+;
+9	IN	PTR	xenserver.lps.ufrj.br.
+10	IN	PTR	service.lps.ufrj.br.
+11	IN	PTR	service1.lps.ufrj.br.
+13	IN	PTR	auth.lps.ufrj.br.
+14	IN	PTR	login.lps.ufrj.br.
+
+;
+; Networking and private hardware
+;
+65	IN	PTR	lps1-wlan.lps.ufrj.br.
+66	IN	PTR	hp4200dtn.lps.ufrj.br.
+
+;
+; Stations with fixed IP (100-234)
+;
+100	IN	PTR	bancada-01.lps.ufrj.br.
+101	IN	PTR	bancada-02.lps.ufrj.br.
+102	IN	PTR	bancada-03.lps.ufrj.br.
+103	IN	PTR	bancada-04.lps.ufrj.br.
+104	IN	PTR	bancada-05.lps.ufrj.br.
+105	IN	PTR	carouge.lps.ufrj.br.
+; Configurados acima
+;165	IN	PTR	verdun.lps.ufrj.br.
+;166	IN	PTR	cessy.lps.ufrj.br.
+228	IN	PTR	porto.lps.ufrj.br.
+
+;
+; DHCP
+;
+235	IN	PTR	dyn-01.lps.ufrj.br.
+236	IN	PTR	dyn-02.lps.ufrj.br.
+237	IN	PTR	dyn-03.lps.ufrj.br.
+238	IN	PTR	dyn-04.lps.ufrj.br.
+239	IN	PTR	dyn-05.lps.ufrj.br.
+240	IN	PTR	dyn-06.lps.ufrj.br.
+241	IN	PTR	dyn-07.lps.ufrj.br.
+242	IN	PTR	dyn-08.lps.ufrj.br.
+243	IN	PTR	dyn-09.lps.ufrj.br.
+244	IN	PTR	dyn-10.lps.ufrj.br.
+245	IN	PTR	dyn-11.lps.ufrj.br.
+246	IN	PTR	dyn-12.lps.ufrj.br.
+247	IN	PTR	dyn-13.lps.ufrj.br.
+248	IN	PTR	dyn-14.lps.ufrj.br.
+249	IN	PTR	dyn-15.lps.ufrj.br.
+250	IN	PTR	dyn-16.lps.ufrj.br.
+251	IN	PTR	dyn-17.lps.ufrj.br.
+252	IN	PTR	dyn-18.lps.ufrj.br.
+253	IN	PTR	dyn-19.lps.ufrj.br.
+254	IN	PTR	dyn-20.lps.ufrj.br.
+

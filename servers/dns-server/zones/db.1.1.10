@@ -49,6 +49,16 @@ $TTL  7200
 51  IN  PTR caloba51.lps.ufrj.br.
 
 
+; GPU
+61  IN  PTR caloba61.lps.ufrj.br.
+
+
+
+
+; GPU large
+81  IN  PTR caloba81.lps.ufrj.br.
+
+
 ;
 ; proxmox machines (101-119)
 ;

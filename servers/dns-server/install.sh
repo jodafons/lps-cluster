@@ -4,8 +4,7 @@ sudo apt-get install -y net-tools bind9 bind9utils bind9-doc
 sudo mkdir -p /etc/bind/zones
 
 # copy configuration
-echo 's/OPTIONS=.*/OPTIONS="-4 -u bind"/' > bind9
-sudo mv bind9 /etc/default
+cp bind9 /etc/default
 source update.sh
 
 systemctl restart bind9
