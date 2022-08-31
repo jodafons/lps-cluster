@@ -4,7 +4,7 @@ sudo apt-get install -y net-tools bind9 bind9utils bind9-doc
 sudo mkdir -p /etc/bind/zones
 
 # copy configuration
-cp bind9 /etc/default
+cp files/bind9 /etc/default
 source update.sh
 
 systemctl restart bind9

@@ -9,18 +9,8 @@ apt install -y vim resolvconf
 # For LPS this should be 146.164.147.2
 echo 'nameserver 146.164.147.2
 search lps.ufrj.br' > /etc/resolvconf/resolv.conf.d/head
-sudo service resolvconf restart
+service resolvconf restart
 
-# for ubuntu
-#echo "network:
-#  version: 2
-#  ethernets:
-#     ens18:
-#        dhcp4: false
-#        addresses: [146.164.147.4/24]
-#        gateway4: 146.164.147.1
-#        nameservers:
-#          addresses: [8.8.8.8, 8.8.4.4]" > 00-installer-config.yaml
 
 echo "
 # and how to activate them. For more information, see interfaces(5).
