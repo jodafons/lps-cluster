@@ -6,4 +6,4 @@
     - name: Reset all slurm node control
       service:
         name: slurmd
-        state: started
+        state: restarted

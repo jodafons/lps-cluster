@@ -32,4 +32,3 @@ Before start, we need to setup somethings inside of the new cloned node:
 * Inside of the node: Run the script `reconfigure_cloned.sh` inside of the `nodes`
 folder. This script will change the `hostname`, the `IP` and reset all `ssh` keys. 
 
-### Change MAC-address:
