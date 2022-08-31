@@ -62,8 +62,10 @@ echo ""
 #sudo cp $NVIDIA_DIR/deps/cudnn-8.1.1/cuda/lib64/libcudnn* /usr/local/cuda-11.2/lib64
 #sudo chmod a+r /usr/local/cuda-11.2/include/cudnn* /usr/local/cuda-11.2/lib64/libcudnn*
 
-sudo cp $NVIDIA_DIR/deps/cudnn-8.2.2/cuda/include/cudnn* /usr/local/cuda-11.4/include
-sudo cp $NVIDIA_DIR/deps/cudnn-8.2.2/cuda/lib64/libcudnn* /usr/local/cuda-11.4/lib64
+
+cp -r /mnt/market_place/nvidia/deps/cudnn-8.2.2/ /usr/local/
+cp $NVIDIA_DIR/deps/cudnn-8.2.2/cuda/include/cudnn* /usr/local/cuda-11.4/include
+cp $NVIDIA_DIR/deps/cudnn-8.2.2/cuda/lib64/libcudnn* /usr/local/cuda-11.4/lib64
 sudo chmod a+r /usr/local/cuda-11.4/include/cudnn* /usr/local/cuda-11.4/lib64/libcudnn*
 
 
@@ -71,3 +73,12 @@ sudo chmod a+r /usr/local/cuda-11.4/include/cudnn* /usr/local/cuda-11.4/lib64/li
 echo ""
 echo "If there were no errors until here, you're probably done! :)"
 echo ""
+
+
+# setup modules
+mkdir /etc/modulefiles/cuda
+mkdir /etc/modulefiles/cudnn
+cp files/modules/cuda/11.4 /etc/modulefiles/cuda
+cp files/modules/cudnn/8.2.2 /etc/modulefiles/cudnn
+
+
