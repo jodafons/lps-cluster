@@ -2,7 +2,6 @@
 #
 # Append market_place into the mount
 #
-
 apt install -y nfs-common
 mkdir /mnt/market_place
 echo "10.1.1.202:/volume1/market_place /mnt/market_place nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0" >> /etc/fstab
@@ -25,13 +24,13 @@ echo "session required pam_mkhomedir.so skel=/etc/skel/ umask=022" >> /etc/pam.d
 getent passwd
 
 # configure SSH
-cp common/sshd_config /etc/ssh
+cp files/common/sshd_config /etc/ssh
 invoke-rc.d ssh restart
 
 
 
 # configure NTP
-cp common/timesynd.conf /etc/systemd/
+cp files/common/timesynd.conf /etc/systemd/
 timedatectl set-ntp true
 timedatectl status
 
@@ -41,13 +40,12 @@ echo "10.1.1.202:/volume1/homes /home nfs rsize=32768,wsize=32768,bg,sync,nolock
 mkdir /etc/pam_scripts
 chmod -R 700 /etc/pam_scripts
 chown -R root:root /etc/pam_scripts
-cp common/login-logger.sh /etc/pam_scripts
+cp files/common/login-logger.sh /etc/pam_scripts
 chmod +x /etc/pam_scripts/login-logger.sh
 echo "session required pam_exec.so /etc/pam_scripts/login-logger.sh" >> /etc/pam.d/sshd
 
 
-# htop
-apt install -y htop
-
-# virtual env
-apt install -y python3-virtualenv
+#
+# Install others
+#
+apt install -y python3-virtualenv htop vim curl wget git sshpass
