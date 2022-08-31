@@ -15,7 +15,7 @@ echo "Starting by installing NVIDIA drivers..."
 echo ""
 
 
-#sudo $NVIDIA_DIR/deps/NVIDIA-Linux-x86_64-470.74.run || RC=$?
+./$NVIDIA_DIR/deps/NVIDIA-Linux-x86_64-470.74.run
 
 
 
