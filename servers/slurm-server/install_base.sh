@@ -35,7 +35,8 @@ timedatectl status
 
 
 # install others
-apt install -y htop vim sshpass
+apt install -y htop vim sshpass ansible
+mkdir /etc/ansible
 
 
 
