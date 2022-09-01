@@ -9,10 +9,10 @@ cp files/slurm/slurmctld.service /etc/systemd/system/
 cp files/slurm/slurm.conf /mnt/market_place/slurm_build
 
 # restart all services
-#systemctl start munge
-#systemctl daemon-reload
-#systemctl start slurmdbd
-#systemctl start slurmctld
+systemctl start munge
+systemctl daemon-reload
+systemctl start slurmdbd
+systemctl start slurmctld
 
 
 # check slurm
