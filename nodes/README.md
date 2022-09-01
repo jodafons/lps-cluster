@@ -278,8 +278,7 @@ After that, as we'll use `cgroup`, you need to create both of these files:
 
 ```
 CgroupAutomount=yes 
-CgroupReleaseAgentDir="/etc/slurm/cgroup" 
-
+#CgroupReleaseAgentDir="/etc/slurm/cgroup" 
 ConstrainCores=yes 
 ConstrainDevices=yes
 ConstrainRAMSpace=yes

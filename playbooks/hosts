@@ -2,8 +2,11 @@
 
 caloba12 ansible_host=10.1.1.12 ansible_user=cluster ansible_password=6sJ09066sV1990;6
 caloba13 ansible_host=10.1.1.13 ansible_user=cluster ansible_password=6sJ09066sV1990;6
-
 caloba51 ansible_host=10.1.1.51 ansible_user=cluster ansible_password=6sJ09066sV1990;6
+
+
+[control]
+slurm-server ansible_host=146.164.147.3 ansible_user=cluster ansible_password=6sJ09066sV1990;6
 
 
 [all:vars]
