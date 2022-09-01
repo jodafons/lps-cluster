@@ -17,7 +17,7 @@ flush privileges;"
 
 
 # install slurm
-dpkg -i /mnt/market_place/slurm_build/slurm-22.05.3_1.0_amd64.deb
+dpkg -i /mnt/market_place/slurm_build/slurm-22.05.3/slurm-22.05.3_1.0_amd64.deb
 useradd slurm
 mkdir -p /etc/slurm 
 mkdir -p /etc/slurm/prolog.d 
@@ -27,13 +27,13 @@ mkdir -p /var/spool/slurm/ctld
 mkdir -p /var/spool/slurm/d 
 mkdir -p /var/log/slurm
 chown -R slurm /var/spool/slurm/
-cp slurm/slurm.conf /etc/slurm/
-cp slurm/slurmdbd.conf /etc/slurm
+cp files/slurm/slurm.conf /etc/slurm/
+cp files/slurm/slurmdbd.conf /etc/slurm
 chmod 600 /etc/slurm/slurmdbd.conf
 chown -R slurm /etc/slurm
-cp slurm/slurmdbd.service /etc/systemd/system/
-cp slurm/slurmctld.service /etc/systemd/system/
-cp slurm/slurm.conf /mnt/market_place/slurm_build
+cp files/slurm/slurmdbd.service /etc/systemd/system/
+cp files/slurm/slurmctld.service /etc/systemd/system/
+cp files/slurm/slurm.conf /mnt/market_place/slurm_build
 
 systemctl daemon-reload
 systemctl enable slurmdbd
@@ -50,3 +50,4 @@ sacctmgr add cluster caloba
 sacctmgr add account compute-account description="Compute accounts" Organization=lps
 sacctmgr create user joao.pinto account=compute-account adminlevel=None
 
+reboot now
