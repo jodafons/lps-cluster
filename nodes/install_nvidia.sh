@@ -3,7 +3,7 @@
 #
 # Fix kernel
 #
-apt install linux-headers-$(uname -r)
+apt install -y linux-headers-$(uname -r)
 
 
 # set binary path inside of the clusterdd
@@ -21,8 +21,8 @@ echo "Starting by installing NVIDIA drivers..."
 echo ""
 
 
-./$NVIDIA_DIR/deps/NVIDIA-Linux-x86_64-470.74.run
-
+#cp /$NVIDIA_DIR/deps/NVIDIA-Linux-x86_64-470.74.run
+#./NVIDIA-Linux-x86_64-470.74.run
 
 
 sudo apt update -y && sudo apt upgrade -y
