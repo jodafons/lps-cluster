@@ -15,10 +15,6 @@ systemctl start slurmdbd
 systemctl enable slurmctld
 systemctl start slurmctld
 
-# update ansible
-cp ansible/hosts /etc/ansible
-cp ansible/ansible.cfg /etc/ansible
-ansible-inventory --list -y
 
 
 # check slurm
