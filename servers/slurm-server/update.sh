@@ -9,13 +9,18 @@ cp files/slurm/slurmctld.service /etc/systemd/system/
 cp files/slurm/slurm.conf /mnt/market_place/slurm_build
 
 # restart all services
-systemctl start munge
-systemctl daemon-reload
-systemctl start slurmdbd
-systemctl start slurmctld
+#systemctl start munge
+#systemctl daemon-reload
+#systemctl start slurmdbd
+#systemctl start slurmctld
 
 
 # check slurm
 #systemctl status slurmdbd
 #systemctl status slurmctld
 scontrol reconfigure
+
+
+# force all nodes to restart
+ansible-playbook -i ../../playbooks/hosts ../../playbooks/tasks/restart_slurmd.yml
+
