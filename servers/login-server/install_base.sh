@@ -44,7 +44,7 @@ echo "session required pam_exec.so /etc/pam_scripts/login-logger.sh" >> /etc/pam
 
 
 # install others
-apt install -y htop
+apt install -y htop sshpass
 
 
 # add main message
