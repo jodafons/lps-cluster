@@ -3,6 +3,12 @@ hostname=$1
 node_number=$2
 
 #
+# fix ssh keys
+#
+dpkg-reconfigure openssh-server
+
+
+#
 # Add the new machine into the kerberos
 #
 kadmin -q "addprinc -policy service -randkey host/$hostname.lps.ufrj.br"
@@ -43,11 +49,6 @@ iface enp6s18 inet static
 #netplan apply
 systemctl restart networking
 ifconfig
-
-#
-# fix ssh keys
-#
-dpkg-reconfigure openssh-server
 
 
 
