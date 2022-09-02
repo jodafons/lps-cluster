@@ -1,0 +1,20 @@
+  - name: Install screen
+    hosts: all
+    become: true
+    tasks: 
+     - name: Ansible apt to install screen
+       apt:
+         name: screen
+         state: present
+
+  - name: Install rsync
+    hosts: all
+    become: true
+    tasks: 
+     - name: Install rsync
+       apt:
+         name: rsync
+         state: present
+     
+
+       

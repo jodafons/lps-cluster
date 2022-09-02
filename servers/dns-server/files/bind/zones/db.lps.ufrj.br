@@ -198,7 +198,7 @@ caloba13        IN      A     10.1.1.13
 caloba51        IN      A     10.1.1.51
 ;caloba52        IN      A     10.1.1.52
 ;caloba53        IN      A     10.1.1.53
-;caloba54        IN      A     10.1.1.54
+caloba54        IN      A     10.1.1.54
 
 ; GPU
 caloba71        IN      A     10.1.1.71
