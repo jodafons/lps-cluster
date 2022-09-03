@@ -35,5 +35,9 @@ cp files/common/sshd /etc/pam.d
 
 systemctl enable slurmd
 systemctl start slurmd
+
+# add sjstat
+cp /mnt/market_place/slurm_build/slurm-22.05.3/contribs/sjstat /usr/bin
+
 reboot now
 

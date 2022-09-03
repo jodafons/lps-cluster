@@ -15,6 +15,14 @@
        apt:
          name: rsync
          state: present
-     
+  
+  - name: Add sjstat by hand into the /usr/bin
+    hosts: all
+    tasks:
+      - name: copy
+        copy:
+          src: /mnt/market_place/slurm_build/slurm-22.05.3/contribs/sjstat
+          dest: /usr/bin
+          force: yes
 
        

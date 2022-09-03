@@ -50,4 +50,8 @@ sacctmgr add cluster caloba
 sacctmgr add account compute-account description="Compute accounts" Organization=lps
 sacctmgr create user joao.pinto account=compute-account adminlevel=None
 
+
+# add sjstat
+cp /mnt/market_place/slurm_build/slurm-22.05.3/contribs/sjstat /usr/bin
+
 reboot now

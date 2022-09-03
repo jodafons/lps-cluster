@@ -17,7 +17,7 @@ echo "commands can be found at: https://slurm.schedmd.com/pdfs/summary.pdf"
 echo ""
 echo "Current status of partitions is:"
 echo ""
-squeue
+sjstat
 echo ""
 echo ""
 echo "Staff members contact information:"
