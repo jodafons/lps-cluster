@@ -4,7 +4,7 @@
 # Fix kernel
 #
 apt install -y linux-headers-$(uname -r)
-
+apt install -y nvidia-modprobe
 
 # set binary path inside of the clusterdd
 NVIDIA_DIR=/mnt/market_place/nvidia
@@ -81,4 +81,6 @@ mkdir /etc/modulefiles/cudnn
 cp files/modules/cuda/11.4 /etc/modulefiles/cuda
 cp files/modules/cudnn/8.2.2 /etc/modulefiles/cudnn
 
-
+# run twise to be sure 
+source /mnt/market_place/nvidia/modprobe_nvidia_uvm.sh
+source /mnt/market_place/nvidia/modprobe_nvidia_uvm.sh
