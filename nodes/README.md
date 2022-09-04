@@ -1,6 +1,10 @@
 
+# Node Configration:
 
-# Node Configuration:
+Execute these scripts in this order in order to configure the node
+
+
+# Node Configuration (step by step): 
 
 This initial configuration is used to `build` the main node and this `image`
 should be `cloned` to others machines using `proxmox` services.
