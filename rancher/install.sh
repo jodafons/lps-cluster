@@ -1,6 +1,5 @@
 
-hostname=$1
-nodenumber=$2
+IP=$1
 
 
 #
@@ -10,22 +9,6 @@ nodenumber=$2
 usermod -aG sudo $USER
 echo "cluster ALL=(ALL:ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/cluster
 apt install -y net-tools
-
-
-#
-# change hostname
-#
-
-hostnamectl set-hostname $hostname
-echo "127.0.0.1       localhost
-127.0.1.1       $hostname.lps.ufrj.br    $hostname
-# The following lines are desirable for IPv6 capable hosts
-::1     localhost ip6-localhost ip6-loopback
-ff02::1 ip6-allnodes
-ff02::2 ip6-allrouters
-" > /etc/hosts
-hostnamectl
-
 
 #
 # Change IP
@@ -43,8 +26,8 @@ iface lo inet loopback
 # The primary network interface
 auto enp6s18
 iface enp6s18 inet static
-        address 10.1.1.$nodenumber/24
-        gateway 10.1.1.1
+        address 146.164.146.$IP
+        gateway 146.164.147.1
         dns-nameservers 146.164.147.2 8.8.8.8 8.8.8.4
 "> /etc/network/interfaces
 
@@ -63,4 +46,8 @@ service resolvconf restart
 
 
 
-reboot now
+
+# install docker
+apt install -y docker.io
+
+#reboot now
