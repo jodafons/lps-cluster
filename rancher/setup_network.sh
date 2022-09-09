@@ -1,11 +1,6 @@
 
 IP=$1
 
-
-#
-# cluster as sudo with no password
-#
-
 usermod -aG sudo $USER
 echo "cluster ALL=(ALL:ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/cluster
 apt install -y net-tools
@@ -24,16 +19,15 @@ auto lo
 iface lo inet loopback
 
 # The primary network interface
-auto enp6s18
-iface enp6s18 inet static
-        address 146.164.146.$IP
+auto ens18
+iface ens18 inet static
+        address 146.164.147.$IP
         gateway 146.164.147.1
         dns-nameservers 146.164.147.2 8.8.8.8 8.8.8.4
 "> /etc/network/interfaces
 
 #netplan apply
 systemctl restart networking
-
 
 #
 # resolv conf
@@ -44,10 +38,4 @@ echo 'nameserver 146.164.147.2
 search lps.ufrj.br' > /etc/resolvconf/resolv.conf.d/head
 service resolvconf restart
 
-
-
-
-# install docker
-apt install -y docker.io
-
-#reboot now
+reboot now
