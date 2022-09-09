@@ -1,9 +1,15 @@
 
-IP=$1
+hostname=$1
+IP=$2
+
+
+
 
 usermod -aG sudo $USER
 echo "cluster ALL=(ALL:ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/cluster
 apt install -y net-tools
+
+hostnamectl set-hostname $hostname
 
 #
 # Change IP
