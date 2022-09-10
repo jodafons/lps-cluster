@@ -3,7 +3,7 @@
 ;
 $TTL  7200
 @ IN  SOA ns.lps.ufrj.br. netadmin.lps.ufrj.br. (
-          2022090901  ; Serial
+          2022091102  ; Serial
           7200        ; Refresh (2h)
           3600        ; Retry (1h)
           31536000    ; Expire (1y)
@@ -23,9 +23,8 @@ $TTL  7200
 
 
 ; kubernetes clustes
-31    IN  PTR rancher-server.lps.ufrj.br
-32    IN  PTR rancher-node01.lps.ufrj.br
-33    IN  PTR rancher-node02.lps.ufrj.br
+31    IN  PTR rancher-server.lps.ufrj.br.
+32    IN  PTR rancher-node01.lps.ufrj.br.
 
 
 ; proxmox server
