@@ -1,11 +1,9 @@
 
 hostname=$1
-nodenumber=$2
+IP=$2
 
 
-#
-# cluster as sudo with no password
-#
+
 
 usermod -aG sudo $USER
 echo "cluster ALL=(ALL:ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/cluster
@@ -43,14 +41,13 @@ iface lo inet loopback
 # The primary network interface
 auto ens18
 iface ens18 inet static
-        address 10.1.1.$nodenumber/24
-        gateway 10.1.1.1
+        address 146.164.147.$IP
+        gateway 146.164.147.1
         dns-nameservers 146.164.147.2 8.8.8.8 8.8.8.4
 "> /etc/network/interfaces
 
 #netplan apply
 systemctl restart networking
-
 
 #
 # resolv conf
@@ -60,7 +57,5 @@ apt install -y resolvconf
 echo 'nameserver 146.164.147.2
 search lps.ufrj.br' > /etc/resolvconf/resolv.conf.d/head
 service resolvconf restart
-
-
 
 reboot now
