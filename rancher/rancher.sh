@@ -1,5 +1,3 @@
 
 # setup rancher server
-docker run -d --restart=unless-stopped -p 8080:8080 rancher/server:stable
-
-
+docker run -d --name=rancher-server --restart=unless-stopped -p 80:80 -p 443:443 --privileged rancher/rancher:v2.4.8
