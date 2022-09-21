@@ -1,0 +1,12 @@
+[all]
+rancher-server  ansible_user=cluster ansible_host=146.164.147.31 ansible_port=22 ansible_password=6sJ09066sV1990;6
+rancher-node01  ansible_user=cluster ansible_host=146.164.147.32 ansible_port=22 ansible_password=6sJ09066sV1990;6
+
+[masters]
+rancher-server
+
+[slaves]
+rancher-node01
+
+[kubectl]
+rancher-server
