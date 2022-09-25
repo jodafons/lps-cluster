@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- hosts: masters
   become: true
   tasks:
   - name: "Set variables"
@@ -94,3 +94,31 @@
       name: kubelet
       daemon_reload: yes
       state: restarted
+
+  - name: Initialize the Kubernetes cluster using kubeadm
+    command: kubeadm init --apiserver-advertise-address="146.164.147.31" --apiserver-cert-extra-sans="146.164.147.31"  --node-name kube-master --pod-network-cidr=146.164.0.0/16
+
+
+  - name: Setup kubeconfig for user
+    command: "{{ item }}"
+    with_items:
+     - mkdir -p /home/.kube
+     - cp -i /etc/kubernetes/admin.conf /home/.kube/config
+     - chown cluster:cluster /home/.kube/config
+
+  - name: Install calico pod network
+    become: false
+    command: kubectl create -f https://docs.projectcalico.org/v3.4/getting-started/kubernetes/installation/hosted/calico.yaml
+
+
+  - name: Generate join command
+    command: kubeadm token create --print-join-command
+    register: join_command
+
+  - name: Copy join command to local file
+    local_action: copy content="{{ join_command.stdout_lines[0] }}" dest="./join-command"
+
+
+#handlers:
+#    - name: docker status
+#      service: name=docker state=started
