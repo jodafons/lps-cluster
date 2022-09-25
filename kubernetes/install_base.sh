@@ -1,7 +1,7 @@
 #
 # Install dependencies
 #
-apt get -y htop vim git sshpass
+apt install -y htop vim git sshpass
 
 
 #
