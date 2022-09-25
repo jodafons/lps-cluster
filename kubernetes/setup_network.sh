@@ -58,4 +58,5 @@ echo 'nameserver 146.164.147.2
 search lps.ufrj.br' > /etc/resolvconf/resolv.conf.d/head
 service resolvconf restart
 
+
 reboot now
