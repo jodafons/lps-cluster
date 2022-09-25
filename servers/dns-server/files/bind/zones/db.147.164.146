@@ -23,8 +23,9 @@ $TTL  7200
 
 
 ; kubernetes clustes
-31    IN  PTR rancher-server.lps.ufrj.br.
-31    IN  PTR rancher-node01.lps.ufrj.br.
+31    IN  PTR kube-server.lps.ufrj.br.
+32    IN  PTR kube-node01.lps.ufrj.br.
+33    IN  PTR kube-node02.lps.ufrj.br.
 
 
 

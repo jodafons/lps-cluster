@@ -73,8 +73,9 @@ slurm-server                IN    A     146.164.147.4   ; slurm frontend
 login-server                IN    A     146.164.147.5   ; login
 
 ; kubernetes clustes
-rancher-server              IN    A     146.164.147.31  ; rancher server
-rancher-node01              IN    A     146.164.147.32  ; rancher server
+kube-server              IN    A     146.164.147.31  ; rancher server
+kube-node01              IN    A     146.164.147.32  ; rancher server
+kube-node02              IN    A     146.164.147.33  ; rancher server
 
 
 ; proxmox servers
