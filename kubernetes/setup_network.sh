@@ -1,33 +1,55 @@
 
-IP=$1
+hostname=$1
+nodenumber=$2
+
+
+#
+# cluster as sudo with no password
+#
 
 usermod -aG sudo $USER
 echo "cluster ALL=(ALL:ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/cluster
 apt install -y net-tools
 
 
-sudo apt install -y resolvconf
-# For LPS this should be 146.164.147.2
-echo 'nameserver 146.164.147.2
-search lps.ufrj.br' > head
-sudo mv head /etc/resolvconf/resolv.conf.d/
-sudo service resolvconf restart
+#
+# change hostname
+#
+
+hostnamectl set-hostname $hostname
+echo "127.0.0.1       localhost
+127.0.1.1       $hostname.lps.ufrj.br    $hostname
+# The following lines are desirable for IPv6 capable hosts
+::1     localhost ip6-localhost ip6-loopback
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+" > /etc/hosts
+hostnamectl
 
 
-echo "network:
-  version: 2
-  ethernets:
-     ens18:
-        dhcp4: false
-        addresses: [146.164.147.$IP/24]
-        gateway4: 146.164.147.1
-        nameservers:
-          addresses: [8.8.8.8, 8.8.4.4, 146.164.147.2]" > 00-installer-config.yaml
+#
+# Change IP
+#
+echo "
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
 
-sudo mv 00-installer-config.yaml /etc/netplan 
-sudo netplan apply
-ifconfig
+source /etc/network/interfaces.d/*
 
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+# The primary network interface
+auto enp6s18
+iface enp6s18 inet static
+        address 10.1.1.$nodenumber/24
+        gateway 10.1.1.1
+        dns-nameservers 146.164.147.2 8.8.8.8 8.8.8.4
+"> /etc/network/interfaces
+
+#netplan apply
+systemctl restart networking
 
 
 #
@@ -38,6 +60,7 @@ apt install -y resolvconf
 echo 'nameserver 146.164.147.2
 search lps.ufrj.br' > /etc/resolvconf/resolv.conf.d/head
 service resolvconf restart
+
 
 
 reboot now

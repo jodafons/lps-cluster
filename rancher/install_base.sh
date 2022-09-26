@@ -24,11 +24,11 @@ apt-get install -y \
     lsb-release
 
 mkdir -p /etc/apt/keyrings
-curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
 
 
 echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
 apt-get update
@@ -54,8 +54,8 @@ apt-mark hold kubelet kubeadm kubectl
 #
 # Machines fixs
 #
+sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
 sudo swapoff -a
-sudo sed -i '/ swap / s/^/#/' /etc/fstab
 sudo modprobe overlay
 sudo modprobe br_netfilter
 sudo tee /etc/sysctl.d/kubernetes.conf<<EOF
@@ -66,21 +66,6 @@ EOF
 sudo sysctl --system
 sudo rm /etc/containerd/config.toml
 sudo systemctl restart containerd
-
-
-
-
-# Fix docker
-sudo echo "
-{
-    'exec-opts': ['native.cgroupdriver=systemd']
-}" > /etc/docker/daemon.json
-
-sudo systemctl daemon-reload
-sudo systemctl restart docker
-sudo systemctl restart kubelet
-
-
 reboot now
 
 
