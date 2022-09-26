@@ -1,15 +1,12 @@
 
 IP=$1
 
-
-
-
 usermod -aG sudo $USER
 echo "cluster ALL=(ALL:ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/cluster
 apt install -y net-tools
 
 
-sudo apt install -y vim resolvconf
+sudo apt install -y resolvconf
 # For LPS this should be 146.164.147.2
 echo 'nameserver 146.164.147.2
 search lps.ufrj.br' > head
