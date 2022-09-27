@@ -71,10 +71,10 @@ sudo systemctl restart containerd
 
 
 # Fix docker
-sudo echo "
+sudo echo '
 {
-    'exec-opts': ['native.cgroupdriver=systemd']
-}" > /etc/docker/daemon.json
+    "exec-opts": ["native.cgroupdriver=systemd"]
+}' > /etc/docker/daemon.json
 
 sudo systemctl daemon-reload
 sudo systemctl restart docker
