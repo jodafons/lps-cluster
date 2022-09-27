@@ -41,8 +41,8 @@ auto lo
 iface lo inet loopback
 
 # The primary network interface
-auto enp6s18
-iface enp6s18 inet static
+auto ens18
+iface ens18 inet static
   address 146.164.147.$IP
   netmask 255.255.255.0
   gateway 146.164.147.1
