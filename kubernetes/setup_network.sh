@@ -43,10 +43,11 @@ iface lo inet loopback
 # The primary network interface
 auto enp6s18
 iface enp6s18 inet static
-        address 146.164.147.$nodenumber/24
-        gateway 146.164.147.1
-        dns-nameservers 146.164.147.2 8.8.8.8 8.8.8.4
-"> /etc/network/interfaces
+  address 146.164.147.$IP
+  netmask 255.255.255.0
+  gateway 146.164.147.1
+  dns-nameservers 146.164.147.2 8.8.8.8 8.8.8.4
+" > /etc/network/interfaces
 
 #netplan apply
 systemctl restart networking
