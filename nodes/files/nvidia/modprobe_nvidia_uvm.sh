@@ -1,6 +1,10 @@
 #!/bin/bash
 
-
+if command -v nvidia-smi &> /dev/null
+then
+  echo "command nvidia-smi exist"
+  exit
+fi
 
 /sbin/modprobe nvidia
 

@@ -1,12 +1,10 @@
 - name: Reset SLUM nodes
-  hosts: caloba
+  hosts: caloba-gpus
   become: yes
   become_user: root
   tasks:
     - name: ping nvidia-smi in case of missiong /dev/nvidia0
-      shell: 
-        #"$ command -v nvidia-smi >/dev/null 2>&1 || { echo 'nvidia-smi not available on $HOSTNAME' >&2; exit 0; }"
-        source /mnt/market_place/nvidia/modprobe_nvidia_uvm.sh
+      script: /mnt/market_place/nvidia/modprobe_nvidia_uvm.sh
 
     - name: Reset all slurm node control
       service:
