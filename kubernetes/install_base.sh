@@ -81,7 +81,7 @@ sudo systemctl restart docker
 sudo systemctl restart kubelet
 
 
-reboot now
+#reboot now
 
 
 
