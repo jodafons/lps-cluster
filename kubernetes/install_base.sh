@@ -32,7 +32,10 @@ echo \
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
 apt-get update
-apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
+apt-get install -y docker.io #docker-ce docker-ce-cli docker-compose-plugin
+systemctl enable docker
+systemctl start docker
+
 groupadd docker
 gpasswd -a root docker
 gpasswd -a cluster docker
@@ -64,8 +67,8 @@ net.bridge.bridge-nf-call-iptables = 1
 net.ipv4.ip_forward = 1
 EOF
 sudo sysctl --system
-sudo rm /etc/containerd/config.toml
-sudo systemctl restart containerd
+#sudo rm /etc/containerd/config.toml
+#sudo systemctl restart containerd
 
 
 
