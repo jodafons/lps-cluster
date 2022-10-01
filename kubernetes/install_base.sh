@@ -1,8 +1,8 @@
 #
 # Install dependencies
 #
-apt install -y htop vim git sshpass ansible curl wget 
-
+sudo apt update
+sudo apt install -y vim git htop curl gnupg sshpass 
 
 #
 # Setup NFS
@@ -14,77 +14,19 @@ mkdir /mnt/kubernetes
 echo "10.1.1.202:/volume1/kubernetes /mnt/kubernetes nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0" >> /etc/fstab
 
 
-#
-# Install docker
-#
-apt-get install -y \
-    ca-certificates \
-    curl \
-    gnupg \
-    lsb-release
-
-mkdir -p /etc/apt/keyrings
-curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
 
 
-echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian \
-  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+echo 1 | sudo tee /proc/sys/net/ipv4/ip_forward
 
-apt-get update
-apt-get install -y docker.io #docker-ce docker-ce-cli docker-compose-plugin
-systemctl enable docker
-systemctl start docker
+cat <<EOF | sudo tee /etc/modules-load.d/k8s.conf
+br_netfilter
+EOF
 
-groupadd docker
-gpasswd -a root docker
-gpasswd -a cluster docker
-
-
-
-#
-# Install kubernetes
-#
-apt install -y gnupg2
-apt -y install curl apt-transport-https
-curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
-echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
-apt update
-apt -y install kubelet kubeadm kubectl
-apt-mark hold kubelet kubeadm kubectl
-
-
-#
-# Machines fixs
-#
-sudo swapoff -a
-sudo sed -i '/ swap / s/^/#/' /etc/fstab
-sudo modprobe overlay
-sudo modprobe br_netfilter
-sudo tee /etc/sysctl.d/kubernetes.conf<<EOF
+cat <<EOF | sudo tee /etc/sysctl.d/k8s.conf
 net.bridge.bridge-nf-call-ip6tables = 1
 net.bridge.bridge-nf-call-iptables = 1
-net.ipv4.ip_forward = 1
 EOF
+
 sudo sysctl --system
-#sudo rm /etc/containerd/config.toml
-#sudo systemctl restart containerd
-
-
-
-
-# Fix docker
-sudo echo '
-{
-    "exec-opts": ["native.cgroupdriver=systemd"]
-}' > /etc/docker/daemon.json
-
-sudo systemctl daemon-reload
-sudo systemctl restart docker
-sudo systemctl restart kubelet
-
-
-#reboot now
-
 
 
