@@ -3,7 +3,7 @@
 ;
 $TTL  7200
 @ IN  SOA ns.lps.ufrj.br. netadmin.lps.ufrj.br. (
-          2022092400  ; Serial
+          2022092600  ; Serial
           7200        ; Refresh (2h)
           3600        ; Retry (1h)
           31536000    ; Expire (1y)
@@ -20,10 +20,11 @@ $TTL  7200
 3   IN  PTR auth-server.lps.ufrj.br.
 4   IN  PTR slurm-server.lps.ufrj.br.
 5   IN  PTR login-server.lps.ufrj.br.
+6   IN  PTR vpn-server.lps.ufrj.br.
 
 
 ; kubernetes clustes
-31    IN  PTR kube-server.lps.ufrj.br.
+31    IN  PTR kube-master.lps.ufrj.br.
 32    IN  PTR kube-node01.lps.ufrj.br.
 33    IN  PTR kube-node02.lps.ufrj.br.
 
