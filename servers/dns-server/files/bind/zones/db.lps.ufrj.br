@@ -80,7 +80,7 @@ kube-master              IN    A     146.164.147.31  ; rancher server
 kube-node01              IN    A     146.164.147.32  ; rancher server
 kube-node02              IN    A     146.164.147.33  ; rancher server
 
-test              IN    CNAME     kube-master.lps.ufrj.br.
+rancher                  IN   CNAME  kube-master.lps.ufrj.br.
 
 
 
@@ -98,6 +98,7 @@ service1          IN    A         146.164.147.11
 service2          IN    A         146.164.147.22
 auth              IN    A         146.164.147.13
 login             IN    A         146.164.147.14
+
 ;k3s               IN    A         146.164.147.20
 ;test              IN    CNAME     k3s.lps.ufrj.br.
 ;k3s-master        IN    A         146.164.147.23
@@ -113,7 +114,7 @@ login             IN    A         146.164.147.14
 www               IN    CNAME     service.lps.ufrj.br.
 paf               IN    CNAME     service.lps.ufrj.br.
 virtuais          IN    CNAME     service.lps.ufrj.br.
-rancher           IN    CNAME     service.lps.ufrj.br.
+;rancher           IN    CNAME     service.lps.ufrj.br.
 db                IN    CNAME     service.lps.ufrj.br.
 wiki              IN    CNAME     service.lps.ufrj.br.
 gitlab            IN    CNAME     service.lps.ufrj.br.
