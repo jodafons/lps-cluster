@@ -80,6 +80,9 @@ kube-master              IN    A     146.164.147.31  ; rancher server
 kube-node01              IN    A     146.164.147.32  ; rancher server
 kube-node02              IN    A     146.164.147.33  ; rancher server
 
+test              IN    CNAME     kube-master.lps.ufrj.br.
+
+
 
 ; proxmox servers
 service01                   IN    A     146.164.147.101 ; service virtualization (LPS base services)
@@ -95,11 +98,11 @@ service1          IN    A         146.164.147.11
 service2          IN    A         146.164.147.22
 auth              IN    A         146.164.147.13
 login             IN    A         146.164.147.14
-k3s               IN    A         146.164.147.20
-test              IN    CNAME     k3s.lps.ufrj.br.
-k3s-master        IN    A         146.164.147.23
-k3s-node01        IN    A         146.164.147.24
-k3s-node02        IN    A         146.164.147.25
+;k3s               IN    A         146.164.147.20
+;test              IN    CNAME     k3s.lps.ufrj.br.
+;k3s-master        IN    A         146.164.147.23
+;k3s-node01        IN    A         146.164.147.24
+;k3s-node02        IN    A         146.164.147.25
 
 
 
