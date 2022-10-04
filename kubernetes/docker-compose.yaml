@@ -15,3 +15,12 @@ services:
     environment:
       - VIRTUAL_HOST=whoami.local
       - VIRTUAL_PORT=8000
+
+  game:
+    image: alexwhen/docker-2048
+    expose:
+      - "80"
+    environment:
+      - VIRTUAL_HOST=2048.lps.ufrj.br
+      - VIRTUAL_PORT=80
+  
