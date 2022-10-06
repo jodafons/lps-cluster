@@ -2,4 +2,4 @@
 MASTERNODE_TOKEN=$1
 MASTERNODE_IP=146.164.147.31
 
-curl -sfL https://get.k3s.io | K3S_URL=https://$MASTERNODE_IP:6443 K3S_TOKEN=$MASTERNODE_TOKEN sh -
+curl -sfL https://get.k3s.io | K3S_URL=https://$MASTERNODE_IP:6443 K3S_TOKEN=$MASTERNODE_TOKEN sh - --docker

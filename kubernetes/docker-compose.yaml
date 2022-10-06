@@ -1,0 +1,45 @@
+version: '3.3'
+
+services: 
+  web:
+    image: nginx:1.14.2-alpine
+    restart: always
+    volumes:
+      - /home/cluster/volumes/public_html:/public_html
+      - /home/cluster/volumes/conf.d:/etc/nginx/conf.d/
+      - /home/cluster/volumes/dhparam:/etc/nginx/dhparam
+      - /home/cluster/volumes/certbot/conf/:/etc/nginx/ssl/
+      - /home/cluster/volumes/certbot/data:/usr/share/nginx/html/letsencrypt
+    ports:
+      - 80:80
+      - 443:443
+  
+    certbot:
+        image: certbot/certbot:latest
+        command: certonly --webroot --webroot-path=/usr/share/nginx/html/letsencrypt --email rio@dimasrio.com --agree-tos --no-eff-email -d centz.dimasrio.com
+        volumes:
+            - /home/cluster/volumes/certbot/conf/:/etc/letsencrypt
+            - /home/cluster/volumes/certbot/logs/:/var/log/letsencrypt
+            - /home/cluster/volumes/certbot/data:/usr/share/nginx/html/letsencrypt
+
+
+    db:
+        image: postgres:13.0
+        environment:
+            - POSTGRES_DB=postgres
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=R2E)5Dqd5ixizrU>+[mR
+        volumes:
+            - /home/cluster/volumes/postgres:/var/lib/postgresql/data
+    web:
+        image: tbbrics/dorothy-report-web:1.5.1
+        command: ./run_server.sh
+        ports:
+            - "80:80"
+        volumes:
+            - /home/cluster/volumes/images:/imagesrep
+        environment:
+            PRODUCTION: 'true'
+            IMAGE_SERVICE_HOST: 'https://dorothy-server.lps.ufrj.br'
+        depends_on:
+            - db
