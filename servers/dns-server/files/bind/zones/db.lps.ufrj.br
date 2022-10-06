@@ -3,11 +3,11 @@
 ;
 $TTL      7200
 @     IN   SOA       ns.lps.ufrj.br. netadmin.lps.ufrj.br. (
-           2022100300   ; Serial (YOU NEED TO CHANGE THIS EVERY UPDATE)
-           7200         ; Refresh (2h)
-           3600         ; Retry (1h)
-           31536000     ; Expire (1y)
-           10800 )      ; Negative Cache TTL
+           2022100601    ; Serial (YOU NEED TO CHANGE THIS EVERY UPDATE)
+           7200          ; Refresh (2h)
+           3600          ; Retry (1h)
+           31536000      ; Expire (1y)
+           10800 )       ; Negative Cache TTL
 ;
 ; Basic NS configuration
 ;
@@ -41,7 +41,7 @@ calendar    4w     IN    CNAME     ghs.googlehosted.com.
 ;
 ; Default IP
 ;
-@     IN    A     146.164.147.10
+@     IN    A     146.164.147.30
 
 
 
@@ -75,18 +75,28 @@ vpn-server                  IN    A     146.164.147.6   ; openvpn
 
 
 
+
+; nginx proxy interface
+proxy-server             IN    A     146.164.147.29  ;
+; docker services
+service-node01           IN    A     146.164.147.30  ;
+docker			 IN    CNAME service-node01.lps.ufrj.br.
+www			 IN    CNAME docker.lps.ufrj.br.
+dorothy			 IN    CNAME docker.lps.ufrj.br.
+dorothy-image		 IN    CNAME docker.lps.ufrj.br.
 ; kubernetes clustes
 kube-master              IN    A     146.164.147.31  ; rancher server
 kube-node01              IN    A     146.164.147.32  ; rancher server
-kube-node02              IN    A     146.164.147.33  ; rancher server
-
-rancher                  IN   CNAME  kube-master.lps.ufrj.br.
+;kube-node02              IN    A     146.164.147.33  ; rancher server
 
 
 
 ; proxmox servers
 service01                   IN    A     146.164.147.101 ; service virtualization (LPS base services)
 service02                   IN    A     146.164.147.102 ; service virtualization (external services)
+
+
+
 
 
 ;
@@ -111,18 +121,15 @@ login             IN    A         146.164.147.14
 ;
 ; Web services
 ;
-www               IN    CNAME     service.lps.ufrj.br.
 paf               IN    CNAME     service.lps.ufrj.br.
 virtuais          IN    CNAME     service.lps.ufrj.br.
-;rancher           IN    CNAME     service.lps.ufrj.br.
+rancher           IN    CNAME     service.lps.ufrj.br.
 db                IN    CNAME     service.lps.ufrj.br.
 wiki              IN    CNAME     service.lps.ufrj.br.
 gitlab            IN    CNAME     service.lps.ufrj.br.
 ;registry         IN    CNAME     service.lps.ufrj.br.
 minio             IN    CNAME     service.lps.ufrj.br.
 zabbix            IN    CNAME     service.lps.ufrj.br.
-dorothy           IN    CNAME     service.lps.ufrj.br.
-dorothy-image     IN    CNAME     service.lps.ufrj.br.
 dorothy-ds        IN    CNAME     service.lps.ufrj.br.
 cocalc            IN    CNAME     service.lps.ufrj.br.
 ;rabbitmq         IN    CNAME     service.lps.ufrj.br.
