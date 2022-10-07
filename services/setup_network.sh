@@ -1,6 +1,6 @@
 
 hostname=$1
-nodenumber=$2
+IP=$2
 
 
 #
