@@ -1,0 +1,14 @@
+version: "3"
+services:
+  www:
+    image: "gabrielmilan/www-lps:main-4.0"
+    volumes:
+      - /mnt/homes:/home
+    networks:
+      - npm
+    restart: unless-stopped
+    container_name: www
+networks:
+  npm:
+    name: npm
+    external: true
