@@ -4,11 +4,30 @@ services:
     image: "gabrielmilan/www-lps:main-4.0"
     volumes:
       - /mnt/homes:/home
-    networks:
-      - npm
+    ports:
+      - "80:80"
     restart: unless-stopped
     container_name: www
-networks:
-  npm:
-    name: npm
-    external: true
+
+
+
+  paf:
+    image: "gabrielmilan/www-lps:paf-4.0"
+    ports:
+      - "81:80"
+    restart: unless-stopped
+    container_name: paf
+
+
+  virtuais:
+    image: "gabrielmilan/www-lps:virtuais-4.0"
+    volumes:
+      - /mnt/homes:/home
+    ports:
+      - "82:80"
+    restart: unless-stopped
+    container_name: virtuais
+
+
+
+
