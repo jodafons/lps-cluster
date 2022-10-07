@@ -3,7 +3,7 @@
 ;
 $TTL  7200
 @ IN  SOA ns.lps.ufrj.br. netadmin.lps.ufrj.br. (
-          2022100700  ; Serial
+          2022100703  ; Serial
           7200        ; Refresh (2h)
           3600        ; Retry (1h)
           31536000    ; Expire (1y)
@@ -27,14 +27,16 @@ $TTL  7200
 ; nginx proxy interface
 40    IN  PTR proxy-server.lps.ufrj.br.
 41    IN  PTR jenkins-server.lps.ufrj.br.
+42    IN  PTR www-server.lps.ufrj.br.
+43    IN  PTR dorothy-server.lps.ufrj.br.
 
 
 
 ; docker services inside of service02
-30    IN  PTR service-node01.lps.ufrj.br.
+; 30    IN  PTR service-node01.lps.ufrj.br.
 ; kubernetes clustes
-31    IN  PTR kube-master.lps.ufrj.br.
-32    IN  PTR kube-node01.lps.ufrj.br.
+; 31    IN  PTR kube-master.lps.ufrj.br.
+; 32    IN  PTR kube-node01.lps.ufrj.br.
 
 
 

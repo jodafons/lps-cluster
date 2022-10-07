@@ -3,7 +3,7 @@
 ;
 $TTL      7200
 @     IN   SOA       ns.lps.ufrj.br. netadmin.lps.ufrj.br. (
-           2022100700    ; Serial (YOU NEED TO CHANGE THIS EVERY UPDATE)
+           2022100703    ; Serial (YOU NEED TO CHANGE THIS EVERY UPDATE)
            7200          ; Refresh (2h)
            3600          ; Retry (1h)
            31536000      ; Expire (1y)
@@ -41,7 +41,7 @@ calendar    4w     IN    CNAME     ghs.googlehosted.com.
 ;
 ; Default IP
 ;
-@     IN    A     146.164.147.30
+@     IN    A     146.164.147.40
 
 
 
@@ -67,35 +67,6 @@ net                         IN    A     146.164.147.0
 gw                          IN    A     146.164.147.1 ; microtick, gateway
 ns                          IN    A     146.164.147.2 ; dns service
 
-; hosted into service 01
-auth-server                 IN    A     146.164.147.3   ; kerberos and ldap
-slurm-server                IN    A     146.164.147.4   ; slurm frontend
-login-server                IN    A     146.164.147.5   ; login
-vpn-server                  IN    A     146.164.147.6   ; openvpn
-
-
-
-
-; hosted into service02
-proxy-server                IN    A     146.164.147.40  ; nginx proxy server
-jenkins-server              IN    A     146.164.147.41  ; jenkins ci/cd server
-
-proxy                       IN    CNAME proxy-server.lps.ufrj.br
-jenkins                     IN    CNAME proxy
-
-
-
-; docker services
-service-node01           IN    A     146.164.147.30  ;
-docker			 IN    CNAME service-node01.lps.ufrj.br.
-www			 IN    CNAME docker.lps.ufrj.br.
-dorothy			 IN    CNAME docker.lps.ufrj.br.
-dorothy-image		 IN    CNAME docker.lps.ufrj.br.
-; kubernetes clustes
-kube-master              IN    A     146.164.147.31  ; rancher server
-kube-node01              IN    A     146.164.147.32  ; rancher server
-;kube-node02              IN    A     146.164.147.33  ; rancher server
-
 
 
 ; proxmox servers
@@ -105,6 +76,32 @@ service02                   IN    A     146.164.147.102 ; service virtualization
 
 
 
+; hosted into service 01
+auth-server                 IN    A     146.164.147.3   ; kerberos and ldap
+slurm-server                IN    A     146.164.147.4   ; slurm frontend
+login-server                IN    A     146.164.147.5   ; login
+vpn-server                  IN    A     146.164.147.6   ; openvpn
+
+
+; hosted into service02
+proxy-server                IN    A     146.164.147.40  ; nginx proxy server
+jenkins-server              IN    A     146.164.147.41  ; jenkins ci/cd server
+www-server                  IN    A     146.164.147.42  ; sites
+dorothy-server              IN    A     146.164.147.43  ; brics server 
+
+jenkins                     IN    CNAME proxy-server.lps.ufrj.br.
+www                         IN    CNAME proxy-server.lps.ufrj.br.
+paf                         IN    CNAME proxy-server.lps.ufrj.br.
+virtuais                    IN    CNAME proxy-server.lps.ufrj.br.
+dorothy                     IN    CNAME proxy-server.lps.ufrj.br.
+dorothy-image               IN    CNAME proxy-server.lps.ufrj.br.
+
+
+
+; kubernetes clustes
+kube-master              IN    A     146.164.147.31  ; rancher server
+kube-node01              IN    A     146.164.147.32  ; rancher server
+
 
 ;
 ; Basic services (legacy stuff)
@@ -112,37 +109,13 @@ service02                   IN    A     146.164.147.102 ; service virtualization
 xenserver         IN    A         146.164.147.9
 service           IN    A         146.164.147.10
 service1          IN    A         146.164.147.11
-service2          IN    A         146.164.147.22
 auth              IN    A         146.164.147.13
 login             IN    A         146.164.147.14
 
-;k3s               IN    A         146.164.147.20
-;test              IN    CNAME     k3s.lps.ufrj.br.
-;k3s-master        IN    A         146.164.147.23
-;k3s-node01        IN    A         146.164.147.24
-;k3s-node02        IN    A         146.164.147.25
 
 
 
 
-;
-; Web services
-;
-paf               IN    CNAME     service.lps.ufrj.br.
-virtuais          IN    CNAME     service.lps.ufrj.br.
-rancher           IN    CNAME     service.lps.ufrj.br.
-db                IN    CNAME     service.lps.ufrj.br.
-wiki              IN    CNAME     service.lps.ufrj.br.
-gitlab            IN    CNAME     service.lps.ufrj.br.
-;registry         IN    CNAME     service.lps.ufrj.br.
-minio             IN    CNAME     service.lps.ufrj.br.
-zabbix            IN    CNAME     service.lps.ufrj.br.
-dorothy-ds        IN    CNAME     service.lps.ufrj.br.
-cocalc            IN    CNAME     service.lps.ufrj.br.
-;rabbitmq         IN    CNAME     service.lps.ufrj.br.
-sandbox           IN    CNAME     service.lps.ufrj.br.
-apollo            IN    CNAME     service.lps.ufrj.br.
-prefect           IN    CNAME     service.lps.ufrj.br.
 
 ;
 ; Stations with Fixed IP (100-234)
