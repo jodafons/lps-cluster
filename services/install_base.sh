@@ -71,8 +71,6 @@ curl -fsSL https://download.opensuse.org/repositories/shells:fish:release:3/Debi
 sudo apt update
 sudo apt install -y fish
 which fish
-
-
 echo 'fish' >> /home/cluster/.bashrc
 
 reboot now
