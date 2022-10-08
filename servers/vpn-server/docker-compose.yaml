@@ -9,4 +9,4 @@ services:
      - "3000:1194/udp"
     restart: always
     volumes:
-     - $HOME/openvpn-data/conf:/etc/openvpn
+     - /mnt/market_place/volumes/openvpn:/etc/openvpn
