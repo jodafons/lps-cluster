@@ -13,10 +13,8 @@ services:
       DB_MYSQL_PASSWORD: "56X0wr6eElDLvNlc"
       DB_MYSQL_NAME: "nginxproxymanger"
     volumes:
-      - ./data:/data
-      - ./letsencrypt:/etc/letsencrypt
-    networks:
-      - npm
+      - /mnt/market_place/volumes/proxy/data:/data
+      - /mnt/market_place/volumes/proxy/letsencrypt:/etc/letsencrypt
     restart: unless-stopped
   db:
     image: "jc21/mariadb-aria:latest"
@@ -26,12 +24,6 @@ services:
       MYSQL_USER: "nginxproxymanger"
       MYSQL_PASSWORD: "56X0wr6eElDLvNlc"
     volumes:
-      - ./data/mysql:/var/lib/mysql
-    networks:
-      - npm
+      - /mnt/market_place/volumes/proxy/data/mysql:/var/lib/mysql
     restart: unless-stopped
-networks:
-  npm:
-    name: npm
-    driver: bridge
 
