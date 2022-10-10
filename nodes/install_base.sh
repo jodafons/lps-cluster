@@ -59,6 +59,19 @@ echo "kernel.panic=10     ;tells the kernel to reboot ten seconds after panickin
 
 
 
+
+
+
+#
+# Install pyenv
+#
+curl https://pyenv.run | bash
+echo ''
+echo '# setup pyenv' >> /etc/bash.bashrc
+echo 'export PATH="$HOME/.pyenv/bin:$PATH"' >> /etc/bash.bashrc
+echo 'eval "$(pyenv init --path)"' >> /etc/bash.bashrc
+
+
 #
 # Install fish
 #
@@ -67,11 +80,9 @@ curl -fsSL https://download.opensuse.org/repositories/shells:fish:release:3/Debi
 sudo apt update
 sudo apt install -y fish
 which fish
-echo 'fish' >> /home/cluster/.bashrc
-
-
-
-
+echo '' >> /etc/bash.bashrc
+echo '# setup fish' >> /etc/bash.bashrc
+echo 'fish' >> /etc/bash.bashrc
 
 
 reboot now
