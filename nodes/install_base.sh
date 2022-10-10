@@ -57,4 +57,21 @@ apt install -y python3-virtualenv htop vim curl wget git sshpass
 echo "vm.panic_on_oom=1   ;enables panic on OOM">>/etc/sysctl.conf
 echo "kernel.panic=10     ;tells the kernel to reboot ten seconds after panicking">>/etc/sysctl.conf
 
+
+
+#
+# Install fish
+#
+echo 'deb http://download.opensuse.org/repositories/shells:/fish:/release:/3/Debian_11/ /' | sudo tee /etc/apt/sources.list.d/shells:fish:release:3.list
+curl -fsSL https://download.opensuse.org/repositories/shells:fish:release:3/Debian_11/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/shells_fish_release_3.gpg > /dev/null
+sudo apt update
+sudo apt install -y fish
+which fish
+echo 'fish' >> /home/cluster/.bashrc
+
+
+
+
+
+
 reboot now
