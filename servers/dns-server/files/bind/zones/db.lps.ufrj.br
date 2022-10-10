@@ -3,7 +3,7 @@
 ;
 $TTL      7200
 @     IN   SOA       ns.lps.ufrj.br. netadmin.lps.ufrj.br. (
-           2022100703    ; Serial (YOU NEED TO CHANGE THIS EVERY UPDATE)
+           2022101000    ; Serial (YOU NEED TO CHANGE THIS EVERY UPDATE)
            7200          ; Refresh (2h)
            3600          ; Retry (1h)
            31536000      ; Expire (1y)
@@ -176,17 +176,11 @@ caloba1       IN      A     10.1.1.11
 ; GPU machines (31-60)
 ;
 caloba21      IN      A     10.1.1.31
-caloba22      IN      A     10.1.1.32
 caloba23      IN      A     10.1.1.33
 caloba24      IN      A     10.1.1.34
 caloba25      IN      A     10.1.1.35
-
-;
-; CPU machines (61-110)
-;
-;caloba51      IN      A     10.1.1.61
-caloba52      IN      A     10.1.1.62
 caloba53      IN      A     10.1.1.63
+
 
 
 ;
@@ -196,12 +190,18 @@ caloba53      IN      A     10.1.1.63
 ; CPU small
 caloba12        IN      A     10.1.1.12
 caloba13        IN      A     10.1.1.13
+caloba14        IN      A     10.1.1.14
+caloba15        IN      A     10.1.1.15
+caloba16        IN      A     10.1.1.16
+caloba17        IN      A     10.1.1.17
+
+
 
 ; CPU large
 caloba51        IN      A     10.1.1.51
-;caloba52        IN      A     10.1.1.52
-;caloba53        IN      A     10.1.1.53
-caloba54        IN      A     10.1.1.54
+caloba52        IN      A     10.1.1.52
+
+
 
 ; GPU
 caloba71        IN      A     10.1.1.71
@@ -210,6 +210,12 @@ caloba73        IN      A     10.1.1.73
 caloba74        IN      A     10.1.1.74
 caloba75        IN      A     10.1.1.75
 caloba76        IN      A     10.1.1.76
+caloba77        IN      A     10.1.1.77
+caloba78        IN      A     10.1.1.78
+caloba79        IN      A     10.1.1.79
+caloba80        IN      A     10.1.1.80
+caloba81        IN      A     10.1.1.81
+caloba82        IN      A     10.1.1.82
 
 ; GPU large
 caloba91        IN      A     10.1.1.91
@@ -238,7 +244,8 @@ caloba-v11      IN      A     10.1.1.111
 caloba-v12      IN      A     10.1.1.112
 caloba-v13      IN      A     10.1.1.113
 caloba-v14      IN      A     10.1.1.114
-caloba-v14      IN      A     10.1.1.115
+caloba-v15      IN      A     10.1.1.115
+caloba-v16      IN      A     10.1.1.116
 
 
 
@@ -249,4 +256,4 @@ seixas1       IN    A     10.1.1.201
 storage01     IN    A     10.1.1.202
 storage02     IN    A     10.1.1.203
 storage03     IN    A     10.1.1.204
-storage01     IN    A     10.1.1.205
+storage04     IN    A     10.1.1.205
