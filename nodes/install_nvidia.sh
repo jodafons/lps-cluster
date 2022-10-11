@@ -87,6 +87,6 @@ echo ""
 #cp files/modules/cuda/11.7 /etc/modulefiles/cuda
 #cp files/modules/cudnn/8.2.2 /etc/modulefiles/cudnn
 
-# run twise to be sure 
-source /mnt/market_place/nvidia/modprobe_nvidia_uvm.sh
-#source /mnt/market_place/nvidia/modprobe_nvidia_uvm.sh
+
+cp files/nvidia /etc/init.d
+update-rc.d nvidia defaults
