@@ -94,3 +94,6 @@ echo ""
 cp files/nvidia /etc/init.d
 chmod 775 /etc/init.d/nvidia
 update-rc.d nvidia defaults
+
+sudo reboot now
+
