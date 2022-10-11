@@ -4,7 +4,7 @@
 # Fix kernel
 #
 apt install -y linux-headers-$(uname -r)
-apt install -y nvidia-modprobe
+
 
 # set binary path inside of the clusterdd
 NVIDIA_DIR=/mnt/market_place/nvidia
@@ -12,10 +12,14 @@ NVIDIA_DIR=/mnt/market_place/nvidia
 
 
 apt install -y gnupg2
+#sudo apt-key adv --fetch-keys  http://developer.download.nvidia.com/compute/cuda/repos/debian11/x86_64/3bf863cc.pub
 sudo apt-key adv --fetch-keys  http://developer.download.nvidia.com/compute/cuda/repos/debian10/x86_64/3bf863cc.pub
+#sudo bash -c 'echo "deb http://developer.download.nvidia.com/compute/cuda/repos/debian11/x86_64 /" > /etc/apt/sources.list.d/cuda.list'
 sudo bash -c 'echo "deb http://developer.download.nvidia.com/compute/cuda/repos/debian10/x86_64 /" > /etc/apt/sources.list.d/cuda.list'
+
 sudo apt update
 
+apt install -y nvidia-modprobe
 echo ""
 echo "Starting by installing NVIDIA drivers..."
 echo ""
@@ -38,6 +42,7 @@ echo ""
 #sudo apt install -y cuda-toolkit-11-1
 #sudo apt install -y cuda-toolkit-11-2
 #sudo apt install -y cuda-toolkit-11-3
+#sudo apt install -y cuda-toolkit-11-7
 sudo apt install -y cuda-toolkit-11-4
 
 echo ""
@@ -64,8 +69,11 @@ echo ""
 
 
 cp -r /mnt/market_place/nvidia/deps/cudnn-8.2.2/ /usr/local/
+#cp $NVIDIA_DIR/deps/cudnn-8.2.2/cuda/include/cudnn* /usr/local/cuda-11.7/include
 cp $NVIDIA_DIR/deps/cudnn-8.2.2/cuda/include/cudnn* /usr/local/cuda-11.4/include
+#cp $NVIDIA_DIR/deps/cudnn-8.2.2/cuda/lib64/libcudnn* /usr/local/cuda-11.7/lib64
 cp $NVIDIA_DIR/deps/cudnn-8.2.2/cuda/lib64/libcudnn* /usr/local/cuda-11.4/lib64
+#sudo chmod a+r /usr/local/cuda-11.7/include/cudnn* /usr/local/cuda-11.7/lib64/libcudnn*
 sudo chmod a+r /usr/local/cuda-11.4/include/cudnn* /usr/local/cuda-11.4/lib64/libcudnn*
 
 
@@ -78,8 +86,8 @@ echo ""
 # setup modules
 mkdir /etc/modulefiles/cuda
 mkdir /etc/modulefiles/cudnn
-cp files/modules/cuda/11.4 /etc/modulefiles/cuda
-cp files/modules/cudnn/8.2.2 /etc/modulefiles/cudnn
+#cp files/modules/cuda/11.7 /etc/modulefiles/cuda
+#cp files/modules/cudnn/8.2.2 /etc/modulefiles/cudnn
 
 # run twise to be sure 
 source /mnt/market_place/nvidia/modprobe_nvidia_uvm.sh

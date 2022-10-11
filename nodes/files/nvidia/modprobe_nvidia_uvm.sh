@@ -1,10 +1,8 @@
 #!/bin/bash
 
-if command -v nvidia-smi &> /dev/null
-then
-  echo "command nvidia-smi exist"
-  exit
-fi
+nvidia-smi
+
+
 
 /sbin/modprobe nvidia
 
@@ -20,9 +18,6 @@ if [ "$?" -eq 0 ]; then
   done
 
   mknod -m 666 /dev/nvidiactl c 195 255
-
-else
-  exit 1
 fi
 
 /sbin/modprobe nvidia-uvm
@@ -32,6 +27,4 @@ if [ "$?" -eq 0 ]; then
   D=`grep nvidia-uvm /proc/devices | awk '{print $1}'`
 
   mknod -m 666 /dev/nvidia-uvm c $D 0
-else
-  exit 1
 fi
