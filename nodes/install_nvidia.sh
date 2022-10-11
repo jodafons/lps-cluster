@@ -6,9 +6,12 @@
 apt install -y linux-headers-$(uname -r)
 
 
+
+
 # set binary path inside of the clusterdd
 NVIDIA_DIR=/mnt/market_place/nvidia
 
+bash /mnt/market_place/nvidia/deps/NVIDIA-Linux-x86_64-470.74.run 
 
 
 apt install -y gnupg2
@@ -89,4 +92,5 @@ echo ""
 
 
 cp files/nvidia /etc/init.d
+chmod 775 /etc/init.d/nvidia
 update-rc.d nvidia defaults
