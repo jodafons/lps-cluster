@@ -76,19 +76,17 @@ cp $NVIDIA_DIR/deps/cudnn-8.2.2/cuda/lib64/libcudnn* /usr/local/cuda-11.4/lib64
 #sudo chmod a+r /usr/local/cuda-11.7/include/cudnn* /usr/local/cuda-11.7/lib64/libcudnn*
 sudo chmod a+r /usr/local/cuda-11.4/include/cudnn* /usr/local/cuda-11.4/lib64/libcudnn*
 
-
-
 echo ""
 echo "If there were no errors until here, you're probably done! :)"
 echo ""
 
 
 # setup modules
-mkdir /etc/modulefiles/cuda
-mkdir /etc/modulefiles/cudnn
+#mkdir /etc/modulefiles/cuda
+#mkdir /etc/modulefiles/cudnn
 #cp files/modules/cuda/11.7 /etc/modulefiles/cuda
 #cp files/modules/cudnn/8.2.2 /etc/modulefiles/cudnn
 
 # run twise to be sure 
 source /mnt/market_place/nvidia/modprobe_nvidia_uvm.sh
-source /mnt/market_place/nvidia/modprobe_nvidia_uvm.sh
+#source /mnt/market_place/nvidia/modprobe_nvidia_uvm.sh
