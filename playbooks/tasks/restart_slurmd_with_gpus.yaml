@@ -3,8 +3,8 @@
   become: yes
   become_user: root
   tasks:
-    - name: ping nvidia-smi in case of missiong /dev/nvidia0
-      script: /mnt/market_place/nvidia/modprobe_nvidia_uvm.sh
+    #- name: ping nvidia-smi in case of missiong /dev/nvidia0
+    #  script: /mnt/market_place/nvidia/modprobe_nvidia_uvm.sh
 
     - name: Reset all slurm node control
       service:
