@@ -1,0 +1,13 @@
+version: "3"
+services:
+  slurmweb:
+    image: "kaczmarj/slurm-web:latest"
+    ports:
+      - "90:80"
+    restart: unless-stopped
+    container_name: slurmweb
+
+
+
+
+
