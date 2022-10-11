@@ -6,4 +6,4 @@ sudo systemctl start slurmdbd
 sudo systemctl enable slurmctld
 sudo systemctl start slurmctld
 ansible-playbook -i hosts tasks/restart_slurmd.yaml
-ansible-playbook -i hosts tasks/restart_slurmd_with_gpus.yaml
+#ansible-playbook -i hosts tasks/restart_slurmd_with_gpus.yaml

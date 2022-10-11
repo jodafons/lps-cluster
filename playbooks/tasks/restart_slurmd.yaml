@@ -1,5 +1,5 @@
 - name: Reset SLUM nodes
-  hosts: caloba-cpus
+  hosts: all
   become: yes
   become_user: root
   tasks:
