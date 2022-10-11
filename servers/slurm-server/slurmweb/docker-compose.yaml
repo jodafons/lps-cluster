@@ -1,11 +1,18 @@
 version: "3"
 services:
   slurmweb:
-    image: "kaczmarj/slurm-web:latest"
+    image: "slurm-web"
     ports:
-      - "90:80"
+      - "80:80"
     restart: unless-stopped
     container_name: slurmweb
+    volumes:
+      - /etc/munge:/etc/munge
+      - /etc/slurm:/etc/slurm-llnl
+      - /etc/passwd:/etc/passwd
+      - /etc/group:/etc/group
+      - $PWD/conf:/etc/slurm-web
+
 
 
 
