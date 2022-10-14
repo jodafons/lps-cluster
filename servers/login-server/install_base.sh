@@ -6,6 +6,15 @@ echo "vm.panic_on_oom=1   ;enables panic on OOM">>/etc/sysctl.conf
 echo "kernel.panic=10     ;tells the kernel to reboot ten seconds after panicking">>/etc/sysctl.conf
 
 
+#
+# Append market_place into the mount
+#
+apt install -y nfs-common
+mkdir /mnt/market_place
+echo "10.1.1.202:/volume1/market_place /mnt/market_place nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0" >> /etc/fstab
+
+
+
 # install kerberos
 apt install -y krb5-config krb5-user
 apt install -y libpam-krb5
