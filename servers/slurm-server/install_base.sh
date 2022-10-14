@@ -8,6 +8,22 @@ echo "vm.panic_on_oom=1   ;enables panic on OOM">>/etc/sysctl.conf
 echo "kernel.panic=10     ;tells the kernel to reboot ten seconds after panicking">>/etc/sysctl.conf
 
 
+# install others
+apt install -y htop vim sshpass ansible
+
+
+#
+# Append market_place into the mount
+#
+
+apt install -y nfs-common
+mkdir /mnt/market_place
+echo "10.1.1.202:/volume1/market_place /mnt/market_place nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0" >> /etc/fstab
+#echo "10.1.1.202:/volume1/homes /mnt/home nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0" >> /etc/fstab
+
+
+
+
 # install LDAP
 apt install -y libnss-ldap
 apt install -y libnss-ldapd
@@ -18,7 +34,6 @@ echo "session required pam_mkhomedir.so skel=/etc/skel/ umask=022" >> /etc/pam.d
 
 
 # Configure home folder
-echo "10.1.1.202:/volume1/homes /mnt/home nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0" >> /etc/fstab
 mkdir /etc/pam_scripts
 chmod -R 700 /etc/pam_scripts
 chown -R root:root /etc/pam_scripts
@@ -34,8 +49,6 @@ timedatectl status
 
 
 
-# install others
-apt install -y htop vim sshpass ansible
 mkdir /etc/ansible
 
 
