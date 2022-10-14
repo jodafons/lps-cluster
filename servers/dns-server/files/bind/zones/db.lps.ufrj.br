@@ -85,9 +85,9 @@ vpn-server                  IN    A     146.164.147.6   ; openvpn
 
 ; hosted into service02
 proxy-server                IN    A     146.164.147.40  ; nginx proxy server
-jenkins-server              IN    A     146.164.147.41  ; jenkins ci/cd server
-www-server                  IN    A     146.164.147.42  ; sites
-dorothy-server              IN    A     146.164.147.43  ; brics server 
+;jenkins-server              IN    A     146.164.147.41  ; jenkins ci/cd server
+www-server                  IN    A     146.164.147.41  ; sites
+dorothy-server              IN    A     146.164.147.42  ; brics server 
 
 jenkins                     IN    CNAME proxy-server.lps.ufrj.br.
 www                         IN    CNAME proxy-server.lps.ufrj.br.
