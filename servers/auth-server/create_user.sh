@@ -1,2 +1,2 @@
 username=$1
-kadmin -q "ank -policy user -pw @$username -needchange $username " -w $MASTER_PASSWORD
+kadmin -q "ank -policy user -randkey -needchange $username " -w $MASTER_PASSWORD
