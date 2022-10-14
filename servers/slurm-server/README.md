@@ -43,8 +43,8 @@ session    required    pam_mkhomedir.so skel=/etc/skel/ umask=022
 To test LDAP, use this command and you shoul see some accounts inside of the LDAP server:
 
 ```
-q```
-
+getent passwd
+```
 
 ## Setting up mounts
 
@@ -116,6 +116,12 @@ systemctl stop mariadb
 systemctl disable mariadb
 systemctl enable mysql
 systemctl start mysql
+```
+
+We need to have the same copy of munge.key (located at /etc/munge/munge.key) for every node. In order to do that, copy it from host.cluster to every other machine. One way to do that is over into market_place
+
+```
+cp /etc/munge/munge.key /mnt/market_place/slurm_build
 ```
 
 Now we create the database for SLURM by opening a mysql shell running `mysql -u root`

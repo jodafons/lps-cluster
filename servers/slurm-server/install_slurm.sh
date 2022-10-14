@@ -15,6 +15,9 @@ set password for 'slurm'@'localhost' = password('slurmdbpass');grant usage on *.
 grant all privileges on slurm_acct_db.* to 'slurm'@'localhost';
 flush privileges;"
 
+cp /etc/munge/munge.key /mnt/market_place/slurm_build
+
+
 
 # install slurm
 dpkg -i /mnt/market_place/slurm_build/slurm-22.05.3/slurm-22.05.3_1.0_amd64.deb
