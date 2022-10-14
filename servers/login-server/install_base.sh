@@ -73,5 +73,6 @@ which fish
 echo 'fish' >> /home/cluster/.bashrc
 
 
+sudo reboot now
 
 
