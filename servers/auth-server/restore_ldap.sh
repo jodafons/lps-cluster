@@ -1,10 +1,5 @@
-if [ -n "$(ls -l /var/lib/ldap/* 2>/dev/null)" -o -n "$(ls -l /etc/ldap/slapd.d/* 2>/dev/null)" ]; then
-    echo Run the following to remove the existing db:
-    echo sudo systemctl stop slapd.service
-    echo sudo rm -rf /etc/ldap/slapd.d/* /var/lib/ldap/*
-    exit 1
-fi
-sudo systemctl stop slapd.service || :
+sudo rm -rf /etc/ldap/slapd.d/* /var/lib/ldap/*
+sudo systemctl stop slapd.service
 sudo slapadd -F /etc/ldap/slapd.d -b cn=config -l config.ldif
 sudo slapadd -F /etc/ldap/slapd.d -b dc=lps,dc=ufrj,dc=br -l lps.ufrj.br.ldif
 sudo chown -R openldap:openldap /etc/ldap/slapd.d/
