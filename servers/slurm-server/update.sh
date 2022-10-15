@@ -20,7 +20,4 @@ systemctl start slurmctld
 #systemctl status slurmctld
 scontrol reconfigure
 
-
-# force all nodes to restart
-ansible-playbook -i ../../playbooks/hosts ../../playbooks/tasks/restart_slurmd.yml
-
+source restart_slurmd.sh
