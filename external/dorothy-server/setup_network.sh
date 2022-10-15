@@ -36,9 +36,5 @@ search lps.ufrj.br' > /etc/resolvconf/resolv.conf.d/head
 service resolvconf restart
 
 
-
-# others
-apt install -y htop sshpass
-
 reboot now
 
