@@ -1,4 +1,8 @@
 
+
+apt install -y screen rsync
+
+
 #
 # Append market_place into the mount
 #
@@ -59,9 +63,6 @@ echo "kernel.panic=10     ;tells the kernel to reboot ten seconds after panickin
 
 
 
-
-
-
 #
 # Install pyenv
 #
@@ -71,18 +72,6 @@ echo '# setup pyenv' >> /etc/bash.bashrc
 echo 'export PATH="$HOME/.pyenv/bin:$PATH"' >> /etc/bash.bashrc
 echo 'eval "$(pyenv init --path)"' >> /etc/bash.bashrc
 
-
-#
-# Install fish
-#
-echo 'deb http://download.opensuse.org/repositories/shells:/fish:/release:/3/Debian_11/ /' | sudo tee /etc/apt/sources.list.d/shells:fish:release:3.list
-curl -fsSL https://download.opensuse.org/repositories/shells:fish:release:3/Debian_11/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/shells_fish_release_3.gpg > /dev/null
-sudo apt update
-sudo apt install -y fish
-which fish
-echo '' >> /etc/bash.bashrc
-echo '# setup fish' >> /etc/bash.bashrc
-echo 'fish' >> /etc/bash.bashrc
 
 
 reboot now
