@@ -3,7 +3,7 @@
 ;
 $TTL      7200
 @     IN   SOA       ns.lps.ufrj.br. netadmin.lps.ufrj.br. (
-           2022101000    ; Serial (YOU NEED TO CHANGE THIS EVERY UPDATE)
+           2022101500    ; Serial (YOU NEED TO CHANGE THIS EVERY UPDATE)
            7200          ; Refresh (2h)
            3600          ; Retry (1h)
            31536000      ; Expire (1y)
@@ -85,11 +85,9 @@ vpn-server                  IN    A     146.164.147.6   ; openvpn
 
 ; hosted into service02
 proxy-server                IN    A     146.164.147.40  ; nginx proxy server
-;jenkins-server              IN    A     146.164.147.41  ; jenkins ci/cd server
 www-server                  IN    A     146.164.147.41  ; sites
 dorothy-server              IN    A     146.164.147.42  ; brics server 
 
-jenkins                     IN    CNAME proxy-server.lps.ufrj.br.
 www                         IN    CNAME proxy-server.lps.ufrj.br.
 paf                         IN    CNAME proxy-server.lps.ufrj.br.
 virtuais                    IN    CNAME proxy-server.lps.ufrj.br.
@@ -98,9 +96,10 @@ dorothy-image               IN    CNAME proxy-server.lps.ufrj.br.
 
 
 
-; kubernetes clustes
-kube-master              IN    A     146.164.147.31  ; rancher server
-kube-node01              IN    A     146.164.147.32  ; rancher server
+; kubernetes clustes hosted in caloba-v16
+kaloba-master              IN    A     146.164.147.51  ; rancher server
+kaloba-node01              IN    A     146.164.147.52  ; rancher server
+kaloba-node02              IN    A     146.164.147.53  ; rancher server
 
 
 ;
