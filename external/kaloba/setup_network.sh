@@ -1,6 +1,6 @@
 
 hostname=$1
-nodenumber=$2
+ip=$2
 
 
 #
@@ -43,7 +43,8 @@ iface lo inet loopback
 # The primary network interface
 auto ens18
 iface ens18 inet static
-        address 146.164.147.$nodenumber/24
+        address 146.164.147.$ip
+        netmask 255.255.255.0
         gateway 146.164.147.1
         dns-nameservers 146.164.147.2 8.8.8.8 8.8.8.4
 "> /etc/network/interfaces
