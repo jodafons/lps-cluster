@@ -53,7 +53,7 @@ echo "session required pam_exec.so /etc/pam_scripts/login-logger.sh" >> /etc/pam
 
 
 # install others
-apt install -y htop sshpass
+apt install -y htop sshpass screen rsync
 
 
 # add main message
