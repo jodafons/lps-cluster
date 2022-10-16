@@ -3,7 +3,7 @@
 ;
 $TTL      7200
 @     IN   SOA       ns.lps.ufrj.br. netadmin.lps.ufrj.br. (
-           2022101600    ; Serial (YOU NEED TO CHANGE THIS EVERY UPDATE)
+           2022101601    ; Serial (YOU NEED TO CHANGE THIS EVERY UPDATE)
            7200          ; Refresh (2h)
            3600          ; Retry (1h)
            31536000      ; Expire (1y)
@@ -244,7 +244,7 @@ caloba-v16      IN      A     10.1.1.116
 ;
 ; kubernetes clustes hosted in caloba-v16
 ;
-kaloba-master              IN    A     146.164.147.150
+kaloba-server              IN    A     146.164.147.150
 kaloba-node01              IN    A     10.1.1.151
 kaloba-node02              IN    A     10.1.1.152
 
