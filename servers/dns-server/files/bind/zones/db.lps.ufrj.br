@@ -3,7 +3,7 @@
 ;
 $TTL      7200
 @     IN   SOA       ns.lps.ufrj.br. netadmin.lps.ufrj.br. (
-           2022101501    ; Serial (YOU NEED TO CHANGE THIS EVERY UPDATE)
+           2022101502    ; Serial (YOU NEED TO CHANGE THIS EVERY UPDATE)
            7200          ; Refresh (2h)
            3600          ; Retry (1h)
            31536000      ; Expire (1y)
@@ -95,11 +95,6 @@ dorothy                     IN    CNAME proxy-server.lps.ufrj.br.
 dorothy-image               IN    CNAME proxy-server.lps.ufrj.br.
 
 
-
-; kubernetes clustes hosted in caloba-v16
-kaloba-master              IN    A     146.164.147.50  ; rancher server
-kaloba-node01              IN    A     146.164.147.51  ; rancher server
-kaloba-node02              IN    A     146.164.147.52  ; rancher server
 
 
 ;
@@ -245,6 +240,14 @@ caloba-v13      IN      A     10.1.1.113
 caloba-v14      IN      A     10.1.1.114
 caloba-v15      IN      A     10.1.1.115
 caloba-v16      IN      A     10.1.1.116
+
+;
+; kubernetes clustes hosted in caloba-v16
+;
+kaloba-master              IN    A     10.1.1.150
+kaloba-node01              IN    A     10.1.1.151
+kaloba-node02              IN    A     10.1.1.152
+
 
 
 
