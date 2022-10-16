@@ -1,8 +1,8 @@
 #
 # Install dependencies
 #
-apt install -y htop vim git sshpass ansible curl wget 
-
+sudo apt update
+sudo apt install -y vim git htop curl gnupg sshpass 
 
 #
 # Setup NFS
@@ -12,6 +12,31 @@ apt install -y nfs-common
 #echo "10.1.1.202:/volume1/market_place /mnt/market_place nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0" >> /etc/fstab
 #mkdir /mnt/kubernetes
 #echo "10.1.1.202:/volume1/kubernetes /mnt/kubernetes nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0" >> /etc/fstab
+
+
+
+
+echo 1 | sudo tee /proc/sys/net/ipv4/ip_forward
+
+cat <<EOF | sudo tee /etc/modules-load.d/k8s.conf
+br_netfilter
+EOF
+
+cat <<EOF | sudo tee /etc/sysctl.d/k8s.conf
+net.bridge.bridge-nf-call-ip6tables = 1
+net.bridge.bridge-nf-call-iptables = 1
+EOF
+
+sudo sysctl --system
+
+
+
+curl https://baltocdn.com/helm/signing.asc | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null
+sudo apt-get install apt-transport-https --yes
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/helm.gpg] https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
+sudo apt-get update
+sudo apt-get install helm
+
 
 
 #
@@ -24,7 +49,7 @@ apt-get install -y \
     lsb-release
 
 mkdir -p /etc/apt/keyrings
-curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
 
 
 echo \
@@ -37,33 +62,4 @@ groupadd docker
 gpasswd -a root docker
 gpasswd -a cluster docker
 
-
-
-#
-# Install kubernetes
-#
-apt install -y gnupg2
-apt -y install curl apt-transport-https
-curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
-echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
-apt update
-apt -y install kubelet kubeadm kubectl
-apt-mark hold kubelet kubeadm kubectl
-
-
-#
-# Machines fixs
-#
-sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
-sudo swapoff -a
-sudo modprobe overlay
-sudo modprobe br_netfilter
-sudo tee /etc/sysctl.d/kubernetes.conf<<EOF
-net.bridge.bridge-nf-call-ip6tables = 1
-net.bridge.bridge-nf-call-iptables = 1
-net.ipv4.ip_forward = 1
-EOF
-sudo sysctl --system
-sudo rm /etc/containerd/config.toml
-sudo systemctl restart containerd
 reboot now
