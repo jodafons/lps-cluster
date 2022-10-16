@@ -90,3 +90,4 @@ $TTL  7200
 253 IN  PTR dyn-19.lps.ufrj.br.
 254 IN  PTR dyn-20.lps.ufrj.br.
 
+150 IN  PTR kaloba-master.lps.ufrj.br.

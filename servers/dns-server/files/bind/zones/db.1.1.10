@@ -94,7 +94,6 @@ $TTL  7200
 ;
 ; kubernetes cluster
 ;
-150 IN  PTR kaloba-master.lps.ufrj.br.
 151 IN  PTR kaloba-node01.lps.ufrj.br.
 152 IN  PTR kaloba-node02.lps.ufrj.br.
 
