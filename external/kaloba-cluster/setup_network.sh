@@ -2,6 +2,11 @@
 hostname=$1
 nodenumber=$2
 
+#
+# fix ssh keys
+#
+dpkg-reconfigure openssh-server
+
 
 #
 # cluster as sudo with no password
