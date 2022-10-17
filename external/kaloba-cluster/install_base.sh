@@ -4,6 +4,13 @@
 apt install -y htop vim git sshpass ansible curl wget 
 
 
+useradd -m kube
+passwd kube
+sudo usermod -aG sudo kube
+echo "kube ALL=(ALL:ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/kube
+
+
+
 #
 # Setup NFS
 #
