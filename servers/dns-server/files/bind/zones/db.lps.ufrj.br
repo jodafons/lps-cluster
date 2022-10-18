@@ -3,7 +3,7 @@
 ;
 $TTL      7200
 @     IN   SOA       ns.lps.ufrj.br. netadmin.lps.ufrj.br. (
-           2022101801    ; Serial (YOU NEED TO CHANGE THIS EVERY UPDATE)
+           2022101802    ; Serial (YOU NEED TO CHANGE THIS EVERY UPDATE)
            7200          ; Refresh (2h)
            3600          ; Retry (1h)
            31536000      ; Expire (1y)
@@ -249,7 +249,7 @@ kaloba-node01              IN    A     10.1.1.151
 kaloba-node02              IN    A     10.1.1.152
 
 ; External 
-kaloba-node01              IN    CNAME sandbox.lps.ufrj.br.
+sandbox                    IN    CNAME kaloba-node01.lps.ufrj.br.
 
 
 
