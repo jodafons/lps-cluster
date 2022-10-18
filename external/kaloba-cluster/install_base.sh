@@ -52,18 +52,6 @@ sudo apt-get update
 sudo apt-get install helm
 
 #
-# Install kubernetes
-#
-#apt install -y gnupg2
-#apt -y install curl apt-transport-https
-#curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
-#echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
-#apt update
-#apt -y install kubelet kubeadm kubectl
-#apt-mark hold kubelet kubeadm kubectl
-
-
-#
 # Machines fixs
 #
 sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
