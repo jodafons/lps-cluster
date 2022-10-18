@@ -87,13 +87,17 @@ vpn-server                  IN    A     146.164.147.6   ; openvpn
 proxy-server                IN    A     146.164.147.40  ; nginx proxy server
 www-server                  IN    A     146.164.147.41  ; sites
 dorothy-server              IN    A     146.164.147.42  ; brics server 
+kaloba-server               IN    A     146.164.147.150 ; kubernetes controller
+
+
+
 
 www                         IN    CNAME proxy-server.lps.ufrj.br.
 paf                         IN    CNAME proxy-server.lps.ufrj.br.
 virtuais                    IN    CNAME proxy-server.lps.ufrj.br.
 dorothy                     IN    CNAME proxy-server.lps.ufrj.br.
 dorothy-image               IN    CNAME proxy-server.lps.ufrj.br.
-
+sandbox                     IN    CNAME kalona-server.lps.ufrj.br.
 
 
 
@@ -244,12 +248,8 @@ caloba-v16      IN      A     10.1.1.116
 ;
 ; kubernetes clustes hosted in caloba-v16
 ;
-kaloba-master              IN    A     10.1.1.150
 kaloba-node01              IN    A     10.1.1.151
 kaloba-node02              IN    A     10.1.1.152
-
-; External 
-sandbox                    IN    CNAME kaloba-node01.lps.ufrj.br.
 
 
 

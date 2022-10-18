@@ -3,7 +3,7 @@
 ;
 $TTL  7200
 @ IN  SOA ns.lps.ufrj.br. netadmin.lps.ufrj.br. (
-      2022101801  ; Serial
+      2022101802  ; Serial
       7200        ; Refresh (2h)
       3600        ; Retry (1h)
       31536000    ; Expire (1y)
@@ -94,7 +94,6 @@ $TTL  7200
 ;
 ; kubernetes cluster
 ;
-150 IN  PTR kaloba-master.lps.ufrj.br.
 151 IN  PTR kaloba-node01.lps.ufrj.br.
 152 IN  PTR kaloba-node02.lps.ufrj.br.
 
