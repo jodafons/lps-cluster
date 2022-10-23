@@ -1,7 +1,3 @@
-#
-# Fix kernel
-#
-apt install -y linux-headers-$(uname -r)
 
 #
 # Disabe novauo
