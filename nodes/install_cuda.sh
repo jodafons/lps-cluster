@@ -32,5 +32,8 @@ echo ""
 
 sudo apt install -y cuda-toolkit-11-7
 
-echo "You need to reboot!"
+echo ""
+echo "You need to reboot"
+echo ""
+
 #reboot now
