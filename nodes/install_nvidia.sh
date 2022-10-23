@@ -7,6 +7,14 @@ apt install -y linux-headers-$(uname -r)
 
 
 
+#
+# Disabe novauo
+#
+
+echo "blacklist nouveau
+options nouveau modeset=0
+" > /etc/modprobe.d/blacklist-nouveau.conf
+
 
 # set binary path inside of the clusterdd
 NVIDIA_DIR=/mnt/market_place/nvidia
