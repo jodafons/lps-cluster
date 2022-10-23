@@ -3,7 +3,7 @@
 #
 # Fix kernel
 #
-apt install -y linux-headers-$(uname -r)
+#apt install -y linux-headers-$(uname -r)
 
 
 
@@ -11,15 +11,15 @@ apt install -y linux-headers-$(uname -r)
 # Disabe novauo
 #
 
-echo "blacklist nouveau
-options nouveau modeset=0
-" > /etc/modprobe.d/blacklist-nouveau.conf
+#echo "blacklist nouveau
+#options nouveau modeset=0
+#" > /etc/modprobe.d/blacklist-nouveau.conf
 
 
 # set binary path inside of the clusterdd
-NVIDIA_DIR=/mnt/market_place/nvidia
+#NVIDIA_DIR=/mnt/market_place/nvidia
 
-bash /mnt/market_place/nvidia/deps/NVIDIA-Linux-x86_64-515.76.run
+#bash /mnt/market_place/nvidia/deps/NVIDIA-Linux-x86_64-515.76.run
 
 
 apt install -y gnupg2
