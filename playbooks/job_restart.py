@@ -4,7 +4,7 @@ import os, time
 
 SECONDS = 1
 MINUTES = 60*SECONDS
-wait = 10*MINUTES
+wait = 60*MINUTES
 command = './restart_slurmd.sh'
 
 while 1:
