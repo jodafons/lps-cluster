@@ -2,27 +2,20 @@
     hosts: all
     become: true
     tasks: 
-     - name: Ansible apt to install screen
+     - name: install screen
        apt:
          name: screen
          state: present
 
-  - name: Install rsync
+  - name: Install zsh
     hosts: all
     become: true
     tasks: 
-     - name: Install rsync
+     - name: Install zsh
        apt:
-         name: rsync
+         name: zsh
          state: present
   
-  - name: Add sjstat by hand into the /usr/bin
-    hosts: all
-    tasks:
-      - name: copy
-        copy:
-          src: /mnt/market_place/slurm_build/slurm-22.05.3/contribs/sjstat
-          dest: /usr/bin
-          force: yes
+
 
        

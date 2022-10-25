@@ -21,7 +21,7 @@ caloba96 ansible_host=10.1.1.96 ansible_user=cluster ansible_password=6sJ09066sV
 
 
 #[login]
-#login-server ansible_host=146.164.147.5 ansible_user=cluster ansible_password=6sJ09066sV1990;6
+login-server ansible_host=146.164.147.5 ansible_user=cluster ansible_password=6sJ09066sV1990;6
 
 
 [all:vars]
