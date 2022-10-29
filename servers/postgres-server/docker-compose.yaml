@@ -1,0 +1,23 @@
+version: '3'
+services:
+  db:
+    container_name: pg_container
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - /mnt/market_place/volumes/postgres/:/var/lib/postgresql/data
+  pgadmin:
+    container_name: pgadmin4_container
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: cluster@lps.ufrj.br
+      PGADMIN_DEFAULT_PASSWORD: '6sJ09066sV1990;6'
+    ports:
+      - "5050:80"

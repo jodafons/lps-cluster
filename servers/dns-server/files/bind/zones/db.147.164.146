@@ -3,7 +3,7 @@
 ;
 $TTL  7200
 @ IN  SOA ns.lps.ufrj.br. netadmin.lps.ufrj.br. (
-          2022101802  ; Serial
+          2022102900  ; Serial
           7200        ; Refresh (2h)
           3600        ; Retry (1h)
           31536000    ; Expire (1y)
@@ -16,6 +16,11 @@ $TTL  7200
 ;
 0   IN  PTR net.lps.ufrj.br.
 1   IN  PTR gw.lps.ufrj.br.
+
+
+;
+; Service01
+;
 2   IN  PTR ns.lps.ufrj.br.
 3   IN  PTR auth-server.lps.ufrj.br.
 4   IN  PTR slurm-server.lps.ufrj.br.
@@ -23,11 +28,13 @@ $TTL  7200
 6   IN  PTR vpn-server.lps.ufrj.br.
 
 
-
-; nginx proxy interface
+;
+; Service02
+;
 40    IN  PTR proxy-server.lps.ufrj.br.
 41    IN  PTR www-server.lps.ufrj.br.
 42    IN  PTR dorothy-server.lps.ufrj.br.
+43    IN  PTR postgres-server.lps.ufrj.br.
 150   IN  PTR kaloba-server.lps.ufrj.br.
 
 
