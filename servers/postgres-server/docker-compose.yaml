@@ -18,6 +18,6 @@ services:
     restart: always
     environment:
       PGADMIN_DEFAULT_EMAIL: cluster@lps.ufrj.br
-      PGADMIN_DEFAULT_PASSWORD: '6sJ09066sV1990;6'
+      PGADMIN_DEFAULT_PASSWORD: 1234
     ports:
       - "5050:80"
