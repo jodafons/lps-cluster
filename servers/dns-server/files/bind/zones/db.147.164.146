@@ -34,7 +34,7 @@ $TTL  7200
 40    IN  PTR proxy-server.lps.ufrj.br.
 41    IN  PTR www-server.lps.ufrj.br.
 42    IN  PTR dorothy-server.lps.ufrj.br.
-43    IN  PTR postgres-server.lps.ufrj.br.
+44    IN  PTR orchestra-server.lps.ufrj.br.
 150   IN  PTR kaloba-server.lps.ufrj.br.
 
 

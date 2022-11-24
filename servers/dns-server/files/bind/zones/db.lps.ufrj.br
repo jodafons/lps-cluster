@@ -87,7 +87,7 @@ vpn-server                  IN    A     146.164.147.6   ; openvpn
 proxy-server                IN    A     146.164.147.40  ; nginx proxy server
 www-server                  IN    A     146.164.147.41  ; sites
 dorothy-server              IN    A     146.164.147.42  ; brics server 
-postgres-server             IN    A     146.164.147.44  ; postgres
+orchestra-server            IN    A     146.164.147.44  ; orchestra
 kaloba-server               IN    A     146.164.147.150 ; kubernetes controller
 
 
