@@ -3,7 +3,7 @@
 ;
 $TTL  7200
 @ IN  SOA ns.lps.ufrj.br. netadmin.lps.ufrj.br. (
-          2022112400  ; Serial
+          2022112401  ; Serial
           7200        ; Refresh (2h)
           3600        ; Retry (1h)
           31536000    ; Expire (1y)
@@ -34,7 +34,7 @@ $TTL  7200
 40    IN  PTR proxy-server.lps.ufrj.br.
 41    IN  PTR www-server.lps.ufrj.br.
 42    IN  PTR dorothy-server.lps.ufrj.br.
-44    IN  PTR orchestra-server.lps.ufrj.br.
+44    IN  PTR postgres-server.lps.ufrj.br.
 150   IN  PTR kaloba-server.lps.ufrj.br.
 
 
