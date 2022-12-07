@@ -14,17 +14,21 @@ server (service) into the lab infrastructure.
 - [Storage 1](http://storage01.lps.ufrj.br:5000)
 
 
+## Networks:
+
+- `10.1.1.*` internal network where all `caloba` nodes are connected.
+- `146.164.147.*` external network.
 
 ## Service Nodes:
 
 There are two physical service nodes into the network. The node `service01` is responsible
 to hold the base cluster services like:
 
-- Domain name server managed by `dns-server` virtual machine with address `146.164.147.2`
-- LDAP accounts and Kerberos passwords managed by `auth-server` virtual machine with address `146.163.147.3`
-- SLURM manager control managed by `slurm-server` virtual machine with address `146.164.147.4`
-- Login managed by `login-server` virtual machine with address `146.164.147.5`
-- VPN server managed by `vpn-server` virtual machine with address `146.164.147.6`
+- Domain name server managed by `dns-server` virtual machine with address `146.164.147.2`.
+- LDAP accounts and Kerberos passwords managed by `auth-server` virtual machine with address `146.163.147.3`.
+- SLURM manager control managed by `slurm-server` virtual machine with address `146.164.147.4`.
+- Login managed by `login-server` virtual machine with address `146.164.147.5`.
+- VPN server managed by `vpn-server` virtual machine with address `146.164.147.6`.
 
 The node `service02` is responsible to manager all external services like:
 
@@ -58,4 +62,4 @@ Is responsible to hold all proxmox backup staff. Is physically located at `10.1.
 
 ## Backup Storage
 
-
+Not available yet
