@@ -1,7 +1,35 @@
-# Configuring the authentication server
 
 
-# LDAP:
+# Authentication Server
+
+This server is responsible to hold the LDAP and kerberos
+services.
+
+# Easy Installation:
+
+```
+source setup_network.sh
+```
+After reboot,
+```
+source install_base.sh
+source install_ldap.sh
+source install_kerberos.sh
+```
+
+## To run the backup:
+
+Backup all information and save it into `/mnt/market_place/data`:
+```
+source backup.sh
+```
+
+You can check other scripts inside of `scripts` folder.
+
+
+# Install Step by Step:
+
+## LDAP:
 
 
 First you have to install some packages (note that you can skip everything asked NOT THE PASSWORD, leaving the default options)

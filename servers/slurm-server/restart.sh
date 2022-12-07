@@ -5,4 +5,4 @@ sudo systemctl enable slurmdbd
 sudo systemctl start slurmdbd
 sudo systemctl enable slurmctld
 sudo systemctl start slurmctld
-ansible-playbook -i hosts restart_slurmd.yaml
+ansible-playbook -i playbooks/hosts playbooks/restart_slurmd.yaml

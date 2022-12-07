@@ -1,7 +1,27 @@
 
 
-# Node Configuration:
+# Login Server:
 
+This server is responsible to be the gate to all clients in
+the network and should be exposed to the internet. 
+
+
+# Easy Installation:
+
+```
+source setup_network.sh
+```
+
+After reboot,
+
+```
+source install_base.sh
+source install_slurm.sh
+```
+
+
+
+# Installation Step by Step:
 
 ## Kerberos Client Configuration:
 
@@ -100,8 +120,6 @@ invoke-rc.d ssh restart
 ```
 
 And you're done! Remember that, for this to work, **you have to create users both on LAM and on Kerberos server**. The password set on LAM can be anything, since the authentication is made through Kerberos. The LDAP server here is mostly used to store home path information and UID/GID management.
-
-
 
 
 ## Setting up mounts
@@ -339,30 +357,3 @@ account    required     /lib/x86_64-linux-gnu/security/pam_slurm.so
 This way, we forbid SLURM users from doing any bypass on deploying workload into nodes and still allow non-SLURM users to SSH normally. And we're done with the nodes!
 
 
-
-
-
-## Singularity Configuration:
-
-Install singularity:
-```
-apt-get install -y \
-    build-essential \
-    libssl-dev \
-    uuid-dev \
-    libgpgme11-dev \
-    squashfs-tools \
-    libseccomp-dev \
-    pkg-config
-```
-
-### Install Go:
-
-```
-wget https://go.dev/dl/go1.19.linux-amd64.tar.gz
-```
-
-Then extract the archive to `/usr/local`
-```
-
-```
