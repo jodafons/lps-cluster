@@ -6,18 +6,26 @@ server (service) into the lab infrastructure.
 
 ## Links:
 
+- [Proxmox Service 1](https://146.164.147.101:8006/)
+- [Proxmox Service 2](https://146.164.147.102:8006/)
+- [Proxmox Nodes](https://10.1.1.116:8006/)
+- [LDAP Account Manager](http://auth-server.lps.ufrj.br/lam/)
+- [Proxy Server](http://proxy-server.lps.ufrj.br:8080/login)
+
 
 
 ## Service Nodes:
 
-There are two physically service nodes into the network. The node `service01` is responsible
-to hold:
+There are two physical service nodes into the network. The node `service01` is responsible
+to hold the base cluster services like:
 
 - Domain name server managed by `dns-server` virtual machine with address `146.164.147.2`
 - LDAP accounts and Kerberos passwords managed by `auth-server` virtual machine with address `146.163.147.3`
 - SLURM manager control managed by `slurm-server` virtual machine with address `146.164.147.4`
 - Login managed by `login-server` virtual machine with address `146.164.147.5`
 - VPN server managed by `vpn-server` virtual machine with address `146.164.147.6`
+
+The node `service02` is responsible to manager all external services like:
 
 
 ## Main Storage:
