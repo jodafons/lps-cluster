@@ -11,6 +11,7 @@ server (service) into the lab infrastructure.
 - [Proxmox Nodes](https://10.1.1.116:8006/)
 - [LDAP Account Manager](http://auth-server.lps.ufrj.br/lam/)
 - [Proxy Server](http://proxy-server.lps.ufrj.br:8080/login)
+- [Storage 1](http://storage01.lps.ufrj.br:5000)
 
 
 
@@ -48,6 +49,12 @@ The location is always `/mnt/market_place` inside any node and are physically lo
 ### Homes:
 
 Is responsible to hold all user accounts. Is physically located at `10.1.1.202:/volume1/homes`.
+
+
+### Proxmox:
+
+Is responsible to hold all proxmox backup staff. Is physically located at `10.1.1.202/volume1/proxmox`.
+
 
 ## Backup Storage
 
