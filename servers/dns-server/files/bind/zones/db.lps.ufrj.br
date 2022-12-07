@@ -3,7 +3,7 @@
 ;
 $TTL      7200
 @     IN   SOA       ns.lps.ufrj.br. netadmin.lps.ufrj.br. (
-           2022112401    ; Serial (YOU NEED TO CHANGE THIS EVERY UPDATE)
+           2022120700    ; Serial (YOU NEED TO CHANGE THIS EVERY UPDATE)
            7200          ; Refresh (2h)
            3600          ; Retry (1h)
            31536000      ; Expire (1y)
@@ -88,7 +88,6 @@ proxy-server                IN    A     146.164.147.40  ; nginx proxy server
 www-server                  IN    A     146.164.147.41  ; sites
 dorothy-server              IN    A     146.164.147.42  ; brics server 
 postgres-server             IN    A     146.164.147.44  ; postgres
-kaloba-server               IN    A     146.164.147.150 ; kubernetes controller
 
 
 
@@ -172,14 +171,6 @@ caloba      IN      A     10.1.1.10
 ;
 caloba1       IN      A     10.1.1.11
 
-;
-; GPU machines (31-60)
-;
-caloba21      IN      A     10.1.1.31
-caloba23      IN      A     10.1.1.33
-caloba24      IN      A     10.1.1.34
-caloba25      IN      A     10.1.1.35
-caloba53      IN      A     10.1.1.63
 
 
 
@@ -200,6 +191,8 @@ caloba17        IN      A     10.1.1.17
 ; CPU large
 caloba51        IN      A     10.1.1.51
 caloba52        IN      A     10.1.1.52
+caloba53        IN      A     10.1.1.53
+caloba54        IN      A     10.1.1.54
 
 
 
@@ -246,12 +239,6 @@ caloba-v13      IN      A     10.1.1.113
 caloba-v14      IN      A     10.1.1.114
 caloba-v15      IN      A     10.1.1.115
 caloba-v16      IN      A     10.1.1.116
-
-;
-; kubernetes clustes hosted in caloba-v16
-;
-kaloba-node01              IN    A     10.1.1.151
-kaloba-node02              IN    A     10.1.1.152
 
 
 
