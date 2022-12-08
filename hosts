@@ -5,8 +5,18 @@ caloba13 ansible_host=10.1.1.13 ansible_user=cluster ansible_password=6sJ09066sV
 caloba14 ansible_host=10.1.1.14 ansible_user=cluster ansible_password=6sJ09066sV1990;6
 caloba15 ansible_host=10.1.1.15 ansible_user=cluster ansible_password=6sJ09066sV1990;6
 caloba16 ansible_host=10.1.1.16 ansible_user=cluster ansible_password=6sJ09066sV1990;6
+caloba17 ansible_host=10.1.1.17 ansible_user=cluster ansible_password=6sJ09066sV1990;6
+caloba18 ansible_host=10.1.1.18 ansible_user=cluster ansible_password=6sJ09066sV1990;6
+caloba19 ansible_host=10.1.1.19 ansible_user=cluster ansible_password=6sJ09066sV1990;6
+
+
+
 caloba51 ansible_host=10.1.1.51 ansible_user=cluster ansible_password=6sJ09066sV1990;6
 caloba52 ansible_host=10.1.1.52 ansible_user=cluster ansible_password=6sJ09066sV1990;6
+caloba53 ansible_host=10.1.1.53 ansible_user=cluster ansible_password=6sJ09066sV1990;6
+caloba54 ansible_host=10.1.1.54 ansible_user=cluster ansible_password=6sJ09066sV1990;6
+
+
 
 [caloba-gpus]
 
@@ -14,8 +24,20 @@ caloba71 ansible_host=10.1.1.71 ansible_user=cluster ansible_password=6sJ09066sV
 caloba72 ansible_host=10.1.1.72 ansible_user=cluster ansible_password=6sJ09066sV1990;6
 caloba73 ansible_host=10.1.1.73 ansible_user=cluster ansible_password=6sJ09066sV1990;6
 caloba74 ansible_host=10.1.1.74 ansible_user=cluster ansible_password=6sJ09066sV1990;6
+caloba75 ansible_host=10.1.1.75 ansible_user=cluster ansible_password=6sJ09066sV1990;6
+caloba76 ansible_host=10.1.1.76 ansible_user=cluster ansible_password=6sJ09066sV1990;6
+caloba77 ansible_host=10.1.1.77 ansible_user=cluster ansible_password=6sJ09066sV1990;6
+caloba78 ansible_host=10.1.1.78 ansible_user=cluster ansible_password=6sJ09066sV1990;6
+caloba79 ansible_host=10.1.1.79 ansible_user=cluster ansible_password=6sJ09066sV1990;6
+caloba80 ansible_host=10.1.1.80 ansible_user=cluster ansible_password=6sJ09066sV1990;6
 caloba81 ansible_host=10.1.1.81 ansible_user=cluster ansible_password=6sJ09066sV1990;6
 caloba82 ansible_host=10.1.1.82 ansible_user=cluster ansible_password=6sJ09066sV1990;6
+
+
+caloba91 ansible_host=10.1.1.91 ansible_user=cluster ansible_password=6sJ09066sV1990;6
+caloba92 ansible_host=10.1.1.92 ansible_user=cluster ansible_password=6sJ09066sV1990;6
+caloba93 ansible_host=10.1.1.93 ansible_user=cluster ansible_password=6sJ09066sV1990;6
+caloba94 ansible_host=10.1.1.94 ansible_user=cluster ansible_password=6sJ09066sV1990;6
 caloba95 ansible_host=10.1.1.95 ansible_user=cluster ansible_password=6sJ09066sV1990;6
 caloba96 ansible_host=10.1.1.96 ansible_user=cluster ansible_password=6sJ09066sV1990;6
 
