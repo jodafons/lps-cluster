@@ -20,4 +20,4 @@ systemctl start slurmctld
 #systemctl status slurmctld
 scontrol reconfigure
 
-source restart_slurmd.sh
+source restart.sh
