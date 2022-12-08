@@ -1,23 +1,23 @@
 
 # recopy everything to SLURM
-cp files/slurm/slurm.conf /etc/slurm/
-cp files/slurm/slurmdbd.conf /etc/slurm
-chmod 600 /etc/slurm/slurmdbd.conf
-chown -R slurm /etc/slurm
-cp files/slurm/slurmdbd.service /etc/systemd/system/
-cp files/slurm/slurmctld.service /etc/systemd/system/
-cp files/slurm/slurm.conf /mnt/market_place/slurm_build
+sudo cp files/slurm/slurm.conf /etc/slurm/
+sudo cp files/slurm/slurmdbd.conf /etc/slurm
+sudo chmod 600 /etc/slurm/slurmdbd.conf
+sudo chown -R slurm /etc/slurm
+sudo cp files/slurm/slurmdbd.service /etc/systemd/system/
+sudo cp files/slurm/slurmctld.service /etc/systemd/system/
+sudo cp files/slurm/slurm.conf /mnt/market_place/slurm_build
 
 # restart all services
-systemctl start munge
-systemctl daemon-reload
-systemctl start slurmdbd
-systemctl start slurmctld
+sudo systemctl start munge
+sudo systemctl daemon-reload
+sudo systemctl start slurmdbd
+sudo systemctl start slurmctld
 
 
 # check slurm
 #systemctl status slurmdbd
 #systemctl status slurmctld
-scontrol reconfigure
+sudo scontrol reconfigure
 
 source restart.sh
