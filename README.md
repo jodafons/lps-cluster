@@ -8,7 +8,8 @@ server (service) into the lab infrastructure.
 
 - [Proxmox Service 1](https://146.164.147.101:8006/)
 - [Proxmox Service 2](https://146.164.147.102:8006/)
-- [Proxmox Nodes](https://10.1.1.116:8006/)
+- [Proxmox Nodes[1-10]](https://10.1.1.110:8006/)
+- [Proxmox Nodes[11-16]](https://10.1.1.116:8006/)
 - [LDAP Account Manager](http://auth-server.lps.ufrj.br/lam/)
 - [Proxy Server](http://proxy-server.lps.ufrj.br:8080/login)
 - [Storage 1](http://storage01.lps.ufrj.br:5000)
