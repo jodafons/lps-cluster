@@ -14,6 +14,10 @@ server (service) into the lab infrastructure.
 - [Proxy Server](http://proxy-server.lps.ufrj.br:8080/login)
 - [Storage 1](http://storage01.lps.ufrj.br:5000)
 
+## Docs
+
+- [Account Creation](docs/CreateAccount.md)
+
 
 ## Networks:
 
@@ -64,3 +68,6 @@ Is responsible to hold all proxmox backup staff. Is physically located at `10.1.
 ## Backup Storage
 
 Not available yet
+
+
+
