@@ -34,7 +34,6 @@ user password. The format adopted should be `@username`.
 the `kpasswd` command.
 
 
-Connect with the `auth-server` by `ssh`
 
 
 
