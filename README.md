@@ -14,9 +14,10 @@ server (service) into the lab infrastructure.
 - [Proxy Server](http://proxy-server.lps.ufrj.br:8080/login)
 - [Storage 1](http://storage01.lps.ufrj.br:5000)
 
-## Docs
+## Docs:
 
 - [Account Creation](docs/CreateAccount.md)
+- [Proxmox Troubles](docs/ProxmoxTroubles.md)
 
 
 ## Networks:
