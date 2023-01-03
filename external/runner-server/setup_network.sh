@@ -18,7 +18,7 @@ iface lo inet loopback
 
 auto ens18
 iface ens18 inet static
-  address 146.164.147.44
+  address 146.164.147.43
   netmask 255.255.255.0
   gateway 146.164.147.1
   dns-nameservers 146.164.147.2 8.8.8.8 8.8.8.4
