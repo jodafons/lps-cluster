@@ -13,6 +13,9 @@ server (service) into the lab infrastructure.
 - [LDAP Account Manager](http://auth-server.lps.ufrj.br/lam/)
 - [Proxy Server](http://proxy-server.lps.ufrj.br:8080/login)
 - [Storage 1](http://storage01.lps.ufrj.br:5000)
+- [Storage 3](http://storage03.lps.ufrj.br)
+- [Storage 0 (old)](http://seixas1.lps.ufrj.br): This will be removed soon.
+
 
 ## Docs:
 

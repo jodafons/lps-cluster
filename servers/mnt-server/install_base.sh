@@ -1,7 +1,7 @@
 #
 # Install dependencies
 #
-apt install -y htop vim git sshpass curl wget rsync
+apt install -y htop vim git sshpass curl wget rsync screen
 
 
 #
@@ -10,14 +10,14 @@ apt install -y htop vim git sshpass curl wget rsync
 apt install -y nfs-common
 
 mkdir /mnt/seixas1
-mkdir /mnt/storage1
-mkdir /mnt/storage2
-mkdir /mnt/storage3
-mkdir /mnt/storage4
+mkdir /mnt/storage01
+mkdir /mnt/storage02
+mkdir /mnt/storage03
+mkdir /mnt/storage04
 
 echo "10.1.1.201:/volume1 /mnt/seixas1 nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0" >> /etc/fstab
-echo "10.1.1.202:/volume1 /mnt/storage1 nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0" >> /etc/fstab
-echo "10.1.1.204:/shares /mnt/storage3 nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0" >> /etc/fstab
+echo "10.1.1.202:/volume1 /mnt/storage01 nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0" >> /etc/fstab
+echo "10.1.1.204:/shares /mnt/storage03 nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0" >> /etc/fstab
 #echo "10.1.1.204:/volume1/market_place /mnt/market_place nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0" >> /etc/fstab
 
 
