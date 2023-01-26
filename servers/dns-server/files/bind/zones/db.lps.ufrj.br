@@ -81,6 +81,7 @@ auth-server                 IN    A     146.164.147.3   ; kerberos and ldap
 slurm-server                IN    A     146.164.147.4   ; slurm frontend
 login-server                IN    A     146.164.147.5   ; login
 vpn-server                  IN    A     146.164.147.6   ; openvpn
+mnt-server                  IN    A     146.164.147.7   ; openvpn
 
 
 ; hosted into service02

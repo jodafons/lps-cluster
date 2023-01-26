@@ -26,6 +26,7 @@ $TTL  7200
 4   IN  PTR slurm-server.lps.ufrj.br.
 5   IN  PTR login-server.lps.ufrj.br.
 6   IN  PTR vpn-server.lps.ufrj.br.
+7   IN  PTR mnt-server.lps.ufrj.br.
 
 
 ;
