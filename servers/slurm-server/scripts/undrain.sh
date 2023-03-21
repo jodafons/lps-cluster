@@ -1,2 +1,3 @@
 nodename=$1
-scontrol update nodename=$nodename state=idle
+sudo scontrol update nodename=$nodename state=idle
+
