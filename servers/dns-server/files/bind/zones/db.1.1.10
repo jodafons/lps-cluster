@@ -3,7 +3,7 @@
 ;
 $TTL  7200
 @ IN  SOA ns.lps.ufrj.br. netadmin.lps.ufrj.br. (
-      2023012600  ; Serial
+      2023032100  ; Serial
       7200        ; Refresh (2h)
       3600        ; Retry (1h)
       31536000    ; Expire (1y)
@@ -40,6 +40,7 @@ $TTL  7200
 52  IN  PTR caloba52.lps.ufrj.br.
 53  IN  PTR caloba53.lps.ufrj.br.
 54  IN  PTR caloba54.lps.ufrj.br.
+55  IN  PTR caloba55.lps.ufrj.br.
 
 
 ; GPU
