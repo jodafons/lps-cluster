@@ -3,7 +3,7 @@
 ;
 $TTL  7200
 @ IN  SOA ns.lps.ufrj.br. netadmin.lps.ufrj.br. (
-          2023032100  ; Serial
+          2023033100  ; Serial
           7200        ; Refresh (2h)
           3600        ; Retry (1h)
           31536000    ; Expire (1y)
@@ -47,31 +47,23 @@ $TTL  7200
 
 
 
-
-;
-; Basic services (offset by 10 for legacy stuff)
-;
-9   IN  PTR xenserver.lps.ufrj.br.
-10  IN  PTR service.lps.ufrj.br.
-11  IN  PTR service1.lps.ufrj.br.
-13  IN  PTR auth.lps.ufrj.br.
-14  IN  PTR login.lps.ufrj.br.
-
-
-
 ;
 ; Networking and private hardware
 ;
 65  IN  PTR lps1-wlan.lps.ufrj.br.
 66  IN  PTR hp4200dtn.lps.ufrj.br.
 
+
+
+
 ;
-; Stations with fixed IP (100-234)
+; Stations with fixed IP (201-234)
 ;
-102 IN  PTR bancada-03.lps.ufrj.br.
-103 IN  PTR bancada-04.lps.ufrj.br.
-104 IN  PTR bancada-05.lps.ufrj.br.
-228 IN  PTR porto.lps.ufrj.br.
+201 IN  PTR geneve.lps.ufrj.br.
+202 IN  PTR berna.lps.ufrj.br.
+203 IN  PTR porto.lps.ufrj.br.
+204 IN  PTR paris.lps.ufrj.br.
+205 IN  PTR verdun.lps.ufrj.br.
 
 ;
 ; DHCP

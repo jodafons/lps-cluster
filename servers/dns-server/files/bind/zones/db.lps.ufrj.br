@@ -3,7 +3,7 @@
 ;
 $TTL      7200
 @     IN   SOA       ns.lps.ufrj.br. netadmin.lps.ufrj.br. (
-           2023032100    ; Serial (YOU NEED TO CHANGE THIS EVERY UPDATE)
+           2023033100    ; Serial (YOU NEED TO CHANGE THIS EVERY UPDATE)
            7200          ; Refresh (2h)
            3600          ; Retry (1h)
            31536000      ; Expire (1y)
@@ -100,33 +100,18 @@ virtuais                    IN    CNAME proxy-server.lps.ufrj.br.
 dorothy                     IN    CNAME proxy-server.lps.ufrj.br.
 dorothy-image               IN    CNAME proxy-server.lps.ufrj.br.
 pgadmin                     IN    CNAME proxy-server.lps.ufrj.br.
-sandbox                     IN    CNAME kaloba-server.lps.ufrj.br.
-
-
-
-;
-; Basic services (legacy stuff)
-;
-xenserver         IN    A         146.164.147.9
-service           IN    A         146.164.147.10
-service1          IN    A         146.164.147.11
-auth              IN    A         146.164.147.13
-login             IN    A         146.164.147.14
-
-
 
 
 
 
 ;
-; Stations with Fixed IP (100-234)
+; Stations with fixed IP (201-234)
 ;
-
-bancada-03      IN      A     146.164.147.102
-bancada-04      IN      A     146.164.147.103
-bancada-05      IN      A     146.164.147.104
-porto           IN      A     146.164.147.228
-
+geneve      IN      A     146.164.147.201
+berna       IN      A     146.164.147.202
+porto       IN      A     146.164.147.203
+paris       IN      A     146.164.147.204
+verdun      IN      A     146.164.147.205
 
 
 ;
