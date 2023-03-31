@@ -201,6 +201,8 @@ On top of the `CPU` image, install `cuda`.
 
 ```
 source install_cuda.sh
+source install_nvidia.sh
+
 ```
 
 ### Replicate GPU Nodes:
@@ -215,11 +217,6 @@ To reconfigure the network,
 source reset_network.sh caloba81 81
 ```
 
-and install `NVIDIA`,
-
-```
-source install_nvidia.sh
-```
 
 After complete these steps, the new node will be able to locate the
 `GPU` hardware.
