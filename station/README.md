@@ -12,20 +12,23 @@ Lets start with `geneve` as example.
 First, tip `fconfig` and get the name of the network interface. Example:
 
 
+```
+source setup_network.sh ens8p 201
+```
 
-## Kerberos:
+## Kerberos, NFS and LDAP:
+
+```
+source install_base.sh
+```
+
 
 ### Q&A:
 
-* Kerberos realm: `LPS.UFRJ.BR`
-* Kerberos server: `auth-server.lps.ufrj.br`
-* Kerberos adm-server: `auth-server.lps.ufrj.br`
-
-## LDAP:
-
-### Q&A:
-
-- server: `ldap://auth-server.lps.ufrj.br` or `ldap://146.164.147.3`
+- Kerberos realm: `LPS.UFRJ.BR`
+- Kerberos server: `auth-server.lps.ufrj.br`
+- Kerberos adm-server: `auth-server.lps.ufrj.br`
+- LDAP server: `ldap://auth-server.lps.ufrj.br` or `ldap://146.164.147.3`
 - Distinguished name of the search base: `dc=lps,dc=ufrj,dc=br`
 - LDAP version: 3
 - Select yes to create the local root database;
@@ -42,7 +45,6 @@ To test LDAP, use this command and you shoul see some accounts inside of the LDA
 getent passwd
 ```
 
-## NFS:
 
 
 
