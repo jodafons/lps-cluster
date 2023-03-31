@@ -1,6 +1,8 @@
 #
 # Install pyenv
 #
+apt install -y curl
+
 curl https://pyenv.run | bash
 echo ''
 echo '# setup pyenv' >> /etc/bash.bashrc
