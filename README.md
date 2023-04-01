@@ -29,6 +29,14 @@ server (service) into the lab infrastructure.
 - [Proxmox Caloba-v16](https://10.1.1.116:8006/)
 
 
+### Queues (Cluster):
+
+- [gpu](https://10.1.1.103:8006/)
+- [gpu-large](https://10.1.1.109:8006/)
+- [cpu-large](https://10.1.1.116:8006/)
+
+
+
 ### Services:
 
 - [LDAP Account Manager](http://auth-server.lps.ufrj.br/lam/)
