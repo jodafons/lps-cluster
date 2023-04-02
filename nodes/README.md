@@ -89,7 +89,7 @@ nano /etc/default/grub
 Find the line that starts with `GRUB_CMDLINE_LINUX_DEFAULT`. Then change it to look like this (Intel CPU example) and replace `vfio-pci.ids=` with the ids for the GPU you want to passthrough:
 
 ```
-GRUB_CMDLINE_LINUX_DEFAULT="quiet intel_iommu=on pcie_acs_override=downstream,multifunction video=efifb:off video=vesa:off vfio-pci.ids=10de:1e81,10de:10f8,10de:1ad8,10de:1ad9 vfio_iommu_type1.allow_unsafe_interrupts=1 kvm.ignore_msrs=1 modprobe.blacklist=radeon,nouveau,nvidia,nvidiafb,nvidia-gpu"
+GRUB_CMDLINE_LINUX_DEFAULT="quiet intel_iommu=on pcie_acs_override=downstream,multifunction initcall_blacklist=sysfb_init video=vesa:off vfio-pci.ids=10de:1e81,10de:10f8,10de:1ad8,10de:1ad9 vfio_iommu_type1.allow_unsafe_interrupts=1 kvm.ignore_msrs=1 modprobe.blacklist=radeon,nouveau,nvidia,nvidiafb,nvidia-gpu"
 ```
 
 Save the config changed and then update GRUB.
