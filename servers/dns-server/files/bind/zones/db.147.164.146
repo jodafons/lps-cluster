@@ -37,7 +37,7 @@ $TTL  7200
 42    IN  PTR dorothy-server.lps.ufrj.br.
 43    IN  PTR runner-server.lps.ufrj.br.
 44    IN  PTR postgres-server.lps.ufrj.br.
-
+45    IN  PTR geant-server.lps.ufrj.br.
 
 
 

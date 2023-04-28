@@ -90,8 +90,7 @@ www-server                  IN    A     146.164.147.41  ; sites
 dorothy-server              IN    A     146.164.147.42  ; brics server 
 runner-server               IN    A     146.164.147.43  ; github self-runner
 postgres-server             IN    A     146.164.147.44  ; postgres
-
-
+geant-server                IN    A     146.164.147.45  ; geant
 
 
 www                         IN    CNAME proxy-server.lps.ufrj.br.
