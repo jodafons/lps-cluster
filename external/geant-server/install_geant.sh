@@ -13,11 +13,11 @@ apt-get install -y wget git dpkg-dev g++ gcc binutils libx11-dev libxpm-dev libx
 
 apt-get install -y dpkg-dev cmake g++ gcc binutils libx11-dev libxpm-dev \
         libxft-dev libxext-dev python3 libssl-dev gfortran libpcre3-dev \
-        xlibmesa-glu-dev libglew-dev libftgl-dev \
+        libglu1-mesa-dev libglew-dev libftgl-dev \
         libmysqlclient-dev libfftw3-dev libcfitsio-dev \
-        graphviz-dev libavahi-compat-libdnssd-dev \
+        libgraphviz-dev libavahi-compat-libdnssd-dev \
         libldap2-dev libxml2-dev libkrb5-dev \
-        libgsl0-dev qtwebengine5-dev install python3-pip
+        libgsl-dev qtwebengine5-dev install python3-pip
 
 pip install numpy tqdm
  
