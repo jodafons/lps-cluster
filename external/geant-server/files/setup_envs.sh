@@ -1,9 +1,7 @@
 
-
 #!/bin/bash
-currentpath=$PWD
+current_path=$PWD
 
-# Envs
 
 # ROOT
 echo "setup root..."
@@ -13,9 +11,6 @@ source /physics/root/build/bin/thisroot.sh
 echo "setup geant..."
 cd /physics/geant/build
 source geant4.sh
-
-
-
 
 # pythia
 echo "setup pythia..."
@@ -32,8 +27,7 @@ export FASTJET_LIBRARIES=/usr/local/lib
 echo "setup hepmc..."
 export HEPMC_INCLUDE=/physics/hepmc/hepmc3/include/
 export HEPMC_LIBRARIES=/usr/local/lib
-#export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HEPMC_LIBRARIES
-export PYTHONPATH=$PYTHONPATH:/physics/hepmc/build/python/3.10.7
+export PYTHONPATH=$PYTHONPATH:/physics/hepmc/build/python/3.8.10
 
 # preload libs (fix)
 export LD_PRELOAD=''
@@ -44,4 +38,5 @@ do
 done
 
 
-cd $currentpath
+cd $current_path
+
