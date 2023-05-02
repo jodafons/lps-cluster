@@ -4,7 +4,7 @@
 Install the latest Operation System such as Ubuntu 22.04.
 Lets start with `geneve` as example.
 
-* Hostname: `geneve.lps.ufrj.br`
+* Hostname: `geneve`
 * Username: `cluster`
 
 ## Network Configuration
@@ -15,6 +15,8 @@ First, tip `fconfig` and get the name of the network interface. Example:
 ```
 source setup_network.sh ens8p 201
 ```
+
+Where `ens8p` is the name of the network device and `201` is the IP last number (See DNS table).
 
 ## Kerberos, NFS and LDAP:
 
@@ -45,7 +47,12 @@ To test LDAP, use this command and you shoul see some accounts inside of the LDA
 getent passwd
 ```
 
+## Install Docker and Singularity (Optional):
 
+```
+source install_docker.sh (not recomended)
+source install_singularity.sh (Extremelly recomended)
+```
 
 
 

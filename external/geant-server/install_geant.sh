@@ -48,7 +48,8 @@ apt-get install -y libxml2-dev
 apt-get install -y libkrb5-dev 
 apt-get install -y libgsl-dev 
 apt-get install -y rsync
-
+apt-get install -y libboost-all-dev
+apt-get install -y xorg
 
 # Install QT5
 apt-get install -y  mesa-common-dev qtcreator qt5-default
