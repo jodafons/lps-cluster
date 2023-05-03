@@ -3,7 +3,7 @@
 ;
 $TTL      7200
 @     IN   SOA       ns.lps.ufrj.br. netadmin.lps.ufrj.br. (
-           2023042800    ; Serial (YOU NEED TO CHANGE THIS EVERY UPDATE)
+           2023050500    ; Serial (YOU NEED TO CHANGE THIS EVERY UPDATE)
            7200          ; Refresh (2h)
            3600          ; Retry (1h)
            31536000      ; Expire (1y)
@@ -97,6 +97,7 @@ www                         IN    CNAME proxy-server.lps.ufrj.br.
 paf                         IN    CNAME proxy-server.lps.ufrj.br.
 virtuais                    IN    CNAME proxy-server.lps.ufrj.br.
 dorothy                     IN    CNAME proxy-server.lps.ufrj.br.
+dorothy-mlflow              IN    CNAME proxy-server.lps.ufrj.br.
 dorothy-image               IN    CNAME proxy-server.lps.ufrj.br.
 pgadmin                     IN    CNAME proxy-server.lps.ufrj.br.
 
