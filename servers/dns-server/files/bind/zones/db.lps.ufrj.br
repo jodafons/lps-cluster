@@ -3,7 +3,7 @@
 ;
 $TTL      7200
 @     IN   SOA       ns.lps.ufrj.br. netadmin.lps.ufrj.br. (
-           2023050500    ; Serial (YOU NEED TO CHANGE THIS EVERY UPDATE)
+           2023081300    ; Serial (YOU NEED TO CHANGE THIS EVERY UPDATE)
            7200          ; Refresh (2h)
            3600          ; Retry (1h)
            31536000      ; Expire (1y)
@@ -112,6 +112,17 @@ berna       IN      A     146.164.147.202
 porto       IN      A     146.164.147.203
 paris       IN      A     146.164.147.204
 verdun      IN      A     146.164.147.205
+gex         IN      A     146.164.147.206
+lancy       IN      A     146.164.147.207
+crozet      IN      A     146.164.147.208
+versoix     IN      A     146.164.147.209
+ornex       IN      A     146.164.147.210
+carouge     IN      A     146.164.147.211
+nyon        IN      A     146.164.147.212
+chamonix    IN      A     146.164.147.213
+
+
+
 
 
 ;
@@ -235,8 +246,8 @@ caloba-v16      IN      A     10.1.1.116
 ;
 ; Storages (201-210)
 ;
-seixas1       IN    A     10.1.1.201
 storage01     IN    A     10.1.1.202
 storage02     IN    A     10.1.1.203
 storage03     IN    A     10.1.1.204
 storage04     IN    A     10.1.1.205
+
