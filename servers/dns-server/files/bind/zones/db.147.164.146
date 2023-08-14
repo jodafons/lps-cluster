@@ -3,7 +3,7 @@
 ;
 $TTL  7200
 @ IN  SOA ns.lps.ufrj.br. netadmin.lps.ufrj.br. (
-          2023050500  ; Serial
+          2023081300  ; Serial
           7200        ; Refresh (2h)
           3600        ; Retry (1h)
           31536000    ; Expire (1y)
@@ -64,6 +64,16 @@ $TTL  7200
 203 IN  PTR porto.lps.ufrj.br.
 204 IN  PTR paris.lps.ufrj.br.
 205 IN  PTR verdun.lps.ufrj.br.
+206 IN  PTR gex.lps.ufrj.br.
+207 IN  PTR lancy.lps.ufrj.br.
+208 IN  PTR crozet.lps.ufrj.br.
+209 IN  PTR versoix.lps.ufrj.br.
+210 IN  PTR ornex.lps.ufrj.br.
+211 IN  PTR carouge.lps.ufrj.br.
+212 IN  PTR nyon.lps.ufrj.br.
+212 IN  PTR chamonix.lps.ufrj.br.
+
+
 
 ;
 ; DHCP
@@ -88,4 +98,5 @@ $TTL  7200
 252 IN  PTR dyn-18.lps.ufrj.br.
 253 IN  PTR dyn-19.lps.ufrj.br.
 254 IN  PTR dyn-20.lps.ufrj.br.
+
 
