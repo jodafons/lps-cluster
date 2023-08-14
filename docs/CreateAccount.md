@@ -1,6 +1,8 @@
 
 # How to Create a New Account
 
+**All users must be like first.lastname to avoid problems**
+
 
 ## LDAP User Creation:
 
@@ -34,16 +36,13 @@ user password. The format adopted should be `@username`.
 the `kpasswd` command.
 
 
+## List users:
+
+```
+sudo kadmin -q "list_principals"
+```
+
 ## Reset User Password:
-
-
-Open a `ssh` connection with `auth-server`:
-
-```
-ssh cluster@auth-server.lps.ufrj.br
-```
-
-Than create the new user with this command:
 
 ```
 sudo kadmin -q "cpw username"
