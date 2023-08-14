@@ -34,6 +34,25 @@ user password. The format adopted should be `@username`.
 the `kpasswd` command.
 
 
+## Reset User Password:
+
+
+Open a `ssh` connection with `auth-server`:
+
+```
+ssh cluster@auth-server.lps.ufrj.br
+```
+
+Than create the new user with this command:
+
+```
+sudo kadmin -q "cpw username"
+```
+
+
+
+
+
 
 
 
