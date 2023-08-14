@@ -17,7 +17,7 @@ Finally, click in `save` (top left).
 ## Kerberos User Creation:
 
 
-Open a `ssh` connection with `auth-server`:
+Open a `ssh` connection with `auth-server` (146.164.147.3):
 
 ```
 ssh cluster@auth-server.lps.ufrj.br
