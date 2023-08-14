@@ -3,7 +3,7 @@
 ;
 $TTL  7200
 @ IN  SOA ns.lps.ufrj.br. netadmin.lps.ufrj.br. (
-      2023050500  ; Serial
+      2023081300  ; Serial
       7200        ; Refresh (2h)
       3600        ; Retry (1h)
       31536000    ; Expire (1y)
@@ -96,7 +96,6 @@ $TTL  7200
 ;
 ; Storages (201-210)
 ;
-201 IN  PTR seixas1.lps.ufrj.br.
 202 IN  PTR storage01.lps.ufrj.br.
 203 IN  PTR storage02.lps.ufrj.br.
 204 IN  PTR storage03.lps.ufrj.br.
