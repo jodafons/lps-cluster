@@ -4,6 +4,7 @@ export CLUSTER_REPO_BASEPATH=$PWD
 export CLUSTER_HOST_ANSINBLE_PATH=$CLUSTER_REPO_BASEPATH/playbooks/hosts
 export ANSIBLE_HOST_KEY_CHECKING=False
 
+export PATH=$PATH:$PWD/servers/slurm-server/scripts
 #
 # Set of commands
 #

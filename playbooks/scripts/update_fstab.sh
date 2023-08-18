@@ -14,7 +14,7 @@ echo "10.1.1.202:/volume1/homes /home nfs rsize=32768,wsize=32768,bg,sync,nolock
 echo "10.1.1.202:/volume1/market_place /mnt/market_place nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0" >> /etc/fstab
 echo "10.1.1.203:/volume1/cern_data /mnt/cern_data nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0" >> /etc/fstab
 echo "10.1.1.203:/volume1/shared_data /mnt/shared_data nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0" >> /etc/fstab
-#mount -a
+mount -a
 
 
 
