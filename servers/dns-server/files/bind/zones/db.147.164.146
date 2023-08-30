@@ -3,7 +3,7 @@
 ;
 $TTL  7200
 @ IN  SOA ns.lps.ufrj.br. netadmin.lps.ufrj.br. (
-          2023081800  ; Serial
+          2023083000  ; Serial
           7200        ; Refresh (2h)
           3600        ; Retry (1h)
           31536000    ; Expire (1y)
@@ -77,7 +77,7 @@ $TTL  7200
 210 IN  PTR ornex.lps.ufrj.br.
 211 IN  PTR carouge.lps.ufrj.br.
 212 IN  PTR nyon.lps.ufrj.br.
-212 IN  PTR chamonix.lps.ufrj.br.
+213 IN  PTR chamonix.lps.ufrj.br.
 
 
 
