@@ -1,6 +1,6 @@
 
 NETDEVICE=$1
-IP=$2
+
 
 #
 # add as sudo
@@ -21,7 +21,7 @@ iface lo inet loopback
 
 auto $NETDEVICE
 iface $NETDEVICE inet static
-  address 146.164.147.$IP
+  address 146.164.147.45
   netmask 255.255.255.0
   gateway 146.164.147.1
   dns-nameservers 146.164.147.2 8.8.8.8 8.8.8.4
