@@ -3,7 +3,7 @@
 ;
 $TTL      7200
 @     IN   SOA       ns.lps.ufrj.br. netadmin.lps.ufrj.br. (
-           2023083100    ; Serial (YOU NEED TO CHANGE THIS EVERY UPDATE)
+           2023110200    ; Serial (YOU NEED TO CHANGE THIS EVERY UPDATE)
            7200          ; Refresh (2h)
            3600          ; Retry (1h)
            31536000      ; Expire (1y)
@@ -190,6 +190,7 @@ caloba19        IN      A     10.1.1.19
 
 
 ; CPU large
+caloba50        IN      A     10.1.1.50
 caloba51        IN      A     10.1.1.51
 caloba52        IN      A     10.1.1.52
 caloba53        IN      A     10.1.1.53
@@ -199,6 +200,7 @@ caloba55        IN      A     10.1.1.55
 
 
 ; GPU
+caloba70        IN      A     10.1.1.70
 caloba71        IN      A     10.1.1.71
 caloba72        IN      A     10.1.1.72
 caloba73        IN      A     10.1.1.73
@@ -213,6 +215,7 @@ caloba81        IN      A     10.1.1.81
 caloba82        IN      A     10.1.1.82
 
 ; GPU large
+caloba90        IN      A     10.1.1.90
 caloba91        IN      A     10.1.1.91
 caloba92        IN      A     10.1.1.92
 caloba93        IN      A     10.1.1.93
