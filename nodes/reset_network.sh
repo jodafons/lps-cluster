@@ -1,6 +1,7 @@
 
-hostname=$1
-node_number=$2
+network_device=$1
+hostname=$2
+node_number=$3
 
 #
 # fix ssh keys
@@ -39,8 +40,8 @@ source /etc/network/interfaces.d/*
 auto lo
 iface lo inet loopback
 
-auto enp6s18
-iface enp6s18 inet static
+auto $network_device
+iface $network_device inet static
   address 10.1.1.$node_number
   gateway 10.1.1.1
   dns-nameservers 146.164.147.2 8.8.8.8 8.8.8.4
