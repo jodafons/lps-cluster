@@ -36,6 +36,7 @@ $TTL  7200
 
 
 ; CPU large
+50  IN  PTR caloba51.lps.ufrj.br.
 51  IN  PTR caloba51.lps.ufrj.br.
 52  IN  PTR caloba52.lps.ufrj.br.
 53  IN  PTR caloba53.lps.ufrj.br.
@@ -47,6 +48,7 @@ $TTL  7200
 
 
 ; GPU
+70  IN  PTR caloba70.lps.ufrj.br.
 71  IN  PTR caloba71.lps.ufrj.br.
 72  IN  PTR caloba72.lps.ufrj.br.
 73  IN  PTR caloba73.lps.ufrj.br.
@@ -67,6 +69,7 @@ $TTL  7200
 
 
 ; GPU large
+90  IN  PTR caloba90.lps.ufrj.br.
 91  IN  PTR caloba91.lps.ufrj.br.
 92  IN  PTR caloba92.lps.ufrj.br.
 93  IN  PTR caloba93.lps.ufrj.br.
