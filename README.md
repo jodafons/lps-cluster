@@ -44,6 +44,9 @@ server (service) into the lab infrastructure.
 - [Storage 1](http://storage01.lps.ufrj.br:5000)
 - [Storage 2](http://storage02.lps.ufrj.br)
 - [Storage 3](http://storage03.lps.ufrj.br)
+- [pgadmin](http://pgadmin.lps.ufrj.br)
+- [minio](http://mlflow-server.lps.ufrj.br:9001)
+- [mlflow](http://mlflow-server.lps.ufrj.br:5000)
 
 
 ## Docs:
