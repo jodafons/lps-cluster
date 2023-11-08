@@ -9,9 +9,9 @@ apt install -y htop vim git sshpass curl wget
 #
 apt install -y nfs-common
 mkdir /mnt/market_place
-mkdir /mnt/home
+mkdir /mnt/mlflow_data
 echo "10.1.1.202:/volume1/market_place /mnt/market_place nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0" >> /etc/fstab
-echo "10.1.1.202:/volume1/homes /mnt/homes nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0" >> /etc/fstab
+echo "10.1.1.203:/volume1/mlflow_data /mnt/mlflow_data nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0" >> /etc/fstab
 
 
 #
