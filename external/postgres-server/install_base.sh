@@ -8,10 +8,8 @@ apt install -y htop vim git sshpass curl wget
 # Setup NFS
 #
 apt install -y nfs-common
-mkdir /mnt/market_place
-mkdir /mnt/home
-echo "10.1.1.202:/volume1/market_place /mnt/market_place nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0" >> /etc/fstab
-echo "10.1.1.202:/volume1/homes /mnt/homes nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0" >> /etc/fstab
+mkdir /mnt/postgres_data
+echo "10.1.1.202:/volume1/postgres_data /mnt/postgres_data nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0" >> /etc/fstab
 
 
 #
