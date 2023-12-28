@@ -36,6 +36,7 @@ caloba92 ansible_host=10.1.1.92 ansible_user=cluster ansible_password=6sJ09066sV
 caloba93 ansible_host=10.1.1.93 ansible_user=cluster ansible_password=6sJ09066sV1990;6
 caloba94 ansible_host=10.1.1.94 ansible_user=cluster ansible_password=6sJ09066sV1990;6
 caloba95 ansible_host=10.1.1.95 ansible_user=cluster ansible_password=6sJ09066sV1990;6
+caloba96 ansible_host=10.1.1.96 ansible_user=cluster ansible_password=6sJ09066sV1990;6
 
 
 
