@@ -36,6 +36,8 @@ gpasswd -a root docker
 gpasswd -a cluster docker
 
 
+sudo apt install -y make
+
 #
 # Install fish
 #

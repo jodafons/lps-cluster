@@ -11,7 +11,7 @@ up_debug:
 
 
 down:
-	docker compose down
+	docker compose --env-file config.env down
 
 prune:
 	docker system prune -a
