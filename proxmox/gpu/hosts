@@ -1,4 +1,6 @@
 
+[base]
+caloba-base ansible_host=10.1.1.10 ansible_user=cluster ansible_password=6sJ09066sV1990;6
 
 
 

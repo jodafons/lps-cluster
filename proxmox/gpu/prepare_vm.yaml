@@ -1,0 +1,13 @@
+---
+- name: Transfer and execute a script.
+  hosts: "caloba-base"
+  remote_user: cluster
+  become: yes
+  tasks:
+    
+        
+     - name: install singularity
+       ansible.builtin.shell: |
+        cd lps-cluster/nodes &&
+        sh install_singularity.sh
+     

@@ -7,4 +7,5 @@
      - name: Execute the script
        ansible.builtin.shell: |
         qmrestore {{image}} {{vmid}} --storage local-lvm --unique --force && 
-        qm set 280 --name {{node_name}}
+        qm set {{vmid}} --name {{node_name}} &&
+        qm start {{vmid}}

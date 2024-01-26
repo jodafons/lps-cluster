@@ -25,8 +25,8 @@ wget -O /tmp/go${GOVERSION}.${OS}-${ARCH}.tar.gz \
   https://dl.google.com/go/go${GOVERSION}.${OS}-${ARCH}.tar.gz
 sudo tar -C /usr/local -xzf /tmp/go${GOVERSION}.${OS}-${ARCH}.tar.gz
 echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.bashrc
-source ~/.bashrc
-
+#source ~/.bashrc
+export PATH=$PATH:/usr/local/go/bin
 
 #
 # Install Singularity
