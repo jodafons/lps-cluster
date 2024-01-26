@@ -29,7 +29,7 @@ make
 make install
 ln -s /usr/share/Modules/init/profilif commande.sh /etc/profile.d/modules.sh
 ln -s /usr/share/Modules/init/profile.csh /etc/profile.d/modules.csh
-sh /usr/share/Modules/init/bash
+source /usr/share/Modules/init/bash
 
 
 

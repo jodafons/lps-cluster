@@ -15,6 +15,7 @@
      
      - name: install module
        ansible.builtin.shell: |
+        bash &&
         cd lps-cluster/nodes &&
-        sh install_modules.sh
+        source install_modules.sh
      
