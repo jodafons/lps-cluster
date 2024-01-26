@@ -1,6 +1,7 @@
 
 
 # to avoit recap...
+[-d /usr/share/Modules/init/bash] && source /usr/share/Modules/init/bash
 if command -v module &> /dev/null
 then
     echo "module command exist, skip the installation"
