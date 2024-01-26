@@ -1,8 +1,4 @@
 
-network=$1
-hostname=$2
-nodenumber=$3
-
 
 #
 # cluster as sudo with no password
@@ -17,9 +13,9 @@ apt install -y net-tools
 # change hostname
 #
 
-hostnamectl set-hostname $hostname
+hostnamectl set-hostname caloba-base
 echo "127.0.0.1       localhost
-127.0.1.1       $hostname.lps.ufrj.br    $hostname
+127.0.1.1       caloba-base.lps.ufrj.br    caloba-base
 # The following lines are desirable for IPv6 capable hosts
 ::1     localhost ip6-localhost ip6-loopback
 ff02::1 ip6-allnodes
@@ -42,9 +38,9 @@ auto lo
 iface lo inet loopback
 
 # The primary network interface
-auto $network
-iface $network inet static
-        address 10.1.1.$nodenumber/24
+auto enp6s18
+iface enp6s18 inet static
+        address 10.1.1.10/24
         gateway 10.1.1.1
         dns-nameservers 146.164.147.2 8.8.8.8 8.8.8.4
 "> /etc/network/interfaces
