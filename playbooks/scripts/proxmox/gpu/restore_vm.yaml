@@ -6,5 +6,5 @@
   tasks:
      - name: Execute the script
        ansible.builtin.shell: |
-        qmrestore {{image_path}} {{vmid}} --storage local-lvm --unique --force && 
+        qmrestore {{image}} {{vmid}} --storage local-lvm --unique --force && 
         qm set 280 --name {{node_name}}
