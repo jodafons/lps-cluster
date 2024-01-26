@@ -1,4 +1,13 @@
 
+
+# to avoit recap...
+if command -v module &> /dev/null
+then
+    echo "module command exist, skip the installation"
+    exit 0
+fi
+
+
 basepath=$PWD
 cd /tmp
 

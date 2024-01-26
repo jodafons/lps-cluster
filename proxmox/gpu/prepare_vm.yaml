@@ -11,6 +11,10 @@
      - name: install singularity
        ansible.builtin.shell: |
         cd lps-cluster/nodes &&
-        
         sh install_singularity.sh
+     
+     - name: install module
+       ansible.builtin.shell: |
+        cd lps-cluster/nodes &&
+        sh install_module.sh
      
