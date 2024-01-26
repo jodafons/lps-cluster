@@ -27,7 +27,7 @@ cd modules-5.1.1
               --modulefilesdir=/etc/modulefiles
 make
 make install
-ln -s /usr/share/Modules/init/profile.sh /etc/profile.d/modules.sh
+ln -s /usr/share/Modules/init/profilif commande.sh /etc/profile.d/modules.sh
 ln -s /usr/share/Modules/init/profile.csh /etc/profile.d/modules.csh
 sh /usr/share/Modules/init/bash
 
