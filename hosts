@@ -1,19 +1,15 @@
 
-[caloba]
+[login]
 login-server ansible_host=146.164.147.5 ansible_user=cluster ansible_password=6sJ09066sV1990;6
 
 
 [caloba-cpus]
-
-
-
 caloba50 ansible_host=10.1.1.50 ansible_user=cluster ansible_password=6sJ09066sV1990;6
 caloba51 ansible_host=10.1.1.51 ansible_user=cluster ansible_password=6sJ09066sV1990;6
 caloba52 ansible_host=10.1.1.52 ansible_user=cluster ansible_password=6sJ09066sV1990;6
 caloba53 ansible_host=10.1.1.53 ansible_user=cluster ansible_password=6sJ09066sV1990;6
-#caloba54 ansible_host=10.1.1.54 ansible_user=cluster ansible_password=6sJ09066sV1990;6
-#caloba55 ansible_host=10.1.1.55 ansible_user=cluster ansible_password=6sJ09066sV1990;6
-
+caloba54 ansible_host=10.1.1.54 ansible_user=cluster ansible_password=6sJ09066sV1990;6
+caloba55 ansible_host=10.1.1.55 ansible_user=cluster ansible_password=6sJ09066sV1990;6
 
 
 [caloba-gpus]
@@ -47,14 +43,42 @@ caloba-v04 ansible_host=10.1.1.104 ansible_user=root ansible_password=6sJ09066sV
 caloba-v05 ansible_host=10.1.1.105 ansible_user=root ansible_password=6sJ09066sV1990;6
 caloba-v06 ansible_host=10.1.1.106 ansible_user=root ansible_password=6sJ09066sV1990;6
 caloba-v07 ansible_host=10.1.1.107 ansible_user=root ansible_password=6sJ09066sV1990;6
+caloba-v08 ansible_host=10.1.1.108 ansible_user=root ansible_password=6sJ09066sV1990;6
+caloba-v09 ansible_host=10.1.1.109 ansible_user=root ansible_password=6sJ09066sV1990;6
+caloba-v10 ansible_host=10.1.1.110 ansible_user=root ansible_password=6sJ09066sV1990;6
+caloba-v11 ansible_host=10.1.1.111 ansible_user=root ansible_password=6sJ09066sV1990;6
+caloba-v12 ansible_host=10.1.1.112 ansible_user=root ansible_password=6sJ09066sV1990;6
+caloba-v13 ansible_host=10.1.1.113 ansible_user=root ansible_password=6sJ09066sV1990;6
+caloba-v14 ansible_host=10.1.1.114 ansible_user=root ansible_password=6sJ09066sV1990;6
+caloba-v15 ansible_host=10.1.1.115 ansible_user=root ansible_password=6sJ09066sV1990;6
+caloba-v16 ansible_host=10.1.1.116 ansible_user=root ansible_password=6sJ09066sV1990;6
+#aloba-v17 ansible_host=10.1.1.117 ansible_user=root ansible_password=6sJ09066sV1990;6
 
-#caloba-v01 ansible_host=10.1.1.101 ansible_user=root ansible_password=6sJ09066sV1990;6
-#caloba-v02 ansible_host=10.1.1.102 ansible_user=root ansible_password=6sJ09066sV1990;6
-#caloba-v03 ansible_host=10.1.1.103 ansible_user=root ansible_password=6sJ09066sV1990;6
-#caloba-v04 ansible_host=10.1.1.104 ansible_user=root ansible_password=6sJ09066sV1990;6
-#caloba-v05 ansible_host=10.1.1.105 ansible_user=root ansible_password=6sJ09066sV1990;6
-#caloba-v06 ansible_host=10.1.1.106 ansible_user=root ansible_password=6sJ09066sV1990;6
-#caloba-v07 ansible_host=10.1.1.107 ansible_user=root ansible_password=6sJ09066sV1990;6
+[proxmox-master]
+caloba-v01 ansible_host=10.1.1.101 ansible_user=root ansible_password=6sJ09066sV1990;6
+
+
+[proxmox-nodes]
+caloba-v02 ansible_host=10.1.1.102 ansible_user=root ansible_password=6sJ09066sV1990;6
+caloba-v03 ansible_host=10.1.1.103 ansible_user=root ansible_password=6sJ09066sV1990;6
+caloba-v04 ansible_host=10.1.1.104 ansible_user=root ansible_password=6sJ09066sV1990;6
+caloba-v05 ansible_host=10.1.1.105 ansible_user=root ansible_password=6sJ09066sV1990;6
+caloba-v06 ansible_host=10.1.1.106 ansible_user=root ansible_password=6sJ09066sV1990;6
+caloba-v07 ansible_host=10.1.1.107 ansible_user=root ansible_password=6sJ09066sV1990;6
+caloba-v08 ansible_host=10.1.1.108 ansible_user=root ansible_password=6sJ09066sV1990;6
+
+
+#caloba-v09 ansible_host=10.1.1.109 ansible_user=root ansible_password=6sJ09066sV1990;6
+#caloba-v10 ansible_host=10.1.1.110 ansible_user=root ansible_password=6sJ09066sV1990;6
+#caloba-v11 ansible_host=10.1.1.111 ansible_user=root ansible_password=6sJ09066sV1990;6
+#caloba-v12 ansible_host=10.1.1.112 ansible_user=root ansible_password=6sJ09066sV1990;6
+#caloba-v13 ansible_host=10.1.1.113 ansible_user=root ansible_password=6sJ09066sV1990;6
+#caloba-v14 ansible_host=10.1.1.114 ansible_user=root ansible_password=6sJ09066sV1990;6
+#caloba-v15 ansible_host=10.1.1.115 ansible_user=root ansible_password=6sJ09066sV1990;6
+#caloba-v16 ansible_host=10.1.1.116 ansible_user=root ansible_password=6sJ09066sV1990;6
+#caloba-v17 ansible_host=10.1.1.117 ansible_user=root ansible_password=6sJ09066sV1990;6
+
+#[proxmox-master]
 
 
 

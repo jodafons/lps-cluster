@@ -1,0 +1,10 @@
+---
+- name: Transfer and execute a script.
+  hosts: "{{host_name}}"
+  remote_user: root
+  become: yes
+  tasks:
+     - name: Execute the script
+       ansible.builtin.shell: |
+        qmrestore {{image_path}} {{vmid}} --storage local-lvm --unique --force && 
+        qm set 280 --name {{node_name}}

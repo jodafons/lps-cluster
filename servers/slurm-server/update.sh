@@ -5,7 +5,7 @@ sudo cp files/slurm/slurmdbd.conf /etc/slurm
 sudo chmod 600 /etc/slurm/slurmdbd.conf
 sudo chown -R slurm /etc/slurm
 sudo cp files/slurm/slurmdbd.service /etc/systemd/system/
-sudo cp files/slurm/slurmctld.service /etc/systemd/system/
+	sudo cp files/slurm/slurmctld.service /etc/systemd/system/
 sudo cp files/slurm/slurm.conf /mnt/market_place/slurm_build
 
 # restart all services
@@ -20,4 +20,4 @@ sudo systemctl start slurmctld
 #systemctl status slurmctld
 sudo scontrol reconfigure
 
-source restart.sh
+#source restart.sh

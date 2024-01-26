@@ -1,0 +1,17 @@
+
+
+[proxmox-master]
+caloba-v01 ansible_host=10.1.1.115 ansible_user=root ansible_password=6sJ09066sV1990;6
+
+
+[proxmox-nodes]
+
+caloba-v12 ansible_host=10.1.1.112 ansible_user=root ansible_password=6sJ09066sV1990;6
+caloba-v13 ansible_host=10.1.1.113 ansible_user=root ansible_password=6sJ09066sV1990;6
+caloba-v14 ansible_host=10.1.1.114 ansible_user=root ansible_password=6sJ09066sV1990;6
+
+
+
+
+[all:vars]
+ansible_python_interpreter=/usr/bin/python3
