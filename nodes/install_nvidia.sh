@@ -4,7 +4,6 @@
 # Fix kernel
 #
 apt install -y linux-headers-$(uname -r)
-
 bash /mnt/market_place/nvidia/deps/NVIDIA-Linux-x86_64-515.76.run
 
 
