@@ -1,5 +1,14 @@
 
 
+
+# to avoit recap...
+if command -v singularity &> /dev/null
+then
+    echo "singularity command exist, skip the installation"
+    exit 0
+fi
+
+
 #
 # Configuration
 #

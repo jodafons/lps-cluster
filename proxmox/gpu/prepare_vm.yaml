@@ -4,10 +4,13 @@
   remote_user: cluster
   become: yes
   tasks:
-    
+     - name: update lps scripts
+       ansible.builtin.shell: |
+        cd lps-cluster/ && git pull
         
      - name: install singularity
        ansible.builtin.shell: |
         cd lps-cluster/nodes &&
+        
         sh install_singularity.sh
      
