@@ -79,7 +79,7 @@ sinfo
 if you got the slurm configuratio, just move to the next stage. Just ensure that slurm master node is worling.
 
 
-## Install Singularity (stage 4)
+## Install Singularity (stage 4):
 
 Just tip as `sudo`:
 
@@ -90,4 +90,84 @@ source install_singularity.sh
 ### Health check:
 
 Tip `singularity` into the terminal. If you get the `man` page, eveything its ready.
+
+
+
+## Install NVIDIA (stage 5):
+
+
+### Add pci device by proxmox:
+To install this, just ensure that the nvidia card was added by proxmox interface in `pci devices`.
+First fix the kernel to avoid problems when install the driver.
+
+- Go to the virtual node using the proxmox interface.
+- Tham click on hardware.
+- Click on `Add` than `PCI Device`.
+- Select the gpu card by name and mark `all functions`, than advanced and `PC-Express`. Finally, `Add`.
+- Turn-on the virtual node
+
+### Install driver:
+
+```
+sudo su
+apt install -y linux-headers-$(uname -r)
+```
+
+Than install the nvidia driver using the last version from:
+
+```
+bash /mnt/market_place/nvidia/deps/NVIDIA-Linux-x86_64-535.154.05.run
+```
+
+If you are running this for the first time, probably you will need to reboot the node. Just following the terminal instructions. When back once again, just repeat the procedure.
+
+Q&A options:
+- Tip `OK` for first warning
+- Install NVIDIA 32 bit compability libraries? `No`
+- Tip `OK` for second warning
+- Would you like to run the nvidia-xconfig utility to automatically... ? `Yes`
+- Finally, `OK`
+
+
+Tip `nvidia-smi` to check if the gpu is available.
+
+
+### Install protections: 
+
+
+
+### Install CUDA 
+
+
+If you dont have the binary files inside of the `market_place`, just tip these lines to build each cuda version as `sudo`. Now, if all files are into `/mnt/market_place/nvidia/deps`, move to the next.
+
+```
+cd /mnt/market_place/nvidia/deps
+```
+
+than:
+
+```
+./cuda_11.8.0_520.61.05_linux.run --toolkitpath=$PWD/cuda_11.8.0 --installpath=$PWD/cuda_11.8.0
+```
+
+Q&A options:
+- Accept the licence: `accept`
+- On CUDA Installer menu, mack only `CUDA Toolkit`, than click on `Install`
+- Overwrite cuda link: `Yes`
+
+Repeat these procedure for:
+
+```
+./cuda_12.1.0_530.30.02_linux.run --toolkitpath=$PWD/cuda_12.1.0 --installpath=$PWD/cuda_12.1.0
+./cuda_12.2.0_535.54.03_linux.run --toolkitpath=$PWD/cuda_12.2.0 --installpath=$PWD/cuda_12.2.0
+```
+
+### Link cuDNN:
+
+For `cuda 11.8`:
+
+
+
+
 
