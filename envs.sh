@@ -10,6 +10,7 @@ export MASTER_PASSWORD='6sJ09066sV1990;6'
 
 export CLUSTER_HOST_ANSINBLE_PATH=$CLUSTER_REPO_BASEPATH/playbooks/hosts
 export ANSIBLE_HOST_KEY_CHECKING=False
+export ANSIBLE_EXECUTABLE=/bin/bash
 
 export PATH=$PATH:$PWD/servers/slurm-server/scripts
 #

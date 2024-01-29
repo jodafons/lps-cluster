@@ -1,0 +1,27 @@
+---
+- name: Transfer and execute a script.
+  hosts: caloba-base
+  remote_user: root
+  become: yes
+  tasks:
+     - name: Reset ssh keys
+       ansible.builtin.shell: |
+        dpkg-reconfigure openssh-server
+
+     - name: Add into kerberos
+       ansible.builtin.shell: |
+        (echo '{{cluster_password}}') |kadmin -q "addprinc -policy service -randkey host/{{new_hostname}}.lps.ufrj.br" &&
+        (echo '{{cluster_password}}') |kadmin -q "ktadd -k /etc/krb5.keytab host/{{new_hostname}}.lps.ufrj.br"
+     
+     - name: Change hostname...
+       ansible.builtin.shell: |
+        cd /home/cluster/lps-cluster && git pull &&
+        source /home/cluster/lps-cluster/nodes/change_hostname.sh {{new_hostname}}
+
+     - name: Change ip...
+       ansible.builtin.shell: |
+        source /home/cluster/lps-cluster/nodes/change_ip.sh {{node_number}}
+ 
+     - name: Restart...
+       ansible.builtin.shell: |
+        systemctl restart networking && reboot now

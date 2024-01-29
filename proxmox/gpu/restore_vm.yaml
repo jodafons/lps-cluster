@@ -4,7 +4,7 @@
   remote_user: root
   become: yes
   tasks:
-     - name: Execute the script
+     - name: Restore node...
        ansible.builtin.shell: |
         qmrestore {{image}} {{vmid}} --storage local-lvm --unique --force && 
         qm set {{vmid}} --name {{node_name}} &&
