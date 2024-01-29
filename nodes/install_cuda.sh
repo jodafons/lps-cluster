@@ -20,3 +20,17 @@ apt install -y nvidia-modprobe
 sudo apt update -y && sudo apt upgrade -y
 
 
+echo "Install CUDA..."
+
+#bash /mnt/market_place/nvidia/deps/cuda_12.1.0_530.30.02_linux.run
+apt-get -y install cuda-toolkit-12-1
+
+
+ln -s /mnt/market_place/nvidia/deps/cudnn-8.9.7.29_cuda12/ /usr/local/
+ln -s /mnt/market_place/nvidia/deps/cudnn-8.9.7.29_cuda12/cuda/include/cudnn* /usr/local/cuda-12.1/include
+ln -s /mnt/market_place/nvidia/deps/cudnn-8.9.7.29_cuda12/cuda/lib64/libcudnn* /usr/local/cuda-12.1/lib64
+sudo chmod a+r /usr/local/cuda-12.1/include/cudnn* /usr/local/cuda-12.1/lib64/libcudnn*
+
+
+
+

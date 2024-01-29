@@ -132,23 +132,11 @@ Q&A options:
 Tip `nvidia-smi` to check if the gpu is available.
 
 
-### Install protections: 
-
-
-
 ### Install CUDA 
 
 
-If you dont have the binary files inside of the `market_place`, just tip these lines to build each cuda version as `sudo`. Now, if all files are into `/mnt/market_place/nvidia/deps`, move to the next.
-
 ```
-cd /mnt/market_place/nvidia/deps
-```
-
-than:
-
-```
-./cuda_11.8.0_520.61.05_linux.run --toolkitpath=$PWD/cuda_11.8.0 --installpath=$PWD/cuda_11.8.0
+source install_cuda.sh
 ```
 
 Q&A options:
@@ -156,18 +144,6 @@ Q&A options:
 - On CUDA Installer menu, mack only `CUDA Toolkit`, than click on `Install`
 - Overwrite cuda link: `Yes`
 
-Repeat these procedure for:
-
-```
-./cuda_12.1.0_530.30.02_linux.run --toolkitpath=$PWD/cuda_12.1.0 --installpath=$PWD/cuda_12.1.0
-./cuda_12.2.0_535.54.03_linux.run --toolkitpath=$PWD/cuda_12.2.0 --installpath=$PWD/cuda_12.2.0
-```
-
-### Link cuDNN:
-
-For `cuda 11.8`:
-
-
-
+To check if cuda is ready, tip `nvcc --version`.
 
 

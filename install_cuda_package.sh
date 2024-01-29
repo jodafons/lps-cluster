@@ -65,9 +65,9 @@ echo ""
 
 
 ln -s /mnt/market_place/nvidia/deps/cudnn-8.9.7.29_cuda12/ /usr/local/
-ln -s /mnt/market_place/nvidia/deps/cudnn-8.9.7.29_cuda12/cuda/include/cudnn* /mnt/market_place/nvidia/deps/cuda_12.1.0/include
-ln -s /mnt/market_place/nvidia/deps/cudnn-8.9.7.29_cuda12/cuda/lib64/libcudnn* /mnt/market_place/nvidia/deps/cuda_12.1.0/lib64
-sudo chmod a+r /mnt/market_place/nvidia/deps/cuda_12.1.0/include/cudnn* /mnt/market_place/nvidia/deps/cuda_12.1.0/lib64/libcudnn*
+ln -s /mnt/market_place/nvidia/deps/cudnn-8.9.7.29_cuda12/cuda/include/cudnn* /usr/local/cuda-12.1/include
+ln -s /mnt/market_place/nvidia/deps/cudnn-8.9.7.29_cuda12/cuda/lib64/libcudnn* /usr/local/cuda-12.1/lib64
+sudo chmod a+r /usr/local/cuda-12.1/include/cudnn* /usr/local/cuda-12.1/lib64/libcudnn*
 
 
 echo ""
