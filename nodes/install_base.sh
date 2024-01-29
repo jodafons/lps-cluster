@@ -17,6 +17,8 @@ mount -a
 # install kerberos
 apt install -y krb5-config krb5-user
 apt install -y libpam-krb5
+apt install -y linux-headers-$(uname -r)
+
 kadmin -q "addprinc -policy service -randkey host/$HOSTNAME.lps.ufrj.br"
 kadmin -q "ktadd -k /etc/krb5.keytab host/$HOSTNAME.lps.ufrj.br"
 
