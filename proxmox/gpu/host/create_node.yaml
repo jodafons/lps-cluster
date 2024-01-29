@@ -1,0 +1,12 @@
+---
+- name: create node.
+  hosts: "{{hostgroup}}"
+  serial: 1
+  remote_user: root
+  become: yes
+  tasks:
+
+     - name: Add new node into the cluster
+       ansible.builtin.shell: |
+        echo "pvecm add {{clusterip}} --votes 0 --force" > run.sh &&
+        (echo '{{masterkey}}'; echo yes) | bash run.sh

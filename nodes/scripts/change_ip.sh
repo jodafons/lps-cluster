@@ -3,9 +3,7 @@ node_number=$1
 
 echo "
 # and how to activate them. For more information, see interfaces(5).
-
 source /etc/network/interfaces.d/*
-
 # The loopback network interface
 auto lo
 iface lo inet loopback

@@ -1,0 +1,10 @@
+---
+- name: VM restrart
+  hosts: "{{hostname}}"
+  remote_user: root
+  become: yes
+  tasks:
+     - name: Restart the vm node
+       ansible.builtin.shell: |
+        qm stop {{vmid}} &&
+        qm start {{vmid}}

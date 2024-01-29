@@ -1,0 +1,11 @@
+---
+- name: execute a script.
+  hosts: "{{vmname_init}}"
+  remote_user: root
+  become: yes
+  tasks:
+     - name: Reset everything and reconfigure the node...
+       ansible.builtin.shell: |
+        screen -dm bash -c "sleep 2; source /mnt/market_place/scripts/reconfigure.sh '{{masterkey}}' {{vmname}} {{ipnumber}}"
+
+    

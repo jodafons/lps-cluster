@@ -1,11 +1,11 @@
 ---
-- name: Transfer and execute a script.
-  hosts: "{{host_name}}"
+- name: execute a script.
+  hosts: "{{hostname}}"
   remote_user: root
   become: yes
   tasks:
-     - name: Restore node...
+     - name: Restore node into the proxmox physical node...
        ansible.builtin.shell: |
         qmrestore {{image}} {{vmid}} --storage local-lvm --unique --force && 
-        qm set {{vmid}} --name {{node_name}} &&
+        qm set {{vmid}} --name {{vmname}} &&
         qm start {{vmid}}

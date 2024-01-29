@@ -1,5 +1,5 @@
 ---
-- name: Transfer and execute a script.
+- name: Reset all nodes into the cluster
   hosts: all
   remote_user: root
   become: yes
