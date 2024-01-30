@@ -1,14 +1,15 @@
 
 
-[proxmox-master]
-caloba-v01 ansible_host=10.1.1.115 ansible_user=root ansible_password=6sJ09066sV1990;6
+[base]
+caloba-base ansible_host=10.1.1.10 ansible_user=cluster ansible_password=6sJ09066sV1990;6
 
 
-[proxmox-nodes]
+[physical]
 
-caloba-v12 ansible_host=10.1.1.112 ansible_user=root ansible_password=6sJ09066sV1990;6
 caloba-v13 ansible_host=10.1.1.113 ansible_user=root ansible_password=6sJ09066sV1990;6
 caloba-v14 ansible_host=10.1.1.114 ansible_user=root ansible_password=6sJ09066sV1990;6
+caloba-v15 ansible_host=10.1.1.115 ansible_user=root ansible_password=6sJ09066sV1990;6
+caloba-v16 ansible_host=10.1.1.116 ansible_user=root ansible_password=6sJ09066sV1990;6
 
 
 

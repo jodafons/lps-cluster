@@ -1,11 +1,16 @@
 ---
-- name: Transfer and execute a script.
-  hosts: all
+- name: Reset all nodes into the cluster
+  hosts: "{{hostgroup}}"
   remote_user: root
   become: yes
   tasks:
-     - name: Transfer the script
-       copy: src=reset_node.sh dest=/root mode=0777
 
-     - name: Execute the script
-       command: sh /root/reset_node.sh
+     - name: Reset node configuration...
+       ansible.builtin.shell: |
+        systemctl stop pve-cluster corosync &&
+        pmxcfs -l &&
+        rm -rf /etc/corosync/* &&
+        rm -rf /etc/pve/corosync.conf &&
+        killall pmxcfs &&
+        systemctl start pve-cluster &&
+        rm -rf /etc/pve/nodes/* 

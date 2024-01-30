@@ -1,6 +1,6 @@
 
 
-# SLURM Server Configuration:
+# SLURM Server Configuration from Scrach:
 
 ## LDAP Client Configuration:
 
@@ -222,4 +222,12 @@ sacctmgr create user joao.pinto account=compute-account adminlevel=None
 Finally, if everything went well, you can check system health by typing `sinfo`. Don't worry if your nodes show no state, we haven't configured them yet. So let's do this now!
 
 
+
+# Slurm Node Update:
+
+Include the new node into `files/slurm/slurm.conf`. If this node is new into the list, you must include him into `playbooks/hosts` too. Than, tip:
+
+```
+source update.sh
+```
 

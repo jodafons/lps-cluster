@@ -1,0 +1,1 @@
+ansible-playbook -i hosts restart_slurm.yaml

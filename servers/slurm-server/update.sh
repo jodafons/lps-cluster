@@ -20,4 +20,6 @@ sudo systemctl start slurmctld
 #systemctl status slurmctld
 sudo scontrol reconfigure
 
-#source restart.sh
+cd playbooks
+source restart_slurm.sh
+cd ..

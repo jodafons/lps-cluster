@@ -1,10 +1,10 @@
 
 
-from loguru import logger
+#from loguru import logger
 
+def run(hostname, command, description="command..."):
 
-template = """
----
+  body = """---
 - name: cluster task
   hosts: "{hostname}"
   remote_user: root
@@ -14,35 +14,16 @@ template = """
        ansible.builtin.shell: |
         {command}
 """
+  return body.format(hostname=hostname,description=description,command=command)
 
 
-class Cluster:
-
-
-    def __init__(self):
-
-
-
-    def reset(self):
-
-
-    def build(self):
+print(run("caloba-v10", "ls -lisah", "list all..."))
 
 
 
-cluster = Cluster( name="gpu" )
-
-
-cluster+=Node( name="caloba-v01", master=True )
-cluster+=Node( name="caloba-v02" )
 
 
 
-cluster["caloba-v01"] += VM(name="caloba70", ip="10.1.1.70", image=image , snapname="base")
 
-
-
-cluster.reset()
-cluster.build()
 
 
