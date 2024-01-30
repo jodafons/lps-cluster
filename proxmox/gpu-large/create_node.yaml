@@ -1,12 +1,12 @@
 ---
-- name: Transfer and execute a script.
-  hosts: proxmox-nodes
+- name: create node.
+  hosts: "{{hostgroup}}"
   serial: 1
   remote_user: root
   become: yes
   tasks:
-     - name: Transfer the script
-       copy: src=create_node.sh dest=/root mode=0777
-     
-     - name: Execute the script
-       command: bash /root/create_node.sh
+
+     - name: Add new node into the cluster
+       ansible.builtin.shell: |
+        echo "pvecm add {{clusterip}} --votes 0 --force" > run.sh &&
+        (echo '{{masterkey}}'; echo yes) | bash run.sh

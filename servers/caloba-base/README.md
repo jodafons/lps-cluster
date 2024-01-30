@@ -1,5 +1,5 @@
 
-# Node Configuration:
+# Physycal Node Configuration:
 
 Follow these instructions to configure a new proxmox node and build the necessary
 images inside of the `caloba` cluster infrastructure.
@@ -157,66 +157,146 @@ Now your Proxmox host should be ready to GPU passthrough!
 
 
 
+# Install Caloba Base from scrach
 
+After install the OS debian, follow the steps below to prepare the base node.
 
+## Setup network (stage 1):
 
-## Build the Image (CPU Based): 
-
-Execute these scripts in this order in order to configure the node
+This script as `sudo` and it will setup the network configuration to `10.1.1.10`. Just tip:
 
 ```
-source setup_network.sh caloba12 12
+source setup_network.sh
 ```
 
-Than, `reboot` the node. When back, install the base:
+## Install NFS, Kerberos and LDAP (stage 2):
+
+To install NFS and kerberus tip:
 
 ```
 source install_base.sh
 ```
 
-When back, install `slurm`, `singularity` and `modules enviroment`:
+Some Q&A must be filled:
+
+###  Kerberos configuration:
+
+- Default Kerberos version 5 realmn: `LPS.UFRJ.BR`
+- Kerberos servers for your realm: `auth-server.lps.ufrj.br`
+- Administrative server for your kerberos realm: `auth-server.lps.ufrj.br`
+- Tip your `admin` password
+
+
+### LDAP configuration:
+
+- LDAP server URI: `ldap://auth-server.lps.ufrj.br`
+- Distinguished name of the search base: `dc=lps,dc=ufrj,dc=br`
+- LDAP version to use: `3`
+- LDAP account for root: `cn=admin,dc=lps,dc=ufrj,dc=br`
+- LDAP root account password: `your admin password`
+- tip `OK` once again
+- Aloow LDAP admin account to behave like local root? `Yes`
+- Does LDAP database require login? `No`
+- LDAP administrative account: `cn=admin,dc=lps,dc=ufrj,dc=br`
+- LDAP root account password: `your admin password`
+
+Than, after some packages installation, you will be require to answer once again:
+
+- Say `OK` for the first two questions (dont need to fill it).
+- Than, mark `passwd`, `group` and `shadown` and tip `OK`
+
+After complete all, the machine will be rebooted.
+
+### Health check:
+
+When machine back, before move to the next stage, check:
+
+- Check LDAP with `getend passwd`. You should be able to see all cluster users;
+- Check NFS places in `ls /mnt`. You shout be able to see at least `market_place`,
+
+If everything is fine, now let´s move to the next stage
+
+## Install SLURM (stage 3):
+
+
+To install `slurm`, tip this command:
 
 ```
 source install_slurm.sh
+```
+
+### Health check:
+
+To check if eveything is working, just tip:
+
+```
+sinfo
+```
+
+if you got the slurm configuratio, just move to the next stage. Just ensure that slurm master node is worling.
+
+
+## Install Singularity (stage 4):
+
+Just tip as `sudo`:
+
+```
 source install_singularity.sh
-source install_modules.sh
 ```
 
-### Replicate CPU Nodes:
+### Health check:
 
-After complete these steps you can backup this image and propagate it to others
-`CPU` nodes. After copy this image to another node you should reconfigure the 
-`hostname`, `ip` and `ssh` keys since this is a new virtual machine. Remeber to
-include the `hostname` and ip address into the `DNS` server.
+Tip `singularity` into the terminal. If you get the `man` page, eveything its ready.
 
-To reconfigure the network,
+
+
+## Install NVIDIA (stage 5):
+
+
+### Add pci device by proxmox:
+To install this, just ensure that the nvidia card was added by proxmox interface in `pci devices`.
+First fix the kernel to avoid problems when install the driver.
+
+- Go to the virtual node using the proxmox interface.
+- Tham click on hardware.
+- Click on `Add` than `PCI Device`.
+- Select the gpu card by name and mark `all functions`, than advanced and `PC-Express`. Finally, `Add`.
+- Turn-on the virtual node
+
+### Install driver:
 
 ```
-source reset_network.sh caloba51 51
+sudo su
+apt install -y linux-headers-$(uname -r)
 ```
 
-## Build GPU Image:
+Than install the nvidia driver using the last version from:
 
-On top of the `CPU` image, install `cuda`.
+```
+bash /mnt/market_place/nvidia/deps/NVIDIA-Linux-x86_64-535.154.05.run
+```
+
+If you are running this for the first time, probably you will need to reboot the node. Just following the terminal instructions. When back once again, just repeat the procedure.
+
+Q&A options:
+- Tip `OK` for first warning
+- Install NVIDIA 32 bit compability libraries? `No`
+- Tip `OK` for second warning
+- Would you like to run the nvidia-xconfig utility to automatically... ? `Yes`
+- Finally, `OK`
+
+
+Tip `nvidia-smi` to check if the gpu is available.
+
+
+### Install CUDA 
+
 
 ```
 source install_cuda.sh
-source install_nvidia.sh
-
-```
-
-### Replicate GPU Nodes:
-
-After the installation, you can backup the new image. Than, you can copy 
-it to the new `GPU node`. After copy, you will need to reconfigure the
-network and install the `NVIDIA` drivers.
-
-To reconfigure the network,
-
-```
-source reset_network.sh caloba81 81
 ```
 
 
-After complete these steps, the new node will be able to locate the
-`GPU` hardware.
+
+
+

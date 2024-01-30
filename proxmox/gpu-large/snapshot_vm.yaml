@@ -1,6 +1,6 @@
 ---
 - name: execute a script.
-  hosts: "{{vmname}}"
+  hosts: "{{hostname}}"
   remote_user: root
   become: yes
   tasks:

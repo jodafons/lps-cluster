@@ -214,6 +214,11 @@ caloba79        IN      A     10.1.1.79
 caloba80        IN      A     10.1.1.80
 caloba81        IN      A     10.1.1.81
 caloba82        IN      A     10.1.1.82
+caloba83        IN      A     10.1.1.83
+caloba84        IN      A     10.1.1.84
+caloba85        IN      A     10.1.1.85
+
+
 
 ; GPU large
 caloba90        IN      A     10.1.1.90
@@ -223,6 +228,8 @@ caloba93        IN      A     10.1.1.93
 caloba94        IN      A     10.1.1.94
 caloba95        IN      A     10.1.1.95
 caloba96        IN      A     10.1.1.96
+caloba97        IN      A     10.1.1.97
+caloba98        IN      A     10.1.1.98
 
 
 
