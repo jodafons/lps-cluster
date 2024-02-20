@@ -1,5 +1,5 @@
 - name: Reset SLUM nodes
-  hosts: all
+  hosts: "{{hostgroup}}"
   become: yes
   become_user: root
   tasks:
@@ -7,3 +7,5 @@
       service:
         name: slurmd
         state: restarted
+
+

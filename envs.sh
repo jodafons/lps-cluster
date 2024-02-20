@@ -16,9 +16,6 @@ export ANSIBLE_EXECUTABLE=/bin/bash
 
 
 
-export PATH=$PATH:$REPO/proxmox/scripts/vm
-export PATH=$PATH:$REPO/proxmox/scripts/hosts
-
 #
 # Set of commands
 #

@@ -1,8 +1,19 @@
 
-## Proxmox Installation:
+# Proxmox Installation:
 
+to install from a PVE 8.1 live USB stick by doing this :
 
+- Boot from USB choosing the UEFI entry in the boot menu
+- Move the cursor of the TUI installer option
+- Press "e" to edit, replace "vga=xxx" at the end of the line with "nomodeset"
+- Press Ctrl-X to boot with your changes
 
+## Bios Setup:
+
+Inside of the bios motherboard, search for these features:
+
+- The feature `Intel Virtualization Technology` should be enabled.
+- The feature `VT-d` should be enabled.
 
 
 ## Configure GPU Passthrough Inside Proxmox Shell (Only for GPU nodes):
@@ -132,7 +143,6 @@ done;
 ```
 
 Now your Proxmox host should be ready to GPU passthrough!
-
 
 
 ## Add Storage:
