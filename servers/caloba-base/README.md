@@ -68,10 +68,10 @@ lspci -s 01:00 -n
 The output should look similar to this:
 
 ```
-01:00.0 0300: 10de:1e81 (rev a1)
-01:00.1 0403: 10de:10f8 (rev a1)
-01:00.2 0c03: 10de:1ad8 (rev a1)
-01:00.3 0c80: 10de:1ad9 (rev a1)
+03:00.0 0300: 10de:1e81 (rev a1)
+03:00.1 0403: 10de:10f8 (rev a1)
+03:00.2 0c03: 10de:1ad8 (rev a1)
+03:00.3 0c80: 10de:1ad9 (rev a1)
 ```
 
 What we are looking are the pairs, we will use those id to split the PCI Group to separate devices.

@@ -40,7 +40,7 @@ iface lo inet loopback
 # The primary network interface
 auto enp6s18
 iface enp6s18 inet static
-        address 10.1.1.10/24
+        address 10.1.1.210/24
         gateway 10.1.1.1
         dns-nameservers 146.164.147.2 8.8.8.8 8.8.8.4
 "> /etc/network/interfaces

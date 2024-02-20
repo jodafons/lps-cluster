@@ -1,9 +1,0 @@
----
-- name: execute a script.
-  hosts: "{{hostname}}"
-  remote_user: root
-  become: yes
-  tasks:
-     - name: Snapshot the vm node
-       ansible.builtin.shell: |
-        qm snapshot {{vmid}} {{snapname}}
