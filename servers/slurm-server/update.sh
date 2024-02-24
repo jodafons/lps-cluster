@@ -20,4 +20,4 @@ sudo systemctl start slurmctld
 #systemctl status slurmctld
 sudo scontrol reconfigure
 
-ansible-playbook -i ../../hosts playbooks/restart_slurmd.yaml -e "hostgroup=vm"
+restart_slurm.sh

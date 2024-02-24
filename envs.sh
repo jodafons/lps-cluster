@@ -1,11 +1,5 @@
 
 
-#
-# virtualenv name
-#
-export VIRTUALENV_NAMESPACE='lps-cluster-env'
-
-export REPO=$PWD
 
 export MASTER_KEY='6sJ09066sV1990;6'
 
@@ -13,8 +7,10 @@ export MASTER_KEY='6sJ09066sV1990;6'
 
 export ANSIBLE_HOST_KEY_CHECKING=False
 export ANSIBLE_EXECUTABLE=/bin/bash
+export SLURM_PLAYBOOKS=$PWD/playbooks/slurm
+export LPS_CLUSTER_HOSTS=$PWD/playbooks/hosts
 
-
+export PATH=$PATH:/$PWD/scripts
 
 #
 # Set of commands
