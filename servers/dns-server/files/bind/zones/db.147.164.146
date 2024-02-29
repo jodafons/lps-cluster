@@ -3,7 +3,7 @@
 ;
 $TTL  7200
 @ IN  SOA ns.lps.ufrj.br. netadmin.lps.ufrj.br. (
-          2024013000  ; Serial
+          2024022800  ; Serial
           7200        ; Refresh (2h)
           3600        ; Retry (1h)
           31536000    ; Expire (1y)
@@ -45,6 +45,7 @@ $TTL  7200
 44    IN  PTR postgres-server.lps.ufrj.br.
 45    IN  PTR mlflow-server.lps.ufrj.br.
 46    IN  PTR maestro-server.lps.ufrj.br.
+47    IN  PTR cad-server.lps.ufrj.br.
 
 
 

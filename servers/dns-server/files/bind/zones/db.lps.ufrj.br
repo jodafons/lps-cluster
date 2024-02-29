@@ -3,7 +3,7 @@
 ;
 $TTL      7200
 @     IN   SOA       ns.lps.ufrj.br. netadmin.lps.ufrj.br. (
-           2024013000    ; Serial (YOU NEED TO CHANGE THIS EVERY UPDATE)
+           2024022800    ; Serial (YOU NEED TO CHANGE THIS EVERY UPDATE)
            7200          ; Refresh (2h)
            3600          ; Retry (1h)
            31536000      ; Expire (1y)
@@ -92,6 +92,7 @@ runner-server               IN    A     146.164.147.43  ; github self-runner
 postgres-server             IN    A     146.164.147.44  ; postgres
 mlflow-server               IN    A     146.164.147.45  ; mlflow
 maestro-server              IN    A     146.164.147.46  ; maestro
+cad-server                  IN    A     146.164.147.47  ; maestro
 
 
 www                         IN    CNAME proxy-server.lps.ufrj.br.
@@ -101,6 +102,7 @@ dorothy                     IN    CNAME proxy-server.lps.ufrj.br.
 dorothy-mlflow              IN    CNAME proxy-server.lps.ufrj.br.
 dorothy-image               IN    CNAME proxy-server.lps.ufrj.br.
 pgadmin                     IN    CNAME proxy-server.lps.ufrj.br.
+cad                         IN    CNAME proxy-server.lps.ufrj.br.
 
 
 
