@@ -1,0 +1,16 @@
+- name: Reset SLUM nodes
+  hosts: "{{hostgroup}}"
+  become: yes
+  become_user: root
+  tasks:
+
+    - name: Copy file to remote
+      copy:
+        src: slurmd.service
+        dest: /etc/systemd/system
+
+    - name: Reset all slurm node control
+      service:
+        name: slurmd
+        state: restarted
+
