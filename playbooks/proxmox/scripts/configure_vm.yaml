@@ -3,9 +3,23 @@
   hosts: "{{vmname_init}}"
   remote_user: root
   become: yes
-  tasks:
-     - name: Reset everything and reconfigure the node...
-       ansible.builtin.shell: |
-        screen -dm bash -c "sleep 2; source /mnt/market_place/scripts/reconfigure.sh '{{masterkey}}' {{vmname}} {{ipnumber}}"
-
+  tasks:   
+     - name: Async restart of networking.service 
+       shell: "bash /mnt/market_place/scripts/reconfigure.sh '{{masterkey}}' {{vmname}} {{ipnumber}}"
+       args:
+        executable: /bin/bash
+       async: 10
+       poll: 0
     
+     - name: set_fact for the nodes new IP
+       set_fact:
+        ansible_host: "10.1.1.{{ipnumber}}"
+   
+     - name: wait_for ssh port access
+       local_action:
+         module: wait_for
+         host: "{{ ansible_host }}"
+         port: 22
+         delay: 60
+         state: started
+       register: network_responding
