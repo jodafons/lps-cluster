@@ -3,20 +3,13 @@
 ;
 $TTL  7200
 @ IN  SOA ns.lps.ufrj.br. netadmin.lps.ufrj.br. (
-      2024070800  ; Serial
+      2025021500  ; Serial
       7200        ; Refresh (2h)
       3600        ; Retry (1h)
       31536000    ; Expire (1y)
       10800 )     ; Negative Cache TTL
 
   IN  NS  ns.lps.ufrj.br.
-
-
-;
-; OLD SLURM frontend (10)
-;
-10  IN  PTR caloba.lps.ufrj.br.
-11  IN  PTR caloba1.lps.ufrj.br.
 
 
 
