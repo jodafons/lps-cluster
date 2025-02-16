@@ -1,1 +1,0 @@
-sudo kdb5_util load -d kerberos.lps.ufrj.br
