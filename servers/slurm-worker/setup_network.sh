@@ -3,6 +3,8 @@
 #
 # cluster as sudo with no password
 #
+apt-get update --fix-missing
+
 
 usermod -aG sudo $USER
 echo "cluster ALL=(ALL:ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/cluster
@@ -24,9 +26,13 @@ ff02::2 ip6-allrouters
 hostnamectl
 
 
+
+
 #
 # Change IP
 #
+net_interface=$(ip link | awk -F: '$0 !~ "lo|vir|wl|^[^0-9]"{print $2;getline}')
+
 echo "
 # This file describes the network interfaces available on your system
 # and how to activate them. For more information, see interfaces(5).
@@ -38,8 +44,8 @@ auto lo
 iface lo inet loopback
 
 # The primary network interface
-auto enp6s18
-iface enp6s18 inet static
+auto $network_interface
+iface $network_interface inet static
         address 10.1.1.210/24
         gateway 10.1.1.1
         dns-nameservers 146.164.147.2 8.8.8.8 8.8.8.4
