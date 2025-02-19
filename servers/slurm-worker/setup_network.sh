@@ -13,9 +13,9 @@ apt install -y net-tools
 # change hostname
 #
 
-hostnamectl set-hostname caloba-base
+hostnamectl set-hostname slurm-worker
 echo "127.0.0.1       localhost
-127.0.1.1       caloba-base.lps.ufrj.br    caloba-base
+127.0.1.1       slurm-worker.lps.ufrj.br    slurm-worker
 # The following lines are desirable for IPv6 capable hosts
 ::1     localhost ip6-localhost ip6-loopback
 ff02::1 ip6-allnodes
@@ -59,5 +59,23 @@ search lps.ufrj.br' > /etc/resolvconf/resolv.conf.d/head
 service resolvconf restart
 
 
+#
+# add all NFS workplaces
+#
+apt install -y nfs-common
+mkdir -p /mnt/market_place
+mkdir -p /mnt/cern_data
+mkdir -p /mnt/brics_data
+mkdir -p /mnt/sonar_place
+mkdir -p /mnt/petrobras_place
+
+
+echo "10.1.1.202:/volume1/market_place /mnt/market_place nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0" >> /etc/fstab
+echo "10.1.1.203:/volume1/cern_data /mnt/cern_data nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0" >> /etc/fstab
+echo "10.1.1.203:/volume1/brics_data /mnt/brics_data nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0" >> /etc/fstab
+echo "10.1.1.203:/volume1/sonar_data /mnt/sonar_data nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0" >> /etc/fstab
+echo "10.1.1.203:/volume1/petrobras_data /mnt/petrobras_data nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0" >> /etc/fstab
+
+mount -a
 
 reboot now

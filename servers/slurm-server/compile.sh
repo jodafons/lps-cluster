@@ -1,3 +1,4 @@
+basepath=$pwd
 apt-get update
 apt install -y linux-headers-$(uname -r)
 apt install -y libdbus-1-dev libmysqlclient-dev build-essential libpam-dev ruby-rubygems
@@ -7,15 +8,16 @@ gem install fpm
 
 
 
-mkdir -p /mnt/market_place/slurm
-cd /mnt/market_place/slurm
+mkdir -p /mnt/market_place/slurm_build
+cd /mnt/market_place/slurm_build
 wget https://download.schedmd.com/slurm/slurm-24.11.1.tar.bz2
 bunzip2 slurm-24.11.1.tar.bz2
 tar xfv slurm-24.11.1.tar && rm slurm-24.11.1.tar
 cd slurm-24.11.1
-./configure --prefix=/mnt/market_place/slurm/build --sysconfdir=/etc/slurm --enable-pam --with-pam_dir=/lib/x86_64-linux-gnu/security/ --without-shared-libslurm
-make -j20
+./configure --prefix=/mnt/market_place/slurm_build/build --sysconfdir=/etc/slurm --enable-pam --with-pam_dir=/lib/x86_64-linux-gnu/security/ --without-shared-libslurm
+make -j8
 make install
 cd ..
 
-sudo fpm -s dir -t deb -v 1.0 -n slurm-24.11.1 --prefix=/usr -C /mnt/market_place/slurm/build .
+sudo fpm -s dir -t deb -v 1.0 -n slurm-24.11.1 --prefix=/usr -C /mnt/market_place/slurm_build/build .
+cd $basepath

@@ -1,0 +1,22 @@
+[Unit]
+Description=Slurm rest
+#After=network.target munge.service vpn-launch.service mnt-cifs.mount
+#After=multi-user.target
+After=local-fs.target network.target munge.service slurmctld.service
+
+
+[Service]
+# Unset vendor unit ExecStart to avoid cumulative definition
+ExecStart=
+Environment=
+# Disable slurm user security check
+Environment=SLURMRESTD_SECURITY=disable_user_check
+ExecStart=/usr/sbin/slurmrestd $SLURMRESTD_OPTIONS unix:/run/slurmrestd/slurmrestd.socket
+RuntimeDirectory=slurmrestd
+RuntimeDirectoryMode=0755
+User=slurm
+Group=slurm
+
+
+[Install]
+WantedBy=multi-user.target

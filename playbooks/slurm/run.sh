@@ -1,1 +1,0 @@
-ansible-playbook -i $LPS_CLUSTER_HOSTS command.yaml -vv -e "hostgroup=vm"

@@ -1,6 +1,12 @@
 
 
-apt install -y gcc make libpam0g-dev ruby ruby-dev libmariadb-dev-compat libmariadb-dev mariadb-server bzip2 libmunge-dev libmunge2 munge
+apt-get update
+apt install -y linux-headers-$(uname -r)
+apt install -y libdbus-1-dev libmysqlclient-dev build-essential libpam-dev ruby-rubygems
+apt install -y gcc make libssl-dev libpam0g-dev ruby ruby-dev libmariadb-dev-compat libmariadb-dev mariadb-server bzip2 libmunge-dev libmunge2 munge
+apt install -y libhttp-parser-dev libjson-c-dev
+gem install fpm
+
 systemctl enable munge
 systemctl start munge
 systemctl stop mariadb
@@ -17,10 +23,9 @@ flush privileges;"
 
 cp /etc/munge/munge.key /mnt/market_place/slurm_build
 
-
-
 # install slurm
-dpkg -i /mnt/market_place/slurm_build/slurm-22.05.3/slurm-22.05.3_1.0_amd64.deb
+dpkg -i --force-overwrite /mnt/market_place/slurm_build/slurm-24.11.1_1.0_amd64.deb
+
 useradd slurm
 mkdir -p /etc/slurm 
 mkdir -p /etc/slurm/prolog.d 
@@ -38,6 +43,10 @@ cp files/slurm/slurmdbd.service /etc/systemd/system/
 cp files/slurm/slurmctld.service /etc/systemd/system/
 cp files/slurm/slurm.conf /mnt/market_place/slurm_build
 
+sudo ufw allow from any to any port 6817
+sudo ufw allow from any to any port 6818
+sudo ufw allow from any to any port 6819
+
 systemctl daemon-reload
 systemctl enable slurmdbd
 systemctl start slurmdbd
@@ -45,8 +54,8 @@ systemctl enable slurmctld
 systemctl start slurmctld
 
 # check status
-systemctl status slurmdbd
-systemctl status slurmctld
+#systemctl status slurmdbd
+#systemctl status slurmctld
 
 # create accounts into SLURM db
 sacctmgr add cluster caloba
@@ -55,6 +64,8 @@ sacctmgr create user joao.pinto account=compute-account adminlevel=None
 
 
 # add sjstat
-cp /mnt/market_place/slurm_build/slurm-22.05.3/contribs/sjstat /usr/bin
+cp /mnt/market_place/slurm_build/slurm-24.11.1/contribs/sjstat /usr/bin
 
-reboot now
+#reboot now
+
+
