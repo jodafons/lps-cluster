@@ -72,8 +72,8 @@ apt install -y nfs-common
 mkdir -p /mnt/market_place
 mkdir -p /mnt/cern_data
 mkdir -p /mnt/brics_data
-mkdir -p /mnt/sonar_place
-mkdir -p /mnt/petrobras_place
+mkdir -p /mnt/sonar_data
+mkdir -p /mnt/petrobras_data
 
 
 echo "10.1.1.202:/volume1/market_place /mnt/market_place nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0" >> /etc/fstab

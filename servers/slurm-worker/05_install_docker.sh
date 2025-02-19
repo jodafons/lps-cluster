@@ -20,3 +20,4 @@ apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose docker-c
 groupadd docker
 gpasswd -a root docker
 gpasswd -a cluster docker
+gpasswd -a joao.pinto docker

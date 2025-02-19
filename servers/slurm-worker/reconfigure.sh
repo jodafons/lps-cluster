@@ -2,7 +2,7 @@
 password=$1
 hostname=$2
 node=$3
-
+echo "start reconfigure..."
 # reconfigure ssh-keys
 dpkg-reconfigure openssh-server
 
@@ -11,7 +11,7 @@ dpkg-reconfigure openssh-server
 kadmin -w $password -q "addprinc -policy service -randkey host/$hostname.lps.ufrj.br"
 kadmin -w $password -q "ktadd -k /etc/krb5.keytab host/$hostname.lps.ufrj.br"
 
-
+echo "change hostname..."
 # change hostname
 hostnamectl set-hostname $hostname
 echo "127.0.0.1       localhost
@@ -41,9 +41,9 @@ iface $network_interface inet static
   dns-nameservers 146.164.147.2 8.8.8.8 8.8.8.4
 " > /etc/network/interfaces
 
-
+echo "restarting network...."
 #netplan apply
 systemctl restart networking
 
-
+echo "reboot now!"
 sudo reboot now

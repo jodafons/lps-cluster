@@ -1,5 +1,6 @@
 
 # recopy everything to SLURM
+echo "recopy..."
 sudo cp files/slurm/slurm.conf /etc/slurm/
 sudo cp files/slurm/slurmdbd.conf /etc/slurm
 sudo chmod 600 /etc/slurm/slurmdbd.conf
@@ -9,6 +10,7 @@ sudo cp files/slurm/slurmctld.service /etc/systemd/system/
 sudo cp files/slurm/slurm.conf /mnt/market_place/slurm_build
 
 # restart all services
+echo "restart..."
 sudo systemctl start munge
 sudo systemctl daemon-reload
 sudo systemctl start slurmdbd
@@ -19,5 +21,3 @@ sudo systemctl start slurmctld
 #systemctl status slurmdbd
 #systemctl status slurmctld
 sudo scontrol reconfigure
-
-restart_slurm.sh
