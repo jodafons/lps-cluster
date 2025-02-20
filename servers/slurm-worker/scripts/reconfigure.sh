@@ -1,15 +1,15 @@
 
-password=$1
-hostname=$2
-node=$3
+#password=$1
+hostname=$1
+ip_address=$
 
 # reconfigure ssh-keys
 dpkg-reconfigure openssh-server
 
 
 # add node into kerberos
-kadmin -w $password -q "addprinc -policy service -randkey host/$hostname.lps.ufrj.br"
-kadmin -w $password -q "ktadd -k /etc/krb5.keytab host/$hostname.lps.ufrj.br"
+#kadmin -w $password -q "addprinc -policy service -randkey host/$hostname.lps.ufrj.br"
+#kadmin -w $password -q "ktadd -k /etc/krb5.keytab host/$hostname.lps.ufrj.br"
 
 
 # change hostname
@@ -36,7 +36,7 @@ iface lo inet loopback
 
 auto $network_interface
 iface $network_interface inet static
-  address 10.1.1.$node
+  address $ip_address
   gateway 10.1.1.1
   dns-nameservers 146.164.147.2 8.8.8.8 8.8.8.4
 " > /etc/network/interfaces

@@ -5,7 +5,7 @@
   become: yes
   tasks:   
      - name: Async restart of networking.service 
-       shell: "bash /mnt/market_place/scripts/reconfigure.sh '{{masterkey}}' {{vmname}} {{ipnumber}}"
+       shell: "wget https://raw.githubusercontent.com/jodafons/lps-cluster/refs/heads/main/servers/slurm-worker/scripts/reconfigure.sh && bash reconfigure.sh '{{vmname}} {{ip_address}}"
        args:
         executable: /bin/bash
        async: 10
@@ -13,12 +13,12 @@
     
      - name: set_fact for the nodes new IP
        set_fact:
-        ansible_host: "10.1.1.{{ipnumber}}"
+        ansible_host: "{{ip_address}}"
    
      - name: wait_for ssh port access
        local_action:
          module: wait_for
-         host: "{{ ansible_host }}"
+         host: "{{vmname}}"
          port: 22
          delay: 60
          state: started

@@ -6,6 +6,6 @@
   tasks:
      - name: Restore node into the proxmox physical node...
        ansible.builtin.shell: |
-        qmrestore {{image}} {{vmid}} --storage {{storage}} --unique --force && 
-        qm set {{vmid}} --name {{vmname}} &&
+        qmrestore {{image}} {{vmid}} --storage {{storage}} --unique --force &&
+        qm set {{vmid}} --name {{vmname}} --sockets {{sockets}} --cores {{cores}} --memory {{memory_mb}} &&
         qm start {{vmid}}

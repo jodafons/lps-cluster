@@ -1,0 +1,15 @@
+{
+    "image":"/mnt/pve/storage02/dump/vzdump-qemu-500-2025_02_18-23_29_50.vma.zst",
+    "nodes":{
+        "caloba51":{
+            "hostname": "caloba-v13",
+            "ip_address":"10.1.1.51",
+            "vmid":351,
+            "sockets":2,
+            "cores":20,
+            "memory_mb":128000,
+            "storage":"storage02",
+            "vmname" : "caloba51"
+        }
+    }
+}

@@ -2,7 +2,7 @@
 
 
 [base]
-caloba-base ansible_host=10.1.1.210 ansible_user=cluster ansible_password=6sJ09066sV1990;6
+slurm-worker ansible_host=10.1.1.210 ansible_user=cluster ansible_password=6sJ09066sV1990;6
 
 
 [gpu]
