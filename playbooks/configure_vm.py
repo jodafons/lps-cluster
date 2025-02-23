@@ -95,7 +95,7 @@ class VM(Shell):
     return self.run_shell_on_host( f"qm stop {self.vmid} && qm start {vmid}" )
   
   def configure(self) -> bool:
-    script_http = "https://raw.githubusercontent.com/jodafons/lps-cluster/refs/heads/main/servers/slurm-worker/scripts/reconfigure.sh" 
+    script_http = "https://raw.githubusercontent.com/jodafons/lps-cluster/refs/heads/main/playbooks/yaml/vm/configure_vm.sh" 
     script_name = script_http.split("/")[-1]
     command =  f"wget {script_http} && bash {script_name} {self.vmname} {self.ip_address}"
     ok = self.run_shell_on_vm( command , script='configure_vm.yaml')

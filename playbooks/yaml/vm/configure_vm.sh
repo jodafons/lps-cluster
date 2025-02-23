@@ -1,7 +1,6 @@
 
-#password=$1
 hostname=$1
-ip_address=$
+ip_address=$2
 
 # reconfigure ssh-keys
 dpkg-reconfigure openssh-server
