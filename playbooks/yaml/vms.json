@@ -1,6 +1,8 @@
 {
-    "image":"/mnt/pve/storage02/dump/vzdump-qemu-500-2025_02_18-23_29_50.vma.zst",
-    "vms":{
+    "common":{
+        "image":"/mnt/pve/storage02/dump/vzdump-qemu-500-2025_02_18-23_29_50.vma.zst"
+    },
+    "vm":{
         "caloba51":{
             "cluster" : "cpu-large",
             "hostname": "caloba-v13",

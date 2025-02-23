@@ -3,6 +3,7 @@
 import argparse
 import sys,os,json
 import socket
+import traceback
 
 from typing import List
 from time import sleep
@@ -15,29 +16,29 @@ class Shell:
     self.hosts    = f"{basepath}/hosts"
     self.basepath = basepath
 
-  def run_shell(self, hostname : str, command : str, dry_run: bool=False, script : str="shell.yaml"):
+  def run_shell(self, hostname : str, command : str, dry_run: bool=False, script : str="shell.yaml") -> bool:
     script = f"{self.basepath}/{script}"
     params = f"hostname={hostname} "
     params+= f"command='{command}' "
-    self.run(script, params, dry_run)
+    return self.run(script, params, dry_run)
 
-  def run(self, script : str, params : str, dry_run : bool=False):
+  def run(self, script : str, params : str, dry_run : bool=False) -> bool:
     command=f'{self.__preexec} && ansible-playbook -i {self.hosts} {script} -vv -e "{params}"'
     print(command)
     try:
-      if dry_run:
+      if not dry_run:
         os.system(command)
       return True
     except:
+      traceback.print_exp()
       return False
 
 
 class VM(Shell):
   
   def __init__(self,
-               basepath  : str,
+               yaml_folder : str,
                image     : str,
-               hosts     : str,
                vmname    : str,
                vmid      : int,
                memory_mb : int,
@@ -51,7 +52,7 @@ class VM(Shell):
                dry_run   : bool=False,
                vmname_init : str="slurm-worker"
                ):
-    Shell.__init__()
+    Shell.__init__(self,basepath=yaml_folder)
     self.image    = image
     self.hostname = hostname
     self.vmid     = vmid 
@@ -64,51 +65,46 @@ class VM(Shell):
     self.cluster  = cluster
     self.dry_run  = dry_run
     self.vmname_init=vmname_init
+    self.gpu      = gpu
   
-  def run_shell_on_vm(self,command:str, script : str="shell.yaml"):
+  def run_shell_on_vm(self,command:str, script : str="shell.yaml") -> bool:
     return self.run_shell(self.vmname, command, dry_run=self.dry_run)
   
-  def run_shell_on_host(self, command : str, script : str="shell.yaml"):
+  def run_shell_on_host(self, command : str, script : str="shell.yaml") -> bool:
     return self.run_shell(self.hostname, command, dry_run=self.dry_run)
   
-  def create(self, snapname : str=None):    
-    self.restore()
-    sleep(10)
-    self.configure()
-    if snapname:
-      self.snapshot(snapname)
+  def create(self, snapname : str="base"):    
+    if self.restore():
+      sleep(10)
+      if self.configure() and snapname:
+        self.snapshot(snapname)
     
-  def destroy(self):
-    self.run_shell_on_host(f"qm stop {self.vmid} && qm destroy {self.vmid}")
+  def destroy(self) -> bool:
+    return self.run_shell_on_host(f"qm stop {self.vmid} && qm destroy {self.vmid}")
     
-        
-  def restore(self):
+  def restore(self) -> bool:
     command = f"qmrestore {self.image} {self.vmid} --storage {self.storage} --unique --force && "
     command+= f"qm set {self.vmid} --name {self.vmname} --sockets {self.sockets} --cores {self.cores} --memory {self.memory_mb} && "
     command+= f"qm start {self.vmid}"
-    self.run_shell_on_host(command)
+    return self.run_shell_on_host(command)
     
-  def snapshot(self, name : str):
-    self.run_shell_on_host(f"qm snapshot {self.vmid} {name}")
+  def snapshot(self, name : str) -> bool:
+    return self.run_shell_on_host(f"qm snapshot {self.vmid} {name}")
 
-  def reset(self):
-    self.run_shell_on_host( f"qm stop {self.vmid} && qm start {vmid}" )
+  def reset(self) -> bool:
+    return self.run_shell_on_host( f"qm stop {self.vmid} && qm start {vmid}" )
   
-  def configure(self, max_retry : int=10):
+  def configure(self) -> bool:
     script_http = "https://raw.githubusercontent.com/jodafons/lps-cluster/refs/heads/main/servers/slurm-worker/scripts/reconfigure.sh" 
     script_name = script_http.split("/")[-1]
     command =  f"wget {script_http} && bash {script_name} {self.vmname} {self.ip_address}"
-    self.run_shell_on_vm( command , script='configure_vm.yaml')
-    retry=0
-    while not self.ping() and retry<max_retry:
-      sleep(5)
-      retry+=1
-      print(f"ping (retry={retry}/{max_retry})")
-    if self.gpu:
+    ok = self.run_shell_on_vm( command , script='configure_vm.yaml')
+    if ok and self.gpu:
       script_http="https://raw.githubusercontent.com/jodafons/lps-cluster/refs/heads/main/servers/slurm-worker/05_install_cuda.sh"
       script_name = script_http.split("/")[-1]
       command = f"bash {script_name}"
-      self.run_shell_on_vm( command )
+      ok = self.run_shell_on_vm( command )
+    return ok
 
   def ping(self,timeout : int=2, port : int=22) -> bool:
     sock = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
@@ -121,11 +117,9 @@ class VM(Shell):
       sock.close()
       return True
 
-
-
 def common_parser():
   parser = argparse.ArgumentParser(description = '', add_help = False)
-  parser.add_argument('--yaml', action='store', dest='yaml', required = False, type=str, default=f"{os.getcwd()}/yaml",
+  parser.add_argument('--yaml-folder', action='store', dest='yaml_folder', required = False, type=str, default=f"{os.getcwd()}/yaml",
                       help = "The yaml folder path.")
   parser.add_argument('--dry-run', action='store_true', dest='dry_run', required = False,
                       help = "dry run...")
@@ -184,10 +178,10 @@ def load_json(path : str):
   return json.load(open(path,'r'))
 
 def create_vm(args) -> VM:
-  file = load_json(args.yaml+"/vms.json")
+  file = load_json(args.yaml_folder+"/vms.json")
   vm   = file['vm'][args.vmname]
   image= file["common"]['image']
-  return VM( hosts=args.hosts, image=image, dry_run=args.dry_run, **vm)
+  return VM( yaml_folder=args.yaml_folder, image=image, dry_run=args.dry_run, **vm)
   
 
 def run_parser(args):
