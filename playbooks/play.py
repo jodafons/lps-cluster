@@ -9,7 +9,9 @@ from typing import List
 from time import sleep
 from pprint import pprint
 
-class Shell:
+
+
+class Ansible:
   __preexec = "export ANSIBLE_HOST_KEY_CHECKING=False"
 
   def __init__(self, basepath : str=f"{os.getcwd()}/yaml"):
@@ -34,7 +36,19 @@ class Shell:
       return False
 
 
-class VM(Shell):
+class Cluster(Ansible):
+  def __init__(self):
+    pass
+  def reset(self):
+    pass
+  def configure_hosts(self):
+    pass    
+  def configure_cluster(self):
+    pass
+    
+
+
+class VM(Ansible):
   
   def __init__(self,
                yaml_folder : str,
@@ -52,7 +66,7 @@ class VM(Shell):
                dry_run   : bool=False,
                vmname_init : str="slurm-worker"
                ):
-    Shell.__init__(self,basepath=yaml_folder)
+    Ansible.__init__(self,basepath=yaml_folder)
     self.image    = image
     self.hostname = hostname
     self.vmid     = vmid 
@@ -95,10 +109,10 @@ class VM(Shell):
     return self.run_shell_on_host( f"qm stop {self.vmid} && qm start {vmid}" )
   
   def configure(self) -> bool:
-    script_http = "https://raw.githubusercontent.com/jodafons/lps-cluster/refs/heads/main/playbooks/yaml/vm/configure_vm.sh" 
+    script_http = "https://raw.githubusercontent.com/jodafons/lps-cluster/refs/heads/main/playbooks/yaml/vm/configure_network.sh" 
     script_name = script_http.split("/")[-1]
     command =  f"wget {script_http} && bash {script_name} {self.vmname} {self.ip_address}"
-    ok = self.run_shell_on_vm( command , script='configure_vm.yaml')
+    ok = self.run_shell_on_vm( command , script='vm/configure_network.yaml')
     if ok and self.gpu:
       script_http="https://raw.githubusercontent.com/jodafons/lps-cluster/refs/heads/main/servers/slurm-worker/05_install_cuda.sh"
       script_name = script_http.split("/")[-1]
