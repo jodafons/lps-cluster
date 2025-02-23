@@ -4,7 +4,6 @@
   remote_user: root
   become: yes
   tasks:
-     - name: Restart the vm node
+     - name: Execute the command
        ansible.builtin.shell: |
-        qm stop {{vmid}} &&
-        qm destroy {{vmid}}
+        {{command}}

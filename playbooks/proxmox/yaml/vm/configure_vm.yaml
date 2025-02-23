@@ -5,7 +5,7 @@
   become: yes
   tasks:   
      - name: Async restart of networking.service 
-       shell: "wget https://raw.githubusercontent.com/jodafons/lps-cluster/refs/heads/main/servers/slurm-worker/scripts/reconfigure.sh && bash reconfigure.sh '{{vmname}} {{ip_address}}"
+       shell: "{{command}}"
        args:
         executable: /bin/bash
        async: 10
