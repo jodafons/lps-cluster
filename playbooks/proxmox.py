@@ -32,9 +32,6 @@ class Shell:
       return False
 
 
-    
-
-
 class VM(Shell):
   
   def __init__(self,
@@ -84,9 +81,7 @@ class VM(Shell):
   def destroy(self):
     self.run_shell_on_host(f"qm stop {self.vmid} && qm destroy {self.vmid}")
     
-  #def apt_install(self, packages : List[str]):
-    
-    
+        
   def restore(self):
     command = f"qmrestore {self.image} {self.vmid} --storage {self.storage} --unique --force && "
     command+= f"qm set {self.vmid} --name {self.vmname} --sockets {self.sockets} --cores {self.cores} --memory {self.memory_mb} && "
@@ -101,16 +96,19 @@ class VM(Shell):
   
   def configure(self, max_retry : int=10):
     script_http = "https://raw.githubusercontent.com/jodafons/lps-cluster/refs/heads/main/servers/slurm-worker/scripts/reconfigure.sh" 
-    command =  f"wget {script_http} && bash reconfigure.sh {self.vmname} {self.ip_address}"
+    script_name = script_http.split("/")[-1]
+    command =  f"wget {script_http} && bash {script_name} {self.vmname} {self.ip_address}"
     self.run_shell_on_vm( command , script='configure_vm.yaml')
     retry=0
     while not self.ping() and retry<max_retry:
       sleep(5)
       retry+=1
       print(f"ping (retry={retry}/{max_retry})")
-      
     if self.gpu:
-      script_http=
+      script_http="https://raw.githubusercontent.com/jodafons/lps-cluster/refs/heads/main/servers/slurm-worker/05_install_cuda.sh"
+      script_name = script_http.split("/")[-1]
+      command = f"bash {script_name}"
+      self.run_shell_on_vm( command )
 
   def ping(self,timeout : int=2, port : int=22) -> bool:
     sock = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
@@ -127,8 +125,8 @@ class VM(Shell):
 
 def common_parser():
   parser = argparse.ArgumentParser(description = '', add_help = False)
-  parser.add_argument('--config-path', action='store', dest='config_path', required = False, type=str, default=f"{os.getcwd()}/yaml/vms.json",
-                      help = "The hosts configuration file.")
+  parser.add_argument('--yaml', action='store', dest='yaml', required = False, type=str, default=f"{os.getcwd()}/yaml",
+                      help = "The yaml folder path.")
   parser.add_argument('--dry-run', action='store_true', dest='dry_run', required = False,
                       help = "dry run...")
   return parser
@@ -186,9 +184,9 @@ def load_json(path : str):
   return json.load(open(path,'r'))
 
 def create_vm(args) -> VM:
-  file = load_json(args.config_path)
-  vm   = file['vms'][args.vmname]
-  image= file['image']
+  file = load_json(args.yaml+"/vms.json")
+  vm   = file['vm'][args.vmname]
+  image= file["common"]['image']
   return VM( hosts=args.hosts, image=image, dry_run=args.dry_run, **vm)
   
 
