@@ -45,6 +45,7 @@ class Cluster(Ansible):
     pass    
   def configure_cluster(self):
     pass
+  def add_storage(self, )
     
 
 
@@ -81,8 +82,8 @@ class VM(Ansible):
     self.vmname_init=vmname_init
     self.gpu      = gpu
   
-  def run_shell_on_vm(self,command:str, script : str="shell.yaml") -> bool:
-    return self.run_shell(self.vmname, command, dry_run=self.dry_run)
+  def run_shell_on_vm(self,command:str, script : str="shell.yaml" , configured : bool=True) -> bool:
+    return self.run_shell(self.vmname if configured else self.vmname_init, command, dry_run=self.dry_run)
   
   def run_shell_on_host(self, command : str, script : str="shell.yaml") -> bool:
     return self.run_shell(self.hostname, command, dry_run=self.dry_run)
@@ -112,7 +113,7 @@ class VM(Ansible):
     script_http = "https://raw.githubusercontent.com/jodafons/lps-cluster/refs/heads/main/playbooks/yaml/vm/configure_network.sh" 
     script_name = script_http.split("/")[-1]
     command =  f"wget {script_http} && bash {script_name} {self.vmname} {self.ip_address}"
-    ok = self.run_shell_on_vm( command , script='vm/configure_network.yaml')
+    ok = self.run_shell_on_vm( command , script='vm/configure_network.yaml', configured=False)
     if ok and self.gpu:
       script_http="https://raw.githubusercontent.com/jodafons/lps-cluster/refs/heads/main/servers/slurm-worker/05_install_cuda.sh"
       script_name = script_http.split("/")[-1]
@@ -197,7 +198,6 @@ def create_vm(args) -> VM:
   image= file["common"]['image']
   return VM( yaml_folder=args.yaml_folder, image=image, dry_run=args.dry_run, **vm)
   
-
 def run_parser(args):
     if args.mode == "cluster":
         if args.option == "create":

@@ -1,6 +1,7 @@
 {
     "common":{
-        "image":"/mnt/pve/storage02/dump/vzdump-qemu-500-2025_02_18-23_29_50.vma.zst"
+        "image":"/mnt/pve/storage02/dump/vzdump-qemu-500-2025_02_18-23_29_50.vma.zst",
+        "vmname_init": "slurm-worker"
     },
     "vm":{
         "caloba51":{
@@ -27,6 +28,5 @@
             "vmname" : "caloba52",
             "gpu":false
         }
-
     }
 }
