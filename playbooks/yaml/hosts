@@ -32,7 +32,7 @@ caloba-v16 ansible_host=10.1.1.116 ansible_user=root ansible_password=6sJ09066sV
 
 
 [vm]
-login-server ansible_host=146.164.147.5 ansible_user=cluster ansible_password=6sJ09066sV1990;6
+#login-server ansible_host=146.164.147.5 ansible_user=cluster ansible_password=6sJ09066sV1990;6
 caloba51 ansible_host=10.1.1.51 ansible_user=cluster ansible_password=6sJ09066sV1990;6
 caloba52 ansible_host=10.1.1.52 ansible_user=cluster ansible_password=6sJ09066sV1990;6
 caloba53 ansible_host=10.1.1.53 ansible_user=cluster ansible_password=6sJ09066sV1990;6

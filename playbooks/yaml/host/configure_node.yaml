@@ -7,4 +7,7 @@
 
      - name: Install GPU configuration...
        ansible.builtin.shell: |
-        wget 
+        wget https://raw.githubusercontent.com/jodafons/lps-cluster/refs/heads/main/playbooks/yaml/host/configure_node.py && python3 configure_node.py
+     - name: Reboot a Linux machine 
+       reboot:
+        reboot_timeout: 1800
