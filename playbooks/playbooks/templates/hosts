@@ -4,6 +4,9 @@
 [base]
 slurm-worker ansible_host=10.1.1.210 ansible_user=cluster ansible_password=6sJ09066sV1990;6
 
+[slurmctld]
+slurm-server ansible_host=146.164.147.4 ansible_user=cluster ansible_password=6sJ09066sV1990;6
+
 
 [gpu]
 caloba-v01 ansible_host=10.1.1.101 ansible_user=root ansible_password=6sJ09066sV1990;6
@@ -18,13 +21,11 @@ caloba-v09 ansible_host=10.1.1.109 ansible_user=root ansible_password=6sJ09066sV
 caloba-v10 ansible_host=10.1.1.110 ansible_user=root ansible_password=6sJ09066sV1990;6
 caloba-v11 ansible_host=10.1.1.111 ansible_user=root ansible_password=6sJ09066sV1990;6
 
-
 [cpu-large]
 caloba-v13 ansible_host=10.1.1.113 ansible_user=root ansible_password=6sJ09066sV1990;6
 caloba-v14 ansible_host=10.1.1.114 ansible_user=root ansible_password=6sJ09066sV1990;6
 caloba-v15 ansible_host=10.1.1.115 ansible_user=root ansible_password=6sJ09066sV1990;6
 caloba-v16 ansible_host=10.1.1.116 ansible_user=root ansible_password=6sJ09066sV1990;6
-
 
 [vm]
 caloba51 ansible_host=10.1.1.51 ansible_user=cluster ansible_password=6sJ09066sV1990;6
@@ -51,6 +52,8 @@ caloba94 ansible_host=10.1.1.94 ansible_user=cluster ansible_password=6sJ09066sV
 caloba95 ansible_host=10.1.1.95 ansible_user=cluster ansible_password=6sJ09066sV1990;6
 caloba96 ansible_host=10.1.1.96 ansible_user=cluster ansible_password=6sJ09066sV1990;6
 
+#[bancada]
+#bancada01 ansible_host=146.164.147.209 ansible_user=cluster ansible_password=6sJ09066sV1990;6
 
 
 [all:vars]

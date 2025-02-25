@@ -1,6 +1,7 @@
 __all__ = ["Cluster", 
            "cluster_create_parser", 
-           "cluster_destroy_parser", 
+           "cluster_destroy_parser",
+           "cluster_ping_parser", 
            "cluster_reboot_parser"]
 
 import os, argparse, json
@@ -24,6 +25,9 @@ class Cluster(Playbook):
     for key, value in conf["cluster"][cluster].items():
       setattr(self,key,value)
       
+      
+  def ping_all(self):
+    self.ping(self.cluster)
      
   def run_shell_on_all(self,command:str, description : str="") -> bool:
     return self.run_shell(self.cluster, command, description=description)
@@ -150,3 +154,9 @@ def cluster_reboot_parser():
   parser.add_argument('-n','--name', action='store', dest='name', required = True,
                       help = "The name of the cluster.")
   return [common_parser(), parser]
+
+def cluster_ping_parser():
+  parser = argparse.ArgumentParser(description = '', add_help = False,formatter_class=get_argparser_formatter())
+  parser.add_argument('-n','--name', action='store', dest='name', required = True,
+                      help = "The name of the cluster.")
+  return [common_parser(),parser]

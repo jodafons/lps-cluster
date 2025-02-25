@@ -9,15 +9,11 @@ sudo cp files/slurm/slurmdbd.service /etc/systemd/system/
 sudo cp files/slurm/slurmctld.service /etc/systemd/system/
 sudo cp files/slurm/slurm.conf /mnt/market_place/slurm_build
 
-# restart all services
-echo "restart..."
-sudo systemctl start munge
-sudo systemctl daemon-reload
-sudo systemctl start slurmdbd
-sudo systemctl start slurmctld
 
 
 # check slurm
 #systemctl status slurmdbd
 #systemctl status slurmctld
-sudo scontrol reconfigure
+#sudo scontrol reconfigure
+
+play slurm restart -v

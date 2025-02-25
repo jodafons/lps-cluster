@@ -1,6 +1,7 @@
 __all__ = ["VM",
            "vm_create_parser",
            "vm_destroy_parser",
+           "vm_ping_parser",
            "vm_snapshot_parser"]
 
 
@@ -29,23 +30,37 @@ class VM(Playbook):
       setattr(self, key, value)
     pprint(conf["vm"]["hosts"][name])
 
+  def ping_vm(self):
+    self.ping(self.vmname)
+
   def run_shell_on_vm(self,command:str, script : str="shell.yaml" , configured : bool=True) -> bool:
-    return self.run_shell(self.vmname if configured else self.vmname_image, command)
+    return self.run_shell(self.vmname, command)
   
   def run_shell_on_host(self, command : str, script : str="shell.yaml") -> bool:
     return self.run_shell(self.host, command)
   
+  
   def create(self, snapname : str="base"):  
-    logger.info(f"restore image into the host {self.hostname}")  
-    if self.restore():
-      sleep(10)
-      logger.info(f"configure network into {self.vmname}")
-      if self.configure() and snapname:
+    logger.info(f"restore image into the host {self.host}")  
+    ok = self.restore()
+    sleep(10)
+    if not ok:
+        return False
+    
+    logger.info(f"configure network into {self.vmname}")
+    ok = self.configure()
+    if not ok:
+        return False    
+
+    if snapname:
         logger.info("take a snapshot...")
         self.snapshot(snapname)
+    return True
+    
     
   def destroy(self) -> bool:
     return self.run_shell_on_host(f"qm stop {self.vmid} && qm destroy {self.vmid}")
+    
     
   def restore(self) -> bool:
     command = f"qmrestore {self.image} {self.vmid} --storage {self.storage} --unique --force && "
@@ -53,17 +68,22 @@ class VM(Playbook):
     command+= f"qm start {self.vmid}"
     return self.run_shell_on_host(command)
     
+    
   def snapshot(self, name : str) -> bool:
     return self.run_shell_on_host(f"qm snapshot {self.vmid} {name}")
 
-  def reset(self) -> bool:
+
+  def reboot(self) -> bool:
     return self.run_shell_on_host( f"qm stop {self.vmid} && qm start {vmid}" )
   
+  
   def configure(self) -> bool:
-    script_http = "https://raw.githubusercontent.com/jodafons/lps-cluster/refs/heads/main/playbooks/yaml/vm/configure_network.sh" 
+      
+    script_http = "https://raw.githubusercontent.com/jodafons/lps-cluster/refs/heads/main/playbooks/playbooks/yaml/vm/configure_network.sh" 
     script_name = script_http.split("/")[-1]
     command =  f"wget {script_http} && bash {script_name} {self.vmname} {self.ip_address}"
-    ok = self.run_shell_on_vm( command , script='vm/configure_network.yaml', configured=False)
+    params  = f"command='{command}' ip_address={self.ip_address} vmname={self.vmname} vmname_image={self.vmname_image}"
+    ok = self.run("/vm/configure_network.yaml", params)
     if ok and hasattr(self, 'device'):
       script_http="https://raw.githubusercontent.com/jodafons/lps-cluster/refs/heads/main/servers/slurm-worker/05_install_cuda.sh"
       script_name = script_http.split("/")[-1]
@@ -101,5 +121,9 @@ def vm_snapshot_parser():
                       help = "The name of the snapshot.") 
   return [common_parser(),parser]
   
-
+def vm_ping_parser():
+  parser = argparse.ArgumentParser(description = '', add_help = False,  formatter_class=get_argparser_formatter())
+  parser.add_argument('-n','--name', action='store', dest='name', required = True,
+                    help = "The name of the vm.")
+  return [common_parser(),parser] 
 

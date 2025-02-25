@@ -42,16 +42,20 @@ class Playbook:
                ):
     self.dry_run   = dry_run
     self.verbose   = verbose
-
+    
+  def ping(self, hosts : str ):
+    command = f"{self.__preexec} && ansible {hosts} -m ping -v -i {get_host_path()}"
+    os.system(command)
+    
   def run_shell(self, 
-                hostname    : str, 
+                hosts       : str, 
                 command     : str, 
                 description : str="", 
                 script      : str="shell.yaml"
               ) -> bool:
     
     params = f"description='{description}' "
-    params+= f"hosts={hostname} "
+    params+= f"hosts={hosts} "
     params+= f"command='{command}' "
     return self.run(script, params)
 
@@ -78,3 +82,7 @@ from .cluster import *
 from . import vm
 __all__.extend( vm.__all__ )
 from .vm import *
+
+from . import slurm
+__all__.extend( slurm.__all__ )
+from .slurm import *

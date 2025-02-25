@@ -48,6 +48,26 @@
                 "memory_mb" : 128000,
                 "storage"   : "storage02",
                 "vmname"    : "caloba52"
+            },
+            "caloba53":{
+                "host"      : "caloba-v15",
+                "ip_address": "10.1.1.53",
+                "vmid"      : 353,
+                "sockets"   : 2,
+                "cores"     : 20,
+                "memory_mb" : 128000,
+                "storage"   : "storage02",
+                "vmname"    : "caloba53"
+            },
+            "caloba54":{
+                "host"      : "caloba-v16",
+                "ip_address": "10.1.1.54",
+                "vmid"      : 354,
+                "sockets"   : 2,
+                "cores"     : 20,
+                "memory_mb" : 128000,
+                "storage"   : "storage02",
+                "vmname"    : "caloba54"
             }
         }
     }
