@@ -24,7 +24,7 @@ class Slurm(Playbook):
     Playbook.__init__(self,dry_run=dry_run, verbose=verbose)
     
   def ping_all(self):
-    self.ping(self.hosts)
+    self.ping("vm")
            
   def restart(self):
     description = "Restart slurm control..."
@@ -34,6 +34,10 @@ class Slurm(Playbook):
     command+= "sudo systemctl start slurmdbd && "
     command+= "sudo systemctl enable slurmctld &&"
     command+= "sudo systemctl start slurmctld && "
+    command+= "systemctl enable slurmrestd.service && "
+    command+= "systemctl start slurmrestd.service && "
+    command+= "systemctl enable slurm-web-agent.service && "
+    command+= "systemctl enable slurm-web-gateway.service && "
     command+= "sudo scontrol reconfigure"
     params = f"hosts=slurmctld, command='{command}' description={description}"
     self.run("shell.yaml", params)

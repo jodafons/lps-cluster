@@ -10,6 +10,8 @@ cp files/slurmweb/rackslab.sources /etc/apt/sources.list.d/
 apt update
 apt install -y slurm-web-agent slurm-web-gateway
 
+sudo ufw allow from any to any port 5011
+sudo ufw allow from any to any port 5012
 
 cp files/slurmweb/agent.ini  /etc/slurm-web/
 cp files/slurmweb/gateway.ini  /etc/slurm-web/
