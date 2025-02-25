@@ -1,9 +1,0 @@
----
-- name: Create cluster
-  hosts: "{{hostname}}"
-  remote_user: root
-  become: yes
-  tasks:
-     - name: Create cluster...
-       ansible.builtin.shell: |
-        pvecm create {{clustername}} --votes 1

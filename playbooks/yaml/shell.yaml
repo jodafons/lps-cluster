@@ -1,9 +1,9 @@
 ---
-- name: VM restrart
-  hosts: "{{hostname}}"
+- name: Shell
+  hosts: "{{hosts}}"
   remote_user: root
   become: yes
   tasks:
-     - name: Execute the command
+     - name: "{{description}}"
        ansible.builtin.shell: |
         {{command}}

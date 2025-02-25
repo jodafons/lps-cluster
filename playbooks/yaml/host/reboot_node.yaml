@@ -1,6 +1,6 @@
 ---
 - name: Reset all nodes into the cluster
-  hosts: "{{hostgroup}}"
+  hosts: "{{hosts}}"
   remote_user: root
   become: yes
   tasks:

@@ -1,0 +1,48 @@
+{
+    "common":{
+        "image":"/mnt/pve/storage02/dump/vzdump-qemu-500-2025_02_18-23_29_50.vma.zst",
+        "vmname_image": "slurm-worker"
+    },
+    "storage":{
+        "storage01":{
+            "server":"10.1.1.202",
+            "path":"/volume1/proxmox"
+        },
+        "storage02":{
+            "server":"10.1.1.203",
+            "path":"/volume1/proxmox"
+        }
+    },
+    "cluster":{
+        "cpu-large":{
+            "host"       : "caloba-v13",
+            "ip_address" : "10.1.1.113"
+        },
+        "gpu":{
+            "host"       : "caloba-v01",
+            "ip_address" : "10.1.1.101"
+        }
+    },
+    "vm":{
+        "caloba51":{
+            "host"      : "caloba-v13",
+            "ip_address": "10.1.1.51",
+            "vmid"      : 351,
+            "sockets"   : 2,
+            "cores"     : 20,
+            "memory_mb" : 128000,
+            "storage"   : "storage02",
+            "vmname"    : "caloba51"
+        },
+        "caloba52":{
+            "host"      : "caloba-v14",
+            "ip_address": "10.1.1.52",
+            "vmid"      : 352,
+            "sockets"   : 2,
+            "cores"     : 20,
+            "memory_mb" : 128000,
+            "storage"   : "storage02",
+            "vmname"    : "caloba52"
+        }
+    }
+}

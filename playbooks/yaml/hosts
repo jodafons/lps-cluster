@@ -7,13 +7,13 @@ slurm-worker ansible_host=10.1.1.210 ansible_user=cluster ansible_password=6sJ09
 
 [gpu]
 
-#caloba-v01 ansible_host=10.1.1.101 ansible_user=root ansible_password=6sJ09066sV1990;6
+caloba-v01 ansible_host=10.1.1.101 ansible_user=root ansible_password=6sJ09066sV1990;6
 caloba-v02 ansible_host=10.1.1.102 ansible_user=root ansible_password=6sJ09066sV1990;6
 caloba-v03 ansible_host=10.1.1.103 ansible_user=root ansible_password=6sJ09066sV1990;6
 caloba-v04 ansible_host=10.1.1.104 ansible_user=root ansible_password=6sJ09066sV1990;6
 caloba-v05 ansible_host=10.1.1.105 ansible_user=root ansible_password=6sJ09066sV1990;6
 #caloba-v06 ansible_host=10.1.1.106 ansible_user=root ansible_password=6sJ09066sV1990;6
-caloba-v07 ansible_host=10.1.1.107 ansible_user=root ansible_password=6sJ09066sV1990;6
+#caloba-v07 ansible_host=10.1.1.107 ansible_user=root ansible_password=6sJ09066sV1990;6
 
 [gpu-large]
 
