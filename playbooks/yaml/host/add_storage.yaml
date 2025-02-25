@@ -1,9 +1,0 @@
----
-- name: Add storage into the cluster
-  hosts: "{{hostname}}"
-  remote_user: root
-  become: yes
-  tasks:
-     - name: Add storage...
-       ansible.builtin.shell: |
-        pvesm add nfs {{storage_name}} --server {{ip_address}} --export /volume1/proxmox --content iso,backup,images
