@@ -15,6 +15,12 @@ apt install -y nvidia-modprobe
 sudo apt-get -y install software-properties-common
 sudo apt update -y && sudo apt upgrade -y
 
+
+
+apt install -y linux-headers-$(uname -r)
+bash /mnt/market_place/nvidia/deps/NVIDIA-Linux-x86_64-535.154.05.run
+
+
 echo ""
 echo "Install CUDA..."
 echo ""

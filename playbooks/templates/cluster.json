@@ -23,11 +23,12 @@
             "ip_address" : "10.1.1.101"
         }
     },
+    "images":{
+        "ufrj-caloba-cpu":"/mnt/pve/storage02/dump/vzdump-qemu-300-2025_02_26-11_44_34.vma.zst",
+        "ufrj-caloba-gpu":"/mnt/pve/storage02/dump/vzdump-qemu-300-2025_02_26-14_14_53.vma.zst"
+
+    },
     "vm":{
-        "common":{
-            "image":"/mnt/pve/storage02/dump/vzdump-qemu-500-2025_02_18-23_29_50.vma.zst",
-            "vmname_image": "slurm-worker"
-        },
         "hosts":{
             "caloba51":{
                 "host"      : "caloba-v13",
@@ -37,7 +38,8 @@
                 "cores"     : 20,
                 "memory_mb" : 128000,
                 "storage"   : "storage02",
-                "vmname"    : "caloba51"
+                "vmname"    : "caloba51",
+                "image"     : "ufrj-caloba-cpu"
             },
             "caloba52":{
                 "host"      : "caloba-v14",
@@ -47,7 +49,9 @@
                 "cores"     : 20,
                 "memory_mb" : 128000,
                 "storage"   : "storage02",
-                "vmname"    : "caloba52"
+                "vmname"    : "caloba52",
+                "image"     : "ufrj-caloba-cpu"
+
             },
             "caloba53":{
                 "host"      : "caloba-v15",
@@ -57,17 +61,44 @@
                 "cores"     : 20,
                 "memory_mb" : 128000,
                 "storage"   : "storage02",
-                "vmname"    : "caloba53"
+                "vmname"    : "caloba53",
+                "image"     : "ufrj-caloba-cpu"
+
             },
             "caloba54":{
                 "host"      : "caloba-v16",
                 "ip_address": "10.1.1.54",
                 "vmid"      : 354,
                 "sockets"   : 2,
-                "cores"     : 20,
+                "cores"     : 24,
                 "memory_mb" : 128000,
                 "storage"   : "storage02",
-                "vmname"    : "caloba54"
+                "vmname"    : "caloba54",
+                "image"     : "ufrj-caloba-cpu"
+            },
+
+            "caloba70":{
+                "host"      : "caloba-v01",
+                "ip_address": "10.1.1.70",
+                "vmid"      : 370,
+                "sockets"   : 1,
+                "cores"     : 10,
+                "memory_mb" : 30720,
+                "storage"   : "storage02",
+                "vmname"    : "caloba70",
+                "image"     : "ufrj-caloba-gpu"
+            },
+            "caloba71":{
+                "host"      : "caloba-v01",
+                "ip_address": "10.1.1.71",
+                "vmid"      : 371,
+                "sockets"   : 1,
+                "cores"     : 10,
+                "memory_mb" : 30720,
+                "storage"   : "storage02",
+                "vmname"    : "caloba71",
+                "image"     : "ufrj-caloba-gpu"
+
             }
         }
     }

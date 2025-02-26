@@ -27,8 +27,10 @@ class Slurm(Playbook):
     self.ping("vm")
            
   def restart(self):
+    
     description = "Restart slurm control..."
-    command = "sudo systemctl daemon-reload && "
+    command = "cp /etc/munge/munge.key /mnt/market_place/slurm_build && "
+    command+= "sudo systemctl daemon-reload && "
     command+= "sudo systemctl start munge && "
     command+= "sudo systemctl enable slurmdbd && "
     command+= "sudo systemctl start slurmdbd && "
@@ -41,10 +43,19 @@ class Slurm(Playbook):
     command+= "sudo scontrol reconfigure"
     params = f"hosts=slurmctld, command='{command}' description={description}"
     self.run("shell.yaml", params)
-    params = f"hosts=vm"
-    self.run( "slurm/restart_slurmd.yaml", params)
-      
-      
+    
+    description = "Update munge key..."
+    command = "cp /mnt/market_place/slurm_build/munge.key /etc/munge/ &&"
+    command+= "chown munge:munge /etc/munge/munge.key && "
+    command+= "chmod 400 /etc/munge/munge.key && "
+    command+= "systemctl enable munge && "
+    command+= "systemctl restart munge && "
+    command+= "systemctl enable slurmd && "
+    command+= "systemctl restart slurmd"
+    params  = f"hosts=vm command='{command}' description={description}"
+    self.run( "shell.yaml", params)
+
+  
 def common_parser():
   parser = argparse.ArgumentParser(description = '', add_help = False,  formatter_class=get_argparser_formatter())
   

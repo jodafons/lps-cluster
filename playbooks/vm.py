@@ -24,16 +24,15 @@ class VM(Playbook):
     Playbook.__init__(self,dry_run=dry_run)
         
     conf = get_cluster_config()
-    for key, value in conf["vm"]["common"].items():
-      setattr(self, key, value)
     for key, value in conf["vm"]["hosts"][name].items():
       setattr(self, key, value)
+    self.image = conf["images"][self.image]
     pprint(conf["vm"]["hosts"][name])
 
   def ping_vm(self):
     self.ping(self.vmname)
 
-  def run_shell_on_vm(self,command:str, script : str="shell.yaml" , configured : bool=True) -> bool:
+  def run_shell_on_vm(self,command:str, script : str="shell.yaml" ) -> bool:
     return self.run_shell(self.vmname, command)
   
   def run_shell_on_host(self, command : str, script : str="shell.yaml") -> bool:
@@ -43,7 +42,7 @@ class VM(Playbook):
   def create(self, snapname : str="base"):  
     logger.info(f"restore image into the host {self.host}")  
     ok = self.restore()
-    sleep(10)
+    sleep(40)
     if not ok:
         return False
     
@@ -78,18 +77,12 @@ class VM(Playbook):
   
   
   def configure(self) -> bool:
-      
-    script_http = "https://raw.githubusercontent.com/jodafons/lps-cluster/refs/heads/main/playbooks/playbooks/yaml/vm/configure_network.sh" 
+    script_http = "https://raw.githubusercontent.com/jodafons/lps-cluster/refs/heads/main/playbooks/yaml/vm/configure_network.sh" 
     script_name = script_http.split("/")[-1]
     command =  f"wget {script_http} && bash {script_name} {self.vmname} {self.ip_address}"
-    params  = f"command='{command}' ip_address={self.ip_address} vmname={self.vmname} vmname_image={self.vmname_image}"
-    ok = self.run("/vm/configure_network.yaml", params)
-    if ok and hasattr(self, 'device'):
-      script_http="https://raw.githubusercontent.com/jodafons/lps-cluster/refs/heads/main/servers/slurm-worker/05_install_cuda.sh"
-      script_name = script_http.split("/")[-1]
-      command = f"bash {script_name}"
-      ok = self.run_shell_on_vm( command )
-    return ok
+    params  = f"command='{command}' ip_address={self.ip_address} vmname={self.vmname}"
+    return self.run("/vm/configure_network.yaml", params)
+    
 
 
 

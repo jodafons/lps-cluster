@@ -1,6 +1,6 @@
 ---
 - name: execute a script.
-  hosts: "{{vmname_image}}"
+  hosts: "slurm-worker"
   remote_user: root
   become: yes
   tasks:   

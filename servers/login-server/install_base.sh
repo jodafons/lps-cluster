@@ -9,9 +9,6 @@ echo "kernel.panic=10     ;tells the kernel to reboot ten seconds after panickin
 #
 # Append market_place into the mount
 #
-apt install -y nfs-common
-mkdir /mnt/market_place
-echo "10.1.1.202:/volume1/market_place /mnt/market_place nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0" >> /etc/fstab
 
 
 
@@ -43,6 +40,7 @@ timedatectl status
 
 
 # Configure home folder
+apt install -y nfs-common
 echo "10.1.1.202:/volume1/homes /home nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0" >> /etc/fstab
 mkdir /etc/pam_scripts
 chmod -R 700 /etc/pam_scripts
