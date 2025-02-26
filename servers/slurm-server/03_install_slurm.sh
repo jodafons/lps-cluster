@@ -4,7 +4,7 @@ apt-get update
 apt install -y linux-headers-$(uname -r)
 apt install -y libdbus-1-dev default-libmysqlclient-dev build-essential libpam-dev ruby-rubygems
 apt install -y gcc make libssl-dev libpam0g-dev ruby ruby-dev libmariadb-dev-compat libmariadb-dev mariadb-server bzip2 libmunge-dev libmunge2 munge
-apt install -y libhttp-parser-dev libjson-c-dev
+apt install -y libhttp-parser-dev libjson-c-dev ufw
 gem install fpm
 
 systemctl enable munge
