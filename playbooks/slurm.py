@@ -40,6 +40,8 @@ class Slurm(Playbook):
     command+= "systemctl start slurmrestd.service && "
     command+= "systemctl enable slurm-web-agent.service && "
     command+= "systemctl enable slurm-web-gateway.service && "
+    command+= "systemctl start slurm-web-agent.service && "
+    command+= "systemctl start slurm-web-gateway.service && "
     command+= "sudo scontrol reconfigure"
     params = f"hosts=slurmctld, command='{command}' description={description}"
     self.run("shell.yaml", params)
@@ -54,8 +56,17 @@ class Slurm(Playbook):
     command+= "systemctl restart slurmd"
     params  = f"hosts=vm command='{command}' description={description}"
     self.run( "shell.yaml", params)
-
-  
+    
+    description = "Update munge key..."
+    command = "cp /mnt/market_place/slurm_build/munge.key /etc/munge/ &&"
+    command+= "chown munge:munge /etc/munge/munge.key && "
+    command+= "chmod 400 /etc/munge/munge.key && "
+    command+= "systemctl enable munge && "
+    command+= "systemctl restart munge"
+    params  = f"hosts=login command='{command}' description={description}"
+    self.run( "shell.yaml", params)
+    
+    
 def common_parser():
   parser = argparse.ArgumentParser(description = '', add_help = False,  formatter_class=get_argparser_formatter())
   

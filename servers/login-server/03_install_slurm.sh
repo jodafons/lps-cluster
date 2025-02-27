@@ -12,14 +12,14 @@ systemctl restart munge
 #
 # install SLURM
 #
-dpkg -i /mnt/market_place/slurm_build/slurm-22.05.3/slurm-22.05.3_1.0_amd64.deb 
+dpkg -i --force-overwrite /mnt/market_place/slurm_build/slurm-24.11.1_1.0_amd64.deb
 mkdir /etc/slurm
 ln -sf /mnt/market_place/slurm_build/slurm.conf /etc/slurm/slurm.conf
 useradd slurm
 
 
 # add sjstat
-cp /mnt/market_place/slurm_build/slurm-22.05.3/contribs/sjstat /usr/bin
+cp /mnt/market_place/slurm_build/slurm-24.11.1/contribs/sjstat /usr/bin
 
 reboot now
 

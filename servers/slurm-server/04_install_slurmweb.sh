@@ -15,6 +15,7 @@ sudo ufw allow from any to any port 5012
 
 cp files/slurmweb/agent.ini  /etc/slurm-web/
 cp files/slurmweb/gateway.ini  /etc/slurm-web/
+cp files/slurmweb/policy.ini  /etc/slurm-web/
 cp files/slurmweb/gateway.yml /usr/share/slurm-web/conf/ # bugfix
 /usr/libexec/slurm-web/slurm-web-gen-jwt-key
 systemctl enable slurm-web-agent.service
