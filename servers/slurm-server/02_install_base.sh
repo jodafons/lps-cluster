@@ -20,5 +20,10 @@ timedatectl set-ntp true
 timedatectl status
 
 
+apt install -y libnss-ldap
+apt install -y libnss-ldapd
+/etc/init.d/nscd restart
+/etc/init.d/ssh restart
+getent passwd
 
 reboot now
