@@ -18,7 +18,7 @@ sudo apt update -y && sudo apt upgrade -y
 
 
 apt install -y linux-headers-$(uname -r)
-bash /mnt/market_place/nvidia/deps/NVIDIA-Linux-x86_64-535.154.05.run
+bash /mnt/market_place/nvidia/deps/NVIDIA-Linux-x86_64-550.144.03.run
 
 
 echo ""
