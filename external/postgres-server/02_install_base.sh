@@ -1,15 +1,7 @@
 #
 # Install dependencies
 #
-apt install -y htop vim git sshpass curl wget 
-
-
-#
-# Setup NFS
-#
-apt install -y nfs-common
-mkdir /mnt/postgres_data
-echo "10.1.1.202:/volume1/postgres_data /mnt/postgres_data nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0" >> /etc/fstab
+apt install -y htop vim git sshpass curl wget build-essential python3-virtualenv python-is-python3 screen rsync
 
 
 #
@@ -37,16 +29,6 @@ gpasswd -a cluster docker
 
 
 sudo apt install -y make
-
-#
-# Install fish
-#
-echo 'deb http://download.opensuse.org/repositories/shells:/fish:/release:/3/Debian_11/ /' | sudo tee /etc/apt/sources.list.d/shells:fish:release:3.list
-curl -fsSL https://download.opensuse.org/repositories/shells:fish:release:3/Debian_11/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/shells_fish_release_3.gpg > /dev/null
-sudo apt update
-sudo apt install -y fish
-which fish
-echo 'fish' >> /home/cluster/.bashrc
 
 
 
