@@ -1,19 +1,9 @@
 #
 # Install dependencies
 #
-apt install -y htop vim git sshpass curl wget 
+apt install -y htop vim git sshpass curl wget build-essential python3-virtualenv python-is-python3 screen rsync
 
 
-#
-# Setup NFS
-#
-apt install -y nfs-common
-mkdir /mnt/market_place
-mkdir /mnt/brics_data
-echo "10.1.1.202:/volume1/market_place /mnt/market_place nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0" >> /etc/fstab
-echo "10.1.1.203:/volume1/brics_data /mnt/brics_data nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0" >> /etc/fstab
-echo "10.1.1.203:/volume1/cern_data /mnt/cern_data nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0" >> /etc/fstab
-echo "10.1.1.203:/volume1/sonar_data /mnt/sonar_data nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0" >> /etc/fstab
 
 #
 # Install docker
@@ -37,10 +27,6 @@ apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose
 groupadd docker
 gpasswd -a root docker
 gpasswd -a cluster docker
-
-
-
-
 
 
 reboot now

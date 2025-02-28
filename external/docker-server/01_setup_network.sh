@@ -1,6 +1,6 @@
 
 
-address=146.164.147.7
+address=146.164.147.48
 network_interface=$(ip link | awk -F: '$0 !~ "lo|vir|wl|^[^0-9]"{print $2;getline}')
 
 
@@ -18,17 +18,14 @@ apt install -y resolvconf
 apt install -y nfs-common
 
 
-
 #
-# add all NFS workplaces
+# NFS
 #
-mkdir -p /mnt/storage01
 mkdir -p /mnt/storage02
-mkdir -p /mnt/storage03
-echo "10.1.1.202:/volume1 /mnt/storage01 nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0" >> /etc/fstab
+mkdir -p /mnt/market_place
 echo "10.1.1.203:/volume1 /mnt/storage02 nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0" >> /etc/fstab
-echo "10.1.1.204:/shares /mnt/storage03 nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0" >> /etc/fstab
-mount -a
+echo "10.1.1.202:/volume1/market_place /mnt/market_place nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0" >> /etc/fstab
+
 
 
 
