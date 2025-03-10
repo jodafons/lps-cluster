@@ -9,9 +9,18 @@ echo "kernel.panic=10     ;tells the kernel to reboot ten seconds after panickin
 #
 # Append market_place into the mount
 #
+
 apt install -y nfs-common
-mkdir /mnt/market_place
-echo "10.1.1.202:/volume1/market_place /mnt/market_place nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0" >> /etc/fstab
+mkdir -p /mnt/cern_data
+mkdir -p /mnt/brics_data
+mkdir -p /mnt/sonar_data
+mkdir -p /mnt/petrobras_data
+
+
+echo "10.1.1.203:/volume1/cern_data /mnt/cern_data nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0" >> /etc/fstab
+echo "10.1.1.203:/volume1/brics_data /mnt/brics_data nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0" >> /etc/fstab
+echo "10.1.1.203:/volume1/sonar_data /mnt/sonar_data nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0" >> /etc/fstab
+echo "10.1.1.203:/volume1/petrobras_data /mnt/petrobras_data nfs rsize=32768,wsize=32768,bg,sync,nolock 0 0" >> /etc/fstab
 
 
 
