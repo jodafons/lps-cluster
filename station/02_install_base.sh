@@ -1,6 +1,6 @@
 
 #
-# Add some panic contraints in case of fail
+# Add some panic contraints in case of fai
 #
 echo "vm.panic_on_oom=1   ;enables panic on OOM">>/etc/sysctl.conf
 echo "kernel.panic=10     ;tells the kernel to reboot ten seconds after panicking">>/etc/sysctl.conf
@@ -62,10 +62,8 @@ echo "session required pam_exec.so /etc/pam_scripts/login-logger.sh" >> /etc/pam
 
 
 # install others
-apt install -y htop sshpass screen rsync
-
-
-apt install -y python-is-python3
+apt install -y htop sshpass screen rsync fpart vim curl git sshpass
+apt install -y python-is-python3 python3-virtualenv 
 apt install -y xrdp
 systemctl enable xrdp
 
@@ -82,7 +80,8 @@ echo 'export PATH="$HOME/.pyenv/bin:$PATH"' >> /etc/bash.bashrc
 echo 'eval "$(pyenv init --path)"' >> /etc/bash.bashrc
 
 
-
+source 03_install_singularity.sh
+source 04_install_docker.sh
 sudo reboot now
 
 
