@@ -40,7 +40,7 @@ server (service) into the lab infrastructure.
 
 - [LDAP Account Manager](http://auth-server.lps.ufrj.br/lam/)
 - [Proxy Server](http://proxy-server.lps.ufrj.br:8080/login)
-- [Foot Print](http://footprint.lps.ufrj.br)
+- [Finger Print](http://fingerprint.lps.ufrj.br) (user: primmesf, password: 121314)
 - [Storage 1](http://storage01.lps.ufrj.br:5000)
 - [Storage 2](http://storage02.lps.ufrj.br)
 - [Storage 3](http://storage03.lps.ufrj.br)
