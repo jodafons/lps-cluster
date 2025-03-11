@@ -1,0 +1,9 @@
+---
+- name: Shell
+  hosts: "bancada"
+  remote_user: root
+  become: yes
+  tasks:
+     - name: "Install extra packages..."
+       ansible.builtin.shell: |
+        echo "install extra packages..."

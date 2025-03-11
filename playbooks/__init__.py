@@ -75,14 +75,7 @@ class Playbook:
       return False
 
 
-from . import cluster
-__all__.extend( cluster.__all__ )
-from .cluster import *
+from . import playbooks
+__all__.extend( playbooks.__all__ )
+from .playbooks import *
 
-from . import vm
-__all__.extend( vm.__all__ )
-from .vm import *
-
-from . import slurm
-__all__.extend( slurm.__all__ )
-from .slurm import *

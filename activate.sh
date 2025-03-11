@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export MARKET_PLACE_BASEPATH=/mnt/market_place/git_repos
+export MARKET_PLACE_BASEPATH=/mnt/market_place/scripts
 export ANSIBLE_HOST_KEY_CHECKING=False
 export ANSIBLE_EXECUTABLE=/bin/bash
 export VIRTUALENV_NAMESPACE=$MARKET_PLACE_BASEPATH/lps-cluster-env

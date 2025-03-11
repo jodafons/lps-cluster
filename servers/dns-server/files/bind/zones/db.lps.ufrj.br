@@ -3,7 +3,7 @@
 ;
 $TTL      7200
 @     IN   SOA       ns.lps.ufrj.br. netadmin.lps.ufrj.br. (
-           2025022700    ; Serial (YOU NEED TO CHANGE THIS EVERY UPDATE)
+           2025031100    ; Serial (YOU NEED TO CHANGE THIS EVERY UPDATE)
            7200          ; Refresh (2h)
            3600          ; Retry (1h)
            31536000      ; Expire (1y)
@@ -115,21 +115,7 @@ idcs                        IN    CNAME proxy-server.lps.ufrj.br.
 ;
 ; Stations with fixed IP (201-234)
 ;
-geneve      IN      A     146.164.147.201
-;berna       IN      A     146.164.147.202
-;porto       IN      A     146.164.147.203
-;paris       IN      A     146.164.147.204
-;verdun      IN      A     146.164.147.205
-;gex         IN      A     146.164.147.206
-;lancy       IN      A     146.164.147.207
-;crozet      IN      A     146.164.147.208
-;versoix     IN      A     146.164.147.209
-;ornex       IN      A     146.164.147.210
-;carouge     IN      A     146.164.147.211
-;nyon        IN      A     146.164.147.212
-;chamonix    IN      A     146.164.147.213
-
-;bancada01   IN      A     146.164.147.201
+bancada01   IN      A     146.164.147.201
 bancada02   IN      A     146.164.147.202
 bancada03   IN      A     146.164.147.203
 bancada04   IN      A     146.164.147.204

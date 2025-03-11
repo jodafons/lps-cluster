@@ -3,7 +3,7 @@
 ;
 $TTL  7200
 @ IN  SOA ns.lps.ufrj.br. netadmin.lps.ufrj.br. (
-          2025022700  ; Serial
+          2025031100  ; Serial
           7200        ; Refresh (2h)
           3600        ; Retry (1h)
           31536000    ; Expire (1y)
@@ -75,21 +75,7 @@ $TTL  7200
 ;
 ; Stations with fixed IP (201-234)
 ;
-201 IN  PTR geneve.lps.ufrj.br.
-;202 IN  PTR berna.lps.ufrj.br.
-;203 IN  PTR porto.lps.ufrj.br.
-;204 IN  PTR paris.lps.ufrj.br.
-;205 IN  PTR verdun.lps.ufrj.br.
-;206 IN  PTR gex.lps.ufrj.br.
-;207 IN  PTR lancy.lps.ufrj.br.
-;208 IN  PTR crozet.lps.ufrj.br.
-;209 IN  PTR versoix.lps.ufrj.br.
-;210 IN  PTR ornex.lps.ufrj.br.
-;211 IN  PTR carouge.lps.ufrj.br.
-;212 IN  PTR nyon.lps.ufrj.br.
-;213 IN  PTR chamonix.lps.ufrj.br.
-
-;201 IN  PTR bancada01.lps.ufrj.br.
+201 IN  PTR bancada01.lps.ufrj.br.
 202 IN  PTR bancada02.lps.ufrj.br.
 203 IN  PTR bancada03.lps.ufrj.br.
 204 IN  PTR bancada04.lps.ufrj.br.

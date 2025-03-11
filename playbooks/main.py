@@ -7,7 +7,6 @@ import traceback
 from pprint import pprint
 from loguru import logger
 
-from playbooks import Playbook
 from playbooks import Cluster, cluster_create_parser, cluster_destroy_parser, cluster_reboot_parser, cluster_ping_parser
 from playbooks import VM, vm_create_parser, vm_destroy_parser, vm_snapshot_parser, vm_ping_parser
 from playbooks import Slurm, slurm_ping_parser, slurm_restart_parser
